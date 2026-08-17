@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Step 01 Level 2: 모달 토글 완성본 정답 (Solution)</title>
+  <title>Step 01 Level 2: 모달 토글 [완성본 정답]</title>
   <style>
     body { font-family: sans-serif; padding: 2rem; background: #f8fafc; }
     .card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #cbd5e1; max-width: 400px; }
@@ -11,20 +11,19 @@
   </style>
 </head>
 <body>
-  <h1>Level 2: 모달 토글 완성본 정답 (Solution)</h1>
+  <h1>Level 2: 모달 토글 창 완성본 정답 (Solution)</h1>
   <div id="app"></div>
 
   <script>
-    // 💡 정답 해설 1: 상태(State) 선언
+    // 💡 정답 해설 1: 모달 열림 상태 (boolean)
     let state = {
       isOpen: false
     };
 
     const $app = document.querySelector('#app');
 
-    // 💡 정답 해설 2: 선언적 렌더링 함수
+    // 💡 정답 해설 2: state.isOpen 상태에 따른 선언적 삼항 연산자 렌더링
     function render() {
-      // 현재 state.isOpen 상태 데이터 모양 그대로 HTML을 조립!
       $app.innerHTML = `
         <div class="card">
           <h2>모달 토글 예제</h2>
@@ -41,19 +40,18 @@
         </div>
       `;
 
-      // 버튼 클릭 시 setState를 호출하여 상태 반전(!state.isOpen)
+      // 💡 정답 해설 3: 버튼 클릭 시 상태 반전(!state.isOpen) setState 호출
       document.querySelector('#btn-toggle').addEventListener('click', () => {
         setState({ isOpen: !state.isOpen });
       });
     }
 
-    // 💡 정답 해설 3: 상태 업데이트 및 자동 재렌더링
+    // 💡 정답 해설 4: 불변성 합성 및 자동 재렌더링
     function setState(newState) {
-      state = { ...state, ...newState }; // 데이터 합성
-      render();                          // 화면 자동 갱신!
+      state = { ...state, ...newState };
+      render();
     }
 
-    // 최초 렌더링 실행
     render();
   </script>
 </body>

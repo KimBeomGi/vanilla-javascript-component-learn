@@ -26,35 +26,36 @@
     const $app = document.querySelector('#app');
 
     // 3. 렌더링 함수 (UI = f(State))
+    /*
+      💡 템플릿 삼항 연산자 예시:
+      <div class="card">
+        <h2>모달 토글 예제</h2>
+        <button id="btn-toggle" class="btn">
+          ${state.isOpen ? '모달 닫기 ❌' : '모달 열기 🚀'}
+        </button>
+
+        ${state.isOpen ? `
+          <div class="modal">
+            <h3>🎉 모달 팝업 상자</h3>
+            <p>현재 state.isOpen 값이 true 입니다!</p>
+          </div>
+        ` : ''}
+      </div>
+    */
     function render() {
-      // TODO 1: state.isOpen 상태에 따라 버튼 글자("모달 열기" / "모달 닫기")와 모달 상자를 선언적으로 조립하세요.
-      $app.innerHTML = `
-        <div class="card">
-          <h2>모달 토글 예제</h2>
-          <button id="btn-toggle" class="btn">
-            ${state.isOpen ? '모달 닫기 ❌' : '모달 열기 🚀'}
-          </button>
+      // TODO 1: state.isOpen 삼항 연산자를 활용해 $app.innerHTML 을 대입하세요.
+      // ✏️ 작성하기
 
-          ${state.isOpen ? `
-            <div class="modal">
-              <h3>🎉 모달 팝업 상자</h3>
-              <p>현재 state.isOpen 값이 true 입니다!</p>
-            </div>
-          ` : ''}
-        </div>
-      `;
+      // TODO 2: #btn-toggle 버튼 클릭 시 setState({ isOpen: !state.isOpen }) 을 호출하세요.
+      // ✏️ 작성하기
 
-      // TODO 2: #btn-toggle 버튼에 클릭 이벤트를 걸고, 클릭 시 setState({ isOpen: !state.isOpen }) 을 호출하게 작성해 보세요.
-      document.querySelector('#btn-toggle').addEventListener('click', () => {
-        // ✏️ 작성하기
-      });
     }
 
     // 4. 상태 변경 전용 함수
     function setState(newState) {
       // TODO 3: state 불변성 합성 및 render() 자동 호출 코드를 작성해 보세요.
-      // state = { ...state, ...newState };
-      // render();
+      // ✏️ 작성하기
+
     }
 
     // 최초 실행
