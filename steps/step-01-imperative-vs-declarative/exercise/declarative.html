@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 01 - Declarative [실습용]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    .container { border: 1px solid #4A90E2; padding: 1rem; border-radius: 8px; max-width: 400px; }
+    button { padding: 0.5rem 1rem; margin-right: 0.5rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>2️⃣ 선언적(Declarative) 방식 실습 (Exercise)</h1>
+  <p>TODO 주석을 따라 state, render, setState 함수를 직접 완성해 보세요!</p>
+
+  <div id="app"></div>
+
+  <script>
+    // 1. 상태 객체
+    let state = {
+      count: 0
+    };
+
+    const $app = document.querySelector('#app');
+
+    // TODO: render() 함수를 완성하세요.
+    function render() {
+      // $app.innerHTML 에 템플릿 HTML 문자열을 대입하세요.
+      $app.innerHTML = `
+        <div class="container">
+          <h2>카운터: ${state.count}</h2>
+          <button id="btn-inc">+</button>
+          <button id="btn-dec">-</button>
+        </div>
+      `;
+
+      setEvents();
+    }
+
+    // TODO: setState(newState) 함수를 완성하세요.
+    function setState(newState) {
+      // ✏️ state를 업데이트(새 객체 병합)하고 render()를 재호출하도록 구현해 보세요.
+      // state = { ...state, ...newState };
+      // render();
+    }
+
+    function setEvents() {
+      document.querySelector('#btn-inc')?.addEventListener('click', () => {
+        setState({ count: state.count + 1 });
+      });
+
+      document.querySelector('#btn-dec')?.addEventListener('click', () => {
+        setState({ count: state.count - 1 });
+      });
+    }
+
+    // 초기 렌더링 실행
+    render();
+  </script>
+</body>
+</html>

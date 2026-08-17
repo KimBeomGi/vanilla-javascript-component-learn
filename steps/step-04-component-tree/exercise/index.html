@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 04 - 컴포넌트 분화 [실습용]</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
+    [data-component] { margin-bottom: 1rem; }
+    button { cursor: pointer; padding: 0.4rem 0.8rem; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import App from './src/App.js';
+    new App(document.querySelector('#app'));
+  </script>
+</body>
+</html>

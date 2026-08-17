@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 01 - Imperative [완성본 정답]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    .container { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; max-width: 400px; }
+    button { padding: 0.5rem 1rem; margin-right: 0.5rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>1️⃣ 명령형(Imperative) 완성본 정답 (Solution)</h1>
+  <div class="container">
+    <h2>카운터: <span id="count-display">0</span></h2>
+    <button id="btn-increase">+</button>
+    <button id="btn-decrease">-</button>
+  </div>
+
+  <script>
+    let count = 0;
+    const $countDisplay = document.querySelector('#count-display');
+    const $btnIncrease = document.querySelector('#btn-increase');
+    const $btnDecrease = document.querySelector('#btn-decrease');
+
+    $btnIncrease.addEventListener('click', () => {
+      count++;
+      $countDisplay.innerText = count;
+    });
+
+    $btnDecrease.addEventListener('click', () => {
+      count--;
+      $countDisplay.innerText = count;
+    });
+  </script>
+</body>
+</html>

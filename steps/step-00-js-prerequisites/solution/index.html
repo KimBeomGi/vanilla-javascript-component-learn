@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 00 - ES6+ 문법 디딤돌 [완성본 정답]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    .box { border: 1px solid #22c55e; padding: 1rem; border-radius: 8px; background: #f0fdf4; margin-bottom: 1rem; }
+    code { background: #e2e8f0; padding: 0.2rem 0.4rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Step 00 - ES6+ 핵심 문법 디딤돌 [완성본 정답]</h1>
+
+  <div class="box">
+    <h3>1. 템플릿 리터럴 & map 연산 결과 (Solution)</h3>
+    <div id="output-map"></div>
+  </div>
+
+  <div class="box">
+    <h3>2. 객체 구조분해 & Spread 결과 (Solution)</h3>
+    <div id="output-spread"></div>
+  </div>
+
+  <script type="module">
+    const items = [
+      { id: 1, text: 'HTML/CSS 완료' },
+      { id: 2, text: 'JS 기초 완료' },
+      { id: 3, text: '컴포넌트 도전!' }
+    ];
+    
+    // map & join으로 HTML 템플릿 반환
+    const htmlList = items.map(item => `<li>[ID:${item.id}] ${item.text}</li>`).join('');
+    document.querySelector('#output-map').innerHTML = `<ul>${htmlList}</ul>`;
+
+    // Spread 연산자로 불변성 유지하며 속성 업데이트
+    const state = { count: 10, name: '초보 코더' };
+    const newState = { ...state, count: state.count + 1 };
+    
+    document.querySelector('#output-spread').innerText = `이전: ${JSON.stringify(state)} -> 변경후: ${JSON.stringify(newState)}`;
+    console.log('이전 state:', state);
+    console.log('새로운 newState:', newState);
+  </script>
+</body>
+</html>

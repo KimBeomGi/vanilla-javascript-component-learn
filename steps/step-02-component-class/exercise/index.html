@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 02 - Component 클래스 [실습용]</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
+    .counter-card { border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; background: #fafafa; }
+    button { padding: 0.5rem 1rem; margin-right: 0.5rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🛠️ Step 02 실습용 (Exercise)</h1>
+  <div id="app"></div>
+
+  <script type="module">
+    import Counter from './src/components/Counter.js';
+    new Counter(document.querySelector('#app'));
+  </script>
+</body>
+</html>

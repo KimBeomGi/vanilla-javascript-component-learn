@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 00 Level 3 - 모듈과 Class [실습용]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
+    .box { border: 1px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
+  </style>
+</head>
+<body>
+  <h1>🐣 Level 3: type="module" & class 맛보기</h1>
+
+  <div id="app"></div>
+
+  <!-- type="module" 로 내외부 JS 스크립트 연결 -->
+  <script type="module">
+    // 간단한 Class 맛보기
+    class Greeting {
+      constructor($target, name) {
+        this.$target = $target;
+        this.name = name;
+        this.render();
+      }
+
+      render() {
+        this.$target.innerHTML = `
+          <div class="box">
+            <h2>안녕하세요, ${this.name}님!</h2>
+            <p>축하합니다! 이제 컴포넌트를 배울 모든 기초 준비가 완료되었습니다! 🎉</p>
+          </div>
+        `;
+      }
+    }
+
+    // TODO: new Greeting(document.querySelector('#app'), '초보 개발자'); 인스턴스를 생성해 보세요.
+    // ✏️ 작성해보기
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 03 - 이벤트 위임</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
+    .todo-app { border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; background: #fff; }
+    .todo-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .todo-input { flex: 1; padding: 0.5rem; font-size: 1rem; }
+    .todo-list { list-style: none; padding: 0; }
+    .todo-list li { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed #eee; }
+    .todo-list li.completed span { opacity: 0.6; }
+    button { padding: 0.4rem 0.8rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="module">
+    import App from './src/App.js';
+    new App(document.querySelector('#app'));
+  </script>
+</body>
+</html>

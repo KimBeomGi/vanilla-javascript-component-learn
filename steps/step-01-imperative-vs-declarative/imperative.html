@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 01 - Imperative (명령형) 예시</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    .container { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; max-width: 400px; }
+    button { padding: 0.5rem 1rem; margin-right: 0.5rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>1️⃣ 명령형(Imperative) 방식</h1>
+  <p>DOM 요소 하나하나를 직접 선택하고, 데이터를 바꿀 때마다 DOM을 일일이 수정합니다.</p>
+
+  <div class="container">
+    <h2>카운터: <span id="count-display">0</span></h2>
+    <button id="btn-increase">+</button>
+    <button id="btn-decrease">-</button>
+  </div>
+
+  <script>
+    // 1. 상태 변수 정의
+    let count = 0;
+
+    // 2. DOM 요소 탐색
+    const $countDisplay = document.querySelector('#count-display');
+    const $btnIncrease = document.querySelector('#btn-increase');
+    const $btnDecrease = document.querySelector('#btn-decrease');
+
+    // 3. 이벤트 바인딩 및 직접 DOM 조작
+    $btnIncrease.addEventListener('click', () => {
+      count++;
+      // DOM 조작 지시 (Imperative)
+      $countDisplay.innerText = count;
+    });
+
+    $btnDecrease.addEventListener('click', () => {
+      count--;
+      // DOM 조작 지시 (Imperative)
+      $countDisplay.innerText = count;
+    });
+  </script>
+</body>
+</html>

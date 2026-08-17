@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍦 Vanilla JS Component Hub</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --success: #16a34a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    p.subtitle {
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+    .textbook-banner {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+    }
+    .textbook-banner h2 { margin: 0 0 0.5rem 0; font-size: 1.5rem; }
+    .textbook-banner p { margin: 0 0 1rem 0; opacity: 0.9; font-size: 1rem; }
+    .banner-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-action {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-weight: 700;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.2s;
+    }
+    .btn-action:hover { background: rgba(255,255,255,0.3); }
+    .btn-main-textbook {
+      background: white;
+      color: #1e3a8a;
+      font-weight: 800;
+    }
+    .btn-main-textbook:hover { background: #f8fafc; }
+    .btn-php {
+      background: #777bb4;
+      color: white;
+      font-weight: 700;
+    }
+    .btn-php:hover { background: #616599; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary);
+    }
+    .card.final-card {
+      border: 2px solid #8b5cf6;
+      background: #faf5ff;
+    }
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #eff6ff;
+      color: var(--primary);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    .step-badge.beginner { background: #fef3c7; color: #d97706; }
+    .step-badge.final { background: #f3e8ff; color: #7c3aed; }
+    .card h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
+    .card p { color: #475569; font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .btn-group { display: flex; gap: 0.5rem; }
+    .btn {
+      text-decoration: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-exercise { background: #3b82f6; color: white; }
+    .btn-exercise:hover { background: #2563eb; }
+    .btn-solution { background: #22c55e; color: white; }
+    .btn-solution:hover { background: #16a34a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🍦 [나도 가능!] 바닐라 자바스크립트 컴포넌트 성전</h1>
+      <p class="subtitle">웹 컴포넌트(Web Components) 아키텍처를 원리부터 브라우저 표준 기술까지 마스터하는 실습 포털</p>
+    </header>
+
+    <!-- 이 코스를 마치면 만들 수 있는 프로젝트 수록 -->
+    <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.5rem; color:#166534;">
+      <h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:#15803d;">💡 이 코스를 완료하면 이런 것들을 만들 수 있어요!</h3>
+      <ul style="margin:0; padding-left:1.25rem; font-size:0.95rem; line-height:1.6;">
+        <li>🛒 <strong>쇼핑몰 & 장바구니 커머스 SPA</strong> (카테고리 필터링, 수량 제어, LocalStorage 연동)</li>
+        <li>📊 <strong>실시간 비동기 데이터 대시보드</strong> (API fetch 통신, 검색, 페이징, 로딩 스피너)</li>
+        <li>💬 <strong>기존 PHP / JSP / Spring 사이트용 댓글 & 좋아요 위젯</strong> (새로고침 0회 동적 이식)</li>
+        <li>📝 <strong>실시간 입력 검증 스마트 폼 & 회원가입 위저드</strong> (정규식 검증, 에러 제어)</li>
+        <li>🧩 <strong>나만의 UI 킷</strong> (모달 팝업, 토스트 알림, 무한 스크롤, 다크 모드 테마)</li>
+      </ul>
+    </div>
+
+    <!-- 교과서 문서 배너 -->
+    <div class="textbook-banner">
+      <div>
+        <h2>📖 [나도 가능!] 바닐라 JS 컴포넌트 실무 완벽 지침서</h2>
+        <p>PHP/jQuery 레거시 이식, 이론 비유, React/Vue 비교, 비동기 API 통신, 폼 검증, 에러 사전 완비</p>
+      </div>
+      <div class="banner-actions">
+        <a class="btn-action btn-main-textbook" href="./TEXTBOOK.md">📖 교과서 본문</a>
+        <a class="btn-action" href="./WORKFLOW_GUIDE.md" style="background:#4f46e5; border-color:#4f46e5;">🏢 실무 폴더 & Git 컨벤션</a>
+        <a class="btn-action" href="./SECURITY_GUIDE.md" style="background:#dc2626; border-color:#dc2626;">🛡️ 보안 & XSS 방어</a>
+        <a class="btn-action" href="./A11Y_GUIDE.md" style="background:#0d9488; border-color:#0d9488;">♿ 접근성 & 클린업</a>
+        <a class="btn-action" href="./SLOT_COMPOUND_GUIDE.md" style="background:#ec4899; border-color:#ec4899;">🎠 중첩 & slot 가이드</a>
+        <a class="btn-action" href="./DEPLOY_GUIDE.md" style="background:#0284c7; border-color:#0284c7;">🚀 무료 배포 가이드</a>
+        <a class="btn-action" href="./UI_PATTERNS.md" style="background:#d97706; border-color:#d97706;">🧩 실무 UI 4대 패턴</a>
+        <a class="btn-action btn-php" href="./LEGACY_INTEGRATION_GUIDE.md">🐘 PHP/jQuery 이식</a>
+        <a class="btn-action" href="./FRAMEWORK_COMPARISON.md">⚛️ React/Vue 비교</a>
+        <a class="btn-action" href="./ICON_GUIDE.md">🎨 React Icons</a>
+        <a class="btn-action" href="./API_GUIDE.md">📡 비동기 API</a>
+        <a class="btn-action" href="./FORM_GUIDE.md">📝 폼 검증</a>
+        <a class="btn-action" href="./DEBUGGING_GUIDE.md">🐞 에러 사전</a>
+        <a class="btn-action" href="./SERVER_GUIDE.md">🌐 웹서버 구동</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Step 0 -->
+      <div class="card">
+        <div>
+          <span class="step-badge beginner">STEP 00 (디딤돌)</span>
+          <h3>필수 ES6+ 자바스크립트 문법</h3>
+          <p>모듈 시스템(import/export), Class 상속, 구조분해, Spread 연산자, map과 템플릿 리터럴 연습</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-00-js-prerequisites/exercise/level-1-dom.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-00-js-prerequisites/solution/level-1-dom.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 01</span>
+          <h3>명령형 vs 선언적 렌더링</h3>
+          <p>DOM 직접 조작과 선언적 상태 기반 렌더링의 코드 차이를 직접 작성해 봅니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-01-imperative-vs-declarative/exercise/declarative.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-01-imperative-vs-declarative/solution/declarative.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 02</span>
+          <h3>Component 추상 클래스</h3>
+          <p>setup, template, render, setState 라이프사이클을 캡슐화한 기본 클래스를 설계합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-02-component-class/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-02-component-class/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 03</span>
+          <h3>이벤트 위임 (Event Delegation)</h3>
+          <p>버블링을 이용해 부모 요소에 이벤트를 1회 바인딩하는 addEvent 헬퍼를 작성합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-03-event-delegation/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-03-event-delegation/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 04</span>
+          <h3>컴포넌트 분화 & Props</h3>
+          <p>App, ItemInput, ItemList, ItemFilter로 모듈화하고 단방향 데이터 흐름을 구현합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-04-component-tree/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-04-component-tree/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 05</span>
+          <h3>중앙 상태 관리 (Store)</h3>
+          <p>Proxy 기반의 observe/observable 옵저버 패턴을 작성하고 중앙 Store를 연동합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-05-store-pattern/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-05-store-pattern/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 06</span>
+          <h3>SPA 라우팅 (Router)</h3>
+          <p>History API / Hash 기반 라우터를 구현해 동적으로 페이지 컴포넌트를 교체합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-06-spa-router/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-06-spa-router/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 07</span>
+          <h3>렌더링 최적화 & Diffing</h3>
+          <p>requestAnimationFrame 비동기 Batching 처리와 DOM Diffing 최소 업데이트를 적용합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-07-rendering-optimization/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-07-rendering-optimization/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="card">
+        <div>
+          <span class="step-badge">STEP 08</span>
+          <h3>Web Components 표준</h3>
+          <p>브라우저 표준 Custom Elements, Shadow DOM 과 직접 만든 클래스의 장단점을 비교합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-08-web-components/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-08-web-components/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+
+      <!-- Step 9 Final Capstone Project -->
+      <div class="card final-card">
+        <div>
+          <span class="step-badge final">STEP 09 (최종 캡스톤)</span>
+          <h3>미니 쇼핑몰 & 장바구니 SPA</h3>
+          <p>Component, 이벤트 위임, Store, SPA Router를 모두 총동원하여 완성하는 커머스 웹앱 프로젝트</p>
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-exercise" href="./steps/step-09-final-project/exercise/index.html">🏋️ 실습 (Exercise)</a>
+          <a class="btn btn-solution" href="./steps/step-09-final-project/solution/index.html">✨ 완성본 (Solution)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

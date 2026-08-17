@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 00 Level 1 - DOM 조작 기초 [완성본 정답]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
+    .box { border: 2px solid #22c55e; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; background: #f0fdf4; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; background: #22c55e; color: white; border: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Level 1: DOM 조작 완성본 (Solution)</h1>
+
+  <div class="box">
+    <h2 id="target-title">원래 글자입니다.</h2>
+    <div id="target-content">여기에 내용이 들어갑니다.</div>
+  </div>
+
+  <button id="btn-change">글자 바꾸기 버튼</button>
+
+  <script>
+    const $btn = document.querySelector('#btn-change');
+    const $title = document.querySelector('#target-title');
+    const $content = document.querySelector('#target-content');
+
+    $btn.addEventListener('click', () => {
+      // 1. innerText 로 단순 글자 변경
+      $title.innerText = '🎉 글자가 성공적으로 바뀌었습니다!';
+      
+      // 2. innerHTML 로 HTML 태그가 적용된 글자 넣기
+      $content.innerHTML = '<strong>HTML 태그가 적용된 굵은 글자입니다!</strong>';
+    });
+  </script>
+</body>
+</html>

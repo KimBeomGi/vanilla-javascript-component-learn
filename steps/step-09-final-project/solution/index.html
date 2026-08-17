@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 09 - 미니 커머스 SPA [완성본 정답]</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #0f172a; margin: 0; padding: 2rem; }
+    #app { max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .app-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 2rem; }
+    .app-nav a { text-decoration: none; color: #2563eb; font-weight: bold; margin-left: 1rem; }
+    .badge { background: #ef4444; color: white; border-radius: 999px; padding: 0.2rem 0.5rem; font-size: 0.8rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .product-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; }
+    .product-card .price { font-weight: bold; color: #059669; }
+    .cart-list { list-style: none; padding: 0; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 0.75rem 0; }
+    .qty-control button { padding: 0.2rem 0.6rem; cursor: pointer; }
+    button { cursor: pointer; padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid #cbd5e1; background: #f8fafc; }
+    .btn-add { background: #2563eb; color: white; border: none; font-weight: bold; width: 100%; margin-top: 0.5rem; }
+    .btn-add:hover { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="module">
+    import App from './src/App.js';
+    new App(document.querySelector('#app'));
+  </script>
+</body>
+</html>

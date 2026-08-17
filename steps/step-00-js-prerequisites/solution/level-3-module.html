@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 00 Level 3 - 모듈과 Class [완성본 정답]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
+    .box { border: 1px solid #22c55e; padding: 1rem; border-radius: 8px; background: #f0fdf4; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Level 3: Class 디딤돌 완성본 (Solution)</h1>
+
+  <div id="app"></div>
+
+  <script type="module">
+    class Greeting {
+      constructor($target, name) {
+        this.$target = $target;
+        this.name = name;
+        this.render();
+      }
+
+      render() {
+        this.$target.innerHTML = `
+          <div class="box">
+            <h2>안녕하세요, ${this.name}님!</h2>
+            <p>축하합니다! 이제 컴포넌트를 배울 모든 기초 준비가 완벽히 끝났습니다! 🎉</p>
+          </div>
+        `;
+      }
+    }
+
+    // 인스턴스 생성 및 마운트
+    new Greeting(document.querySelector('#app'), '초보 개발자');
+  </script>
+</body>
+</html>

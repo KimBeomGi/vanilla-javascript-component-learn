@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 03 - 이벤트 위임 [완성본 정답]</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; }
+    .todo-app { border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; background: #fff; }
+    .todo-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .todo-input { flex: 1; padding: 0.5rem; font-size: 1rem; }
+    .todo-list { list-style: none; padding: 0; }
+    .todo-list li { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed #eee; }
+    button { padding: 0.4rem 0.8rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Step 03 완성본 정답 (Solution)</h1>
+  <div id="app"></div>
+  <script type="module">
+    import TodoList from './src/components/TodoList.js';
+    new TodoList(document.querySelector('#app'));
+  </script>
+</body>
+</html>
