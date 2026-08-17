@@ -4,9 +4,9 @@
 
 ---
 
-## ⚡ 1. 가장 빠른 방법: Tailwind CDN 연동 (추천 👍)
+## ⚡ 1. 학습/개발용: Tailwind Play CDN (추천 👍)
 
-`index.html` 파일의 `<head>` 태그 안에 스크립트 1줄만 넣으면 즉시 사용할 수 있습니다.
+`https://cdn.tailwindcss.com` 은 Tailwind 공식 **Play CDN**으로, 브라우저가 유틸리티 클래스를 실시간 감지하여 스타일을 렌더링해 줍니다. Node.js 설치 없이 독학 및 빠른 테스트 시 가장 편리합니다.
 
 ### `index.html`
 ```html
@@ -15,7 +15,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Tailwind JS Component App</title>
-  <!-- 💡 Tailwind Play CDN 1줄 추가! -->
+  <!-- 💡 Tailwind Play CDN (개발/학습용) -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -23,6 +23,22 @@
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
+```
+
+---
+
+## 🏢 2. 실무 운영용: Standalone CLI (정적 CSS 생성)
+
+실무 상용 서비스에서는 브라우저 부담을 줄이기 위해 Tailwind CLI 명령어로 번들링된 정적 `.css` 파일을 불러오는 방식을 사용합니다.
+
+```bash
+# Node.js 없이 실행 가능한 Tailwind Standalone CLI 명령 예시
+npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch
+```
+
+```html
+<!-- 운영 환경에서는 빌드된 output.css 사용 -->
+<link rel="stylesheet" href="./assets/css/output.css">
 ```
 
 ---
