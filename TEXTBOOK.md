@@ -145,6 +145,68 @@ class Component {
 
 ---
 
+## 📌 [마당 03] 이벤트 위임 (Event Delegation) 패턴
+
+### 💡 버블링(Bubbling)을 이용한 한 번의 이벤트 연결
+- 리스트 아이템이 1,000개일 때 개별 요소에 `addEventListener`를 걸면 메모리가 낭비되고 렌더링 시마다 이벤트를 다시 걸어야 합니다.
+- **이벤트 위임**: 부모 요소(`$target`)에 이벤트를 생성자 시점에 **딱 1번만 바인딩**하고, `event.target.closest(selector)` 조건문으로 클릭한 요소를 구별합니다.
+
+```javascript
+addEvent(eventType, selector, callback) {
+  this.$target.addEventListener(eventType, (event) => {
+    if (!event.target.closest(selector)) return false;
+    callback(event);
+  });
+}
+```
+
+---
+
+## 📌 [마당 04] 컴포넌트 분화 & Props 단방향 데이터 흐름
+
+### 🌲 단일 책임 원칙 (SRP)과 데이터 흐름
+- 하나의 거대한 파일에 모든 코드를 넣지 않고 `App.js` ➔ `ItemInput.js`, `ItemList.js`, `ItemFilter.js` 로 모듈을 분화합니다.
+- **Props Down (부모 ➔ 자식)**: 부모가 자식의 생성자에 데이터(`props`)를 전달합니다.
+- **Events Up (자식 ➔ 부모)**: 자식이 사용자 입력을 받으면 부모가 전달해준 콜백 메서드(`addItem`)를 불러 부모의 `state`를 갱신합니다.
+
+---
+
+## 📌 [마당 05] 옵저버 패턴 & ES6 Proxy 기반 중앙 상태 관리 (Store)
+
+### 🛒 Props Drilling 해결과 중앙 스토어
+- 부모-자식 관계가 5단계 깊어지면 props 전달이 매우 고통스럽습니다.
+- **`Proxy` 기반 옵저버 패턴**: 스토어의 `state`가 조회(`get`)될 때 컴포넌트의 `render()`를 구독(Subscribe)으로 자동 등록하고, 상태가 수정(`set`)될 때 모든 구독자에게 알림(Notify)을 보내 자동 재렌더링시킵니다.
+
+```javascript
+let currentObserver = null;
+export const observe = fn => { currentObserver = fn; fn(); currentObserver = null; };
+export const observable = obj => {
+  const observers = new Set();
+  return new Proxy(obj, {
+    get(target, name) { if (currentObserver) observers.add(currentObserver); return target[name]; },
+    set(target, name, value) { target[name] = value; observers.forEach(fn => fn()); return true; }
+  });
+};
+```
+
+---
+
+## 📌 [마당 06] SPA (Single Page Application) 클라이언트 사이드 라우터
+
+### 🧭 새로고침 없는 URL 라우팅 (`Router.js`)
+- 브라우저가 깜빡이는 F5 새로고침 없이 URL 해시(`window.location.hash`) 변경을 감지합니다.
+- 경로(`#/`, `#/cart`)에 따라 해당 페이지 컴포넌트(`ProductPage`, `CartPage`)를 `$target`에 동적으로 교체 부착합니다.
+
+---
+
+## 📌 [마당 07] 렌더링 최적화 & Virtual DOM Diffing
+
+### ⚡ `requestAnimationFrame` 배치 & 최소 DOM 갱신 (`diff.js`)
+- **Microtask Batching**: `setState()`가 100번 연속 연달아 불려도 `#renderScheduled` 플래그를 사용해 `requestAnimationFrame`으로 1프레임 모아 딱 1번만 렌더링합니다.
+- **DOM Diffing**: 기존 DOM과 새로운 가상 DOM(Virtual DOM)을 비교하여 바뀐 텍스트/속성만 찾아 핀포인트로 갱신합니다.
+
+---
+
 ## 📌 [마당 08] Web Components 함수 작성 규칙 및 `this` 스코프 완벽 해설
 
 웹 컴포넌트(`class MyComponent extends HTMLElement`) 클래스 내부에서 함수를 다룰 때의 핵심 규칙입니다:
