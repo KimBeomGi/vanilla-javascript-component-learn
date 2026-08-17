@@ -19,11 +19,11 @@ export class ProductPage extends Component {
   }
 
   setEvent() {
-    // 💡 정답 해설 2: 상품 장바구니 담기 이벤트 위임
+    // TODO 2: .btn-add 클릭 시 선택한 상품을 store.dispatch('addToCart', product) 에 전달하세요.
     this.addEvent('click', '.btn-add', (e) => {
-      const id = Number(e.target.closest('.product-card').dataset.id);
-      const product = store.state.products.find(p => p.id === id);
-      if (product) store.dispatch('addToCart', product);
+      // ✏️ 1. e.target.closest('.product-card').dataset.id 로 선택한 상품 id를 읽으세요.
+      // ✏️ 2. store.state.products 에서 해당 상품을 찾아 store.dispatch('addToCart', product) 를 호출하세요.
+
     });
   }
 }
@@ -65,27 +65,28 @@ export class CartPage extends Component {
   }
 
   setEvent() {
-    // 💡 정답 해설 3: 수량 감소 (-1)
+    // TODO 3: 수량 감소(.btn-dec) 클릭 시 store.dispatch('changeQty', { id, delta: -1 }) 호출하기
     this.addEvent('click', '.btn-dec', (e) => {
-      const id = Number(e.target.closest('.cart-item').dataset.id);
-      store.dispatch('changeQty', { id, delta: -1 });
+      // ✏️ 작성하기
+
     });
 
-    // 💡 정답 해설 4: 수량 증가 (+1)
+    // TODO 4: 수량 증가(.btn-inc) 클릭 시 store.dispatch('changeQty', { id, delta: 1 }) 호출하기
     this.addEvent('click', '.btn-inc', (e) => {
-      const id = Number(e.target.closest('.cart-item').dataset.id);
-      store.dispatch('changeQty', { id, delta: 1 });
+      // ✏️ 작성하기
+
     });
 
-    // 💡 정답 해설 5: 개별 항목 삭제
+    // TODO 5: 삭제(.btn-remove) 클릭 시 store.dispatch('removeFromCart', id) 호출하기
     this.addEvent('click', '.btn-remove', (e) => {
-      const id = Number(e.target.closest('.cart-item').dataset.id);
-      store.dispatch('removeFromCart', id);
+      // ✏️ 작성하기
+
     });
 
-    // 💡 정답 해설 6: 전체 장바구니 비우기
+    // TODO 6: 비우기(.btn-clear) 클릭 시 store.dispatch('clearCart') 호출하기
     this.addEvent('click', '.btn-clear', () => {
-      store.dispatch('clearCart');
+      // ✏️ 작성하기
+
     });
   }
 }
