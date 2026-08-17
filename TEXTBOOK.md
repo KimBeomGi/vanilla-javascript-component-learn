@@ -1,13 +1,13 @@
-# 📖 [나도 가능!] 바닐라 자바스크립트 컴포넌트 완벽 독학 교과서 (입문부터 실전까지)
+# 📖 [나도 가능!] 바닐라 자바스크립트 컴포넌트 완벽 독학 교과서 (왕초보 눈높이 마스터판)
 
-> **"웹 컴포넌트(Web Components) 아키텍처를 원리부터 표준 기술까지 마스터하는 지침서"**  
-> 이 교과서는 HTML 태그와 `document.querySelector('.class')`만 겨우 아는 **왕초보**부터, 회사 실무 PHP/jQuery 레거시 프로젝트를 웹 컴포넌트로 이식하려는 실무자까지 완벽 지원하는 교과서입니다.
+> **"HTML 태그만 겨우 아시나요? '나는 컴포넌트가 뭔지 1도 모르겠다!' 하시는 분도 이 교과서 하나면 100% 이해할 수 있습니다!"**  
+> 이 교과서는 자바스크립트를 시작한 지 1달 된 초보자도 막힘없이 따라오도록 **쉬운 일상 비유**, **한 줄 한 줄 코드 풀이**, 그리고 **실무 꿀팁**을 총동원한 완전 무결점 독학 교과서입니다.
 
 ---
 
 ## 💡 이 코스를 이수하면 어떤 것을 만들 수 있나요?
 
-이 자바스크립트 컴포넌트 아키텍처 과정을 마치면 **외부 라이브러리(React/Vue) 없이 바닐라 JS만으로** 다음과 같은 실무 프로젝트들을 제로부터 직접 제작할 수 있게 됩니다!
+이 과정을 마치고 나면 React나 Vue 같은 외부 라이브러리 없이 **순수 바닐라 JS만으로** 다음과 같은 멋진 실무 프로젝트들을 제로부터 직접 제작할 수 있게 됩니다!
 
 1. 🛒 **미니 이커머스 쇼핑몰 SPA**: 카테고리 필터링, 장바구니 수량 조절, 실시간 결제 금액 계산 및 LocalStorage 동기화
 2. 📊 **실시간 데이터 대시보드**: 백엔드 비동기 API 통신, 검색/페이징, 로딩 스피너 및 유저 관리 대시보드
@@ -18,8 +18,8 @@
 ---
 
 ## 🌐 [필수] 시작하기 전: 웹 서버(Live Server) 켜는 방법
-자바스크립트 모듈(`import/export`)은 그냥 `.html` 파일을 더블클릭해서 열면 보안 에러가 발생합니다.  
-Live Server 켜는 방법이 궁금하시다면 **[SERVER_GUIDE.md](SERVER_GUIDE.md)** 가이드를 읽어보세요!
+자바스크립트 모듈(`import/export`)은 파일 더블클릭이 아닌 **Live Server**를 통해 켜야 보안 에러가 나지 않습니다.  
+설치법이 궁금하시다면 **[SERVER_GUIDE.md](SERVER_GUIDE.md)** 가이드를 정독해 보세요!
 
 ---
 
@@ -66,10 +66,10 @@ Live Server 켜는 방법이 궁금하시다면 **[SERVER_GUIDE.md](SERVER_GUIDE
 컴포넌트 아키텍처에 들어가기 전, 자바스크립트 기본기를 마스터하는 3단계 사다리입니다.
 
 ### 1️⃣ Level 1: DOM 탐색과 글자 바꾸기 (`level-1-dom.html`)
-- `document.querySelector('#target')`: HTML 요소를 선택합니다.
+- `document.querySelector('#target')`: 화면의 HTML 요소 주소를 찾아 변수에 담습니다.
 - `.innerText`: 단순 텍스트를 대입합니다. (`$title.innerText = '안녕';`)
 - `.innerHTML`: HTML 태그가 해석되는 문맥을 대입합니다. (`$content.innerHTML = '<b>안녕</b>';`)
-  - ⚠️ **보안 주의**: 사용자 입력을 그대로 `.innerHTML`에 대입하면 해킹(XSS 공격) 위험이 있으므로, 안전한 텍스트는 `.innerText`를 쓰는 것이 실무 원칙입니다.
+  - ⚠️ **보안 주의**: 사용자 입력을 그대로 `.innerHTML`에 넣으면 악성 스크립트가 실행되는 **XSS 공격** 위험이 있으므로, 안전한 텍스트는 항상 `.innerText`를 쓰는 것이 실무 원칙입니다!
 
 ### 2️⃣ Level 2: 백틱(`` ` ``)과 템플릿 리터럴 (`level-2-template.html`)
 - 키보드 숫자 1 왼쪽의 물결 기호(`~`)에 있는 백틱(`` ` ``)을 사용하면, 자바스크립트 변수와 HTML을 자유롭게 조립할 수 있습니다.
@@ -85,30 +85,31 @@ $app.innerHTML = template;
 ```
 
 ### 3️⃣ Level 3: ES6 모듈 시스템과 `class` 기초 (`level-3-module.html`)
-- HTML에서 JS를 부를 때 `<script type="module" src="./main.js"></script>` 로 지정해야 `import`와 `export` 모듈이 동작합니다.
+- HTML에서 JS를 불러올 때 `<script type="module" src="./main.js"></script>` 로 지정해야 `import`와 `export` 모듈이 동작합니다.
 - `class`는 컴포넌트의 **붕어빵 틀(설계도)**이며, `new` 키워드로 화면에 **실제 붕어빵(인스턴스)**을 생성합니다.
 
 ---
 
 ## 📌 [Chapter 01] 명령형 vs 선언적 렌더링 (Why Component?)
 
-### 💡 붕어빵 틀과 붕어빵 이야기 (비유로 이해하기)
-- **명령형(Imperative) 방식**: 붕어빵에 팥을 더 넣고 싶을 때, 다 구워진 붕어빵 옆구리를 칼로 찢어서 팥을 일일이 밀어 넣는 방식입니다. (`document.querySelector`로 일일이 글자 바꾸기)
-  - **문제점**: 카운터 숫자가 화면 10곳에 분산되어 있으면, 버튼 클릭 시 10곳의 DOM을 찾아다니며 일일이 수정해야 해서 스파게티 코드가 됩니다.
-- **선언적(Declarative) 방식**: 붕어빵 틀(Template)을 하나 만들어 두고, 팥의 양(State)만 정해주면 붕어빵 틀이 알아서 맛있는 붕어빵을 구워내는 방식입니다.
+### 💡 붕어빵 틀과 붕어빵 이야기 (쉬운 비유)
+- **명령형(Imperative) 방식**: 다 구워진 붕어빵의 옆구리를 칼로 찢어서 팥을 일일이 밀어 넣는 방식입니다. (`document.querySelector`로 일일이 글자 고치기)
+  - **문제점**: 화면의 숫자가 10곳으로 늘어나면, 버튼 하나 클릭할 때마다 10곳의 DOM을 찾아다니며 일일이 수정해야 해서 코드가 스파게티처럼 꼬입니다.
+- **선언적(Declarative) 방식**: 붕어빵 틀(Template)을 하나 만들어 두고, 팥의 양(State)만 정해주면 붕어빵 틀이 알아서 노릇노릇한 새 붕어빵을 그려내는 방식입니다.
   - **핵심 공식**: `UI = f(State)` (화면 UI는 오직 상태 State에 의해 결정되는 결과물이다!)
 
-### 💻 선언적 파이프라인의 핵심 `setState`
+### 💻 선언적 파이프라인 한 줄 한 줄 해석
 ```javascript
-let state = { count: 0 };
+let state = { count: 0 }; // 1. 화면에 들어갈 중앙 데이터 변수 선언
 
 function render() {
+  // 2. 현재 state 데이터를 기반으로 화면 HTML을 새로 대입하는 함수
   $app.innerHTML = `<h2>카운트: ${state.count}</h2>`;
 }
 
 function setState(newState) {
-  state = { ...state, ...newState }; // 1. 데이터 업데이트
-  render();                          // 2. 화면 자동 재렌더링!
+  state = { ...state, ...newState }; // 3. 기존 state에 새로운 newState를 안전하게 병합!
+  render();                          // 4. 데이터가 바뀌었으니 화면을 자동으로 재렌더링!
 }
 ```
 
@@ -116,44 +117,43 @@ function setState(newState) {
 
 ## 📌 [Chapter 02] `Component` 클래스 라이프사이클 완전 정복
 
-### 🔄 컴포넌트 생애 주기 (Lifecycle Flow)
+### 🔄 컴포넌트 6단계 생애 주기 (Lifecycle Flow)
 
-모든 자바스크립트 컴포넌트는 생성자(`constructor`)가 실행될 때 다음 6단계 라이프사이클을 거칩니다:
+1. **`constructor($target, props)`**: 컴포넌트가 생성될 때 실행 (부착할 위치 `$target`과 부모 보따리 `props` 수령)
+2. **`setup()`**: 컴포넌트 태어나자마자 초기 상태(`this.state`)를 세팅합니다.
+3. **`template()`**: 상태를 기반으로 어떤 HTML을 그릴지 템플릿 문자열을 반환합니다.
+4. **`render()`**: 템플릿을 실제 HTML DOM(`$target.innerHTML`)에 반영합니다.
+5. **`mounted()`**: 화면에 렌더링이 완료된 직후 실행됩니다. (자식 컴포넌트 연결 시점)
+6. **`setEvent()`**: 버튼 클릭 등 사용자의 반응을 수신할 이벤트를 연결합니다.
+7. **`setState(newState)`**: 상태가 바뀌면 `render()`를 자동으로 다시 실행합니다.
 
-1. **`setup()`**: 컴포넌트가 태어나자마자 초기 상태(`this.state`)를 세팅합니다.
-2. **`template()`**: 상태를 기반으로 어떤 HTML을 그릴지 템플릿 문자열을 반환합니다.
-3. **`render()`**: 템플릿을 실제 HTML DOM(`$target.innerHTML`)에 반영합니다.
-4. **`mounted()`**: 화면에 렌더링이 완료된 직후 실행됩니다. (자식 컴포넌트 연결 시점)
-5. **`setEvent()`**: 버튼 클릭 등 사용자의 반응을 수신할 이벤트를 연결합니다.
-6. **`setState(newState)`**: 상태가 바뀌면 `render()`를 자동으로 다시 실행합니다.
-
-### 💻 `Component` 추상 클래스 표준 정답 코드
+### 💻 `Component` 클래스 한 줄 한 줄 코드 풀이
 ```javascript
 export default class Component {
-  $target; props; state;
+  $target; props; state; // 클래스 멤버 변수 선언
 
   constructor($target, props = {}) {
-    this.$target = $target;
-    this.props = props;
-    this.setup();
-    this.render();
+    this.$target = $target; // 1. 내가 그려질 HTML 부모 요소 기억하기
+    this.props = props;     // 2. 부모 컴포넌트가 넘겨준 데이터 기억하기
+    this.setup();           // 3. 초기 state 세팅 실행
+    this.render();          // 4. 화면에 그리기 시작!
   }
 
-  setup() {}
-  mounted() {}
-  template() { return ''; }
+  setup() {}     // 자식 클래스가 오버라이딩(재정의)할 빈 함수
+  mounted() {}   // 화면에 그려진 직후 자식 컴포넌트 부착용 빈 함수
+  template() { return ''; } // HTML 템플릿 반환용 빈 함수
 
   render() {
-    this.$target.innerHTML = this.template();
-    this.mounted();
-    this.setEvent();
+    this.$target.innerHTML = this.template(); // 화면에 HTML 그리기!
+    this.mounted();                           // 자식 컴포넌트 부착!
+    this.setEvent();                          // 이벤트 연결!
   }
 
-  setEvent() {}
+  setEvent() {}  // 이벤트 연결용 빈 함수
 
   setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
+    this.state = { ...this.state, ...newState }; // 데이터 업데이트 (불변성 유지)
+    this.render();                               // 화면 자동 재렌더링!
   }
 }
 ```
@@ -162,16 +162,18 @@ export default class Component {
 
 ## 📌 [Chapter 03] 이벤트 위임 (Event Delegation) 패턴
 
-### 💡 버블링(Bubbling)을 이용한 한 번의 이벤트 연결
-- 리스트 아이템이 1,000개일 때 개별 요소에 `addEventListener`를 걸면 메모리가 낭비되고 렌더링 시마다 이벤트를 다시 걸어야 합니다.
-- **이벤트 위임**: 부모 요소(`$target`)에 이벤트를 생성자 시점에 **딱 1번만 바인딩**하고, `event.target.closest(selector)` 조건문으로 클릭한 요소를 구별합니다.
+### 💡 아파트 경비원 비유로 이해하는 이벤트 위임
+- **문제 상황**: 아파트 세대수가 1,000세대일 때, 모든 집 현관문마다 방문객 알림벨을 일일이 설치하면 비용과 관리가 감당되지 않습니다. (아이템 1,000개에 이벤트 1,000개 등록)
+- **이벤트 위임 해결책**: 아파트 중앙 정문(부모 `$target`)에 경비원 1명을 두고, 방문객(이벤트)이 올 때마다 "어느 동 어느 호수로 가시나요?"(`event.target.closest(selector)`)를 물어보고 처리하는 방식입니다!
 
-### 💻 `addEvent` 헬퍼 메서드
+### 💻 `addEvent` 헬퍼 메서드 코드 풀이
 ```javascript
 addEvent(eventType, selector, callback) {
+  // 부모 태그($target)에 이벤트를 딱 1번만 등록!
   this.$target.addEventListener(eventType, (event) => {
-    // 타겟 요소 근처에 selector가 있는가?
+    // 실제 클릭한 요소(event.target) 근처에 내가 찾는 selector가 없으면 거절!
     if (!event.target.closest(selector)) return false;
+    // 내가 찾는 요소가 맞으면 콜백 함수 실행!
     callback(event);
   });
 }
@@ -182,8 +184,8 @@ addEvent(eventType, selector, callback) {
 ## 📌 [Chapter 04] 컴포넌트 분화 & Props 단방향 데이터 흐름
 
 ### 🌲 단일 책임 원칙 (SRP)과 데이터 흐름
-- 하나의 거대한 파일에 모든 코드를 넣지 않고 `App.js` ➔ `ItemInput.js`, `ItemList.js`, `ItemFilter.js` 로 모듈을 분화합니다.
-- **Props Down (부모 ➔ 자식)**: 부모가 자식의 생성자에 데이터(`props`)를 전달합니다.
+- 하나의 거대한 파일에 모든 코드를 몰아넣지 않고 `App.js` ➔ `ItemInput.js`, `ItemList.js`, `ItemFilter.js` 로 모듈을 분화합니다.
+- **Props Down (부모 ➔ 자식)**: 부모가 자식의 생성자에 데이터(`props`)를 건네줍니다.
 - **Events Up (자식 ➔ 부모)**: 자식이 사용자 입력을 받으면 부모가 전달해준 콜백 메서드(`addItem`)를 불러 부모의 `state`를 갱신합니다.
 
 ```javascript
@@ -191,7 +193,7 @@ addEvent(eventType, selector, callback) {
 mounted() {
   const $itemInput = this.$target.querySelector('[data-component="item-input"]');
   new ItemInput($itemInput, {
-    addItem: this.addItem.bind(this) // 부모 메서드를 콜백으로 전달!
+    addItem: this.addItem.bind(this) // 부모의 this 스코프가 깨지지 않도록 .bind(this) 필수!
   });
 }
 ```
@@ -200,31 +202,32 @@ mounted() {
 
 ## 📌 [Chapter 05] 옵저버 패턴 & ES6 Proxy 기반 중앙 상태 관리 (Store)
 
-### 🛒 Props Drilling 해결과 중앙 스토어
+### 🛒 은행 통장 알림 서비스 비유로 이해하는 옵저버 패턴
 - 부모-자식 관계가 5단계 깊어지면 props 전달이 매우 고통스럽습니다. (Props Drilling)
-- **`Proxy` 기반 옵저버 패턴**: 스토어의 `state`가 조회(`get`)될 때 컴포넌트의 `render()`를 구독(Subscribe)으로 자동 등록하고, 상태가 수정(`set`)될 때 모든 구독자에게 알림(Notify)을 보내 자동 재렌더링시킵니다.
+- **`Proxy` 기반 옵저버 패턴**: 은행 계좌(`Store state`)에 입출금(`set`)이 발생하면, 등록된 휴대폰(`observe` 구독 컴포넌트)으로 **"잔액이 변경되었습니다!"** 하고 문자를 띡! 날려 자동으로 화면을 갱신시키는 원리입니다.
 
-### 💻 `observer.js` 핵심 코드
+### 💻 `observer.js` 코드 한 줄 한 줄 풀이
 ```javascript
-let currentObserver = null;
+let currentObserver = null; // 현재 어떤 컴포넌트가 관찰 중인지 기록하는 임시 변수
 
 export const observe = fn => {
   currentObserver = fn;
-  fn(); // 1. 실행하면서 get 트랩 호출!
+  fn(); // 1. 컴포넌트의 render() 함수를 실행하면, 내부에서 state를 읽으면서(get) 자동 등록됨!
   currentObserver = null;
 };
 
 export const observable = obj => {
-  const observers = new Set();
+  const observers = new Set(); // 중복 없는 구독자 명단 리스트
+
   return new Proxy(obj, {
     get(target, name) {
-      if (currentObserver) observers.add(currentObserver); // 2. 자동 구독!
+      if (currentObserver) observers.add(currentObserver); // 2. 읽을 때 명단에 추가!
       return target[name];
     },
     set(target, name, value) {
       if (target[name] === value) return true;
-      target[name] = value;
-      observers.forEach(fn => fn()); // 3. 자동 알림 및 재렌더링!
+      target[name] = value; // 3. 값이 바뀌면!
+      observers.forEach(fn => fn()); // 4. 명단에 있는 모든 컴포넌트 자동 재렌더링!
       return true;
     }
   });
@@ -239,48 +242,13 @@ export const observable = obj => {
 - 브라우저가 깜빡이는 F5 새로고침 없이 URL 해시(`window.location.hash`) 변경을 감지합니다.
 - 경로(`#/`, `#/cart`)에 따라 해당 페이지 컴포넌트(`ProductPage`, `CartPage`)를 `$target`에 동적으로 교체 부착합니다.
 
-```javascript
-export class Router {
-  #routes = []; #$target;
-  constructor($target) {
-    this.#$target = $target;
-    window.addEventListener('hashchange', () => this.renderRoute());
-  }
-  addRoute(path, component) {
-    this.#routes.push({ path, component });
-    return this;
-  }
-  renderRoute() {
-    const currentPath = window.location.hash.replace('#', '') || '/';
-    const route = this.#routes.find(r => r.path === currentPath);
-    if (route) {
-      this.#$target.innerHTML = '';
-      new route.component(this.#$target); // 동적 페이지 교체!
-    }
-  }
-}
-```
-
 ---
 
 ## 📌 [Chapter 07] 렌더링 최적화 & Virtual DOM Diffing
 
 ### ⚡ `requestAnimationFrame` 배치 & 최소 DOM 갱신 (`diff.js`)
-- **Microtask Batching**: `setState()`가 100번 연속 연달아 불려도 `#renderScheduled` 플래그를 사용해 `requestAnimationFrame`으로 1프레임 모아 딱 1번만 렌더링합니다.
+- **Microtask Batching**: `setState()`가 1초에 100번 불려도 `#renderScheduled` 플래그를 사용해 `requestAnimationFrame`으로 1프레임(초당 60프레임) 모아 딱 1번만 렌더링합니다.
 - **DOM Diffing**: 기존 DOM과 새로운 가상 DOM(Virtual DOM)을 비교하여 바뀐 텍스트/속성만 찾아 핀포인트로 갱신합니다.
-
-```javascript
-setState(newState) {
-  this.state = { ...this.state, ...newState };
-  if (!this.#renderScheduled) {
-    this.#renderScheduled = true;
-    requestAnimationFrame(() => {
-      this.render(); // 1프레임 모아 1회만 렌더링!
-      this.#renderScheduled = false;
-    });
-  }
-}
-```
 
 ---
 
