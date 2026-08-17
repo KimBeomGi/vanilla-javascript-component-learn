@@ -5,7 +5,7 @@ export class MyCounter extends HTMLElement {
   constructor() {
     super();
     // TODO 1: Shadow DOM을 open 모드로 생성하세요. (this.attachShadow({ mode: 'open' }))
-    this.#shadow = this.attachShadow({ mode: 'open' });
+    // this.#shadow = this.attachShadow({ mode: 'open' });
   }
 
   static get observedAttributes() {

@@ -12,9 +12,7 @@ export const observable = obj => {
   return new Proxy(obj, {
     get(target, name) {
       // TODO 1: currentObserver가 존재하는 경우 observers Set에 등록하세요.
-      if (currentObserver) {
-        observers.add(currentObserver);
-      }
+      // if (currentObserver) observers.add(currentObserver);
       return target[name];
     },
     set(target, name, value) {

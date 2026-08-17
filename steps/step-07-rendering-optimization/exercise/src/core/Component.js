@@ -40,12 +40,12 @@ export default class Component {
     this.state = { ...this.state, ...newState };
 
     // TODO: #renderScheduled 플래그와 requestAnimationFrame을 이용해 렌더링을 1회만 예약 처리하세요.
-    if (!this.#renderScheduled) {
-      this.#renderScheduled = true;
-      requestAnimationFrame(() => {
-        this.render();
-        this.#renderScheduled = false;
-      });
-    }
+    // if (!this.#renderScheduled) {
+    //   this.#renderScheduled = true;
+    //   requestAnimationFrame(() => {
+    //     this.render();
+    //     this.#renderScheduled = false;
+    //   });
+    // }
   }
 }
