@@ -19,6 +19,20 @@
 
 ---
 
+## ⚡ 3분 빠른 시작 (Quick Start)
+
+별도의 복잡한 Node.js / npm 설치 과정이 필요 없습니다!
+
+1. **저장소 클론하기**:
+   ```bash
+   git clone https://github.com/KimBeomGi/vanilla-javascript-component-learn.git
+   ```
+2. **VS Code에서 열기**: `vanilla-javascript-component-learn` 폴더를 엽니다.
+3. **대시보드 실행**: `index.html` 우클릭 ➔ **Open with Live Server** 클릭!
+   - 중앙 포털 대시보드에서 `진도율 체크` 및 모든 실습/정답 코드를 클릭 한 번에 확인하실 수 있습니다.
+
+---
+
 ## 💡 이 프로젝트로 어떤 것을 만들 수 있게 되나요?
 
 이 코스를 완료하면 프레임워크(React/Vue) 없이 **순수 바닐라 JS만으로** 다음 프로젝트들을 제작할 수 있습니다:
