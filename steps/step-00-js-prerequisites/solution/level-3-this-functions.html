@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 00 Level 3 - 함수 선언식 vs 표현식 vs 화살표 함수 & this의 정체 [완성본]</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+    .box { border: 1px solid #22c55e; padding: 1.2rem; border-radius: 8px; background: #f0fdf4; margin-bottom: 1rem; }
+    button { background: #22c55e; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
+    button:hover { background: #16a34a; }
+    code { background: #e2e8f0; padding: 0.2rem 0.4rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>✨ Level 3: 함수 3형제 & this의 정체 마스터하기 [완성본]</h1>
+
+  <div class="box">
+    <h3>1. 함수 선언식 vs 표현식 vs 화살표 함수</h3>
+    <div id="output-func"></div>
+  </div>
+
+  <div class="box">
+    <h3>2. `function` vs 화살표 함수 `() => {}` 에서의 `this` 차이</h3>
+    <button id="btn-fn">1) 일반 function 버튼 클릭</button>
+    <button id="btn-arrow">2) 화살표 함수 () => {} 버튼 클릭</button>
+    <div id="output-this" style="margin-top: 0.8rem; font-weight: bold; color: #15803d;"></div>
+  </div>
+
+  <script type="module">
+    // 1. 함수 선언식
+    function addDeclarative(a, b) { return a + b; }
+
+    // 2. 함수 표현식
+    const addExpression = function(a, b) { return a + b; };
+
+    // 3. 화살표 함수
+    const addArrow = (a, b) => a + b;
+
+    document.querySelector('#output-func').innerHTML = `
+      선언식: ${addDeclarative(1, 2)} | 
+      표현식: ${addExpression(1, 2)} | 
+      화살표: ${addArrow(1, 2)}
+    `;
+
+    const $btnFn = document.querySelector('#btn-fn');
+    const $btnArrow = document.querySelector('#btn-arrow');
+    const $outputThis = document.querySelector('#output-this');
+
+    // 일반 function: this가 나를 클릭한 <button> 요소
+    $btnFn.addEventListener('click', function(e) {
+      console.log('일반 function의 this:', this);
+      $outputThis.innerText = `일반 function의 this = [${this.tagName}#${this.id}]`;
+    });
+
+    // 화살표 함수: this가 태어난 고향 (상위 스코프/Window/Module) 보존!
+    $btnArrow.addEventListener('click', (e) => {
+      console.log('화살표 함수의 this:', this);
+      $outputThis.innerText = `화살표 함수의 this = [${this}] (태어난 상위 스코프 보존!)`;
+    });
+  </script>
+</body>
+</html>

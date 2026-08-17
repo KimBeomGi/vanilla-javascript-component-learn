@@ -61,9 +61,9 @@
 
 ---
 
-## 📌 [Chapter 00] 왕초보를 위한 3단계 디딤돌 사다리
+## 📌 [Chapter 00] 왕초보를 위한 4단계 디딤돌 사다리
 
-컴포넌트 아키텍처에 들어가기 전, 자바스크립트 기본기를 마스터하는 3단계 사다리입니다.
+컴포넌트 아키텍처에 들어가기 전, 자바스크립트 기본기를 마스터하는 4단계 디딤돌 사다리입니다.
 
 ### 1️⃣ Level 1: DOM 탐색과 글자 바꾸기 (`level-1-dom.html`)
 - `document.querySelector('#target')`: 화면의 HTML 요소 주소를 찾아 변수에 담습니다.
@@ -84,7 +84,20 @@ const template = `
 $app.innerHTML = template;
 ```
 
-### 3️⃣ Level 3: ES6 모듈 시스템과 `class` 기초 (`level-3-module.html`)
+### 3️⃣ Level 3: 함수 3형제 & `this` 정체 완전 타파 (`level-3-this-functions.html`)
+자바스크립트 초보자가 가장 헷갈려하는 2가지 핵심 문법입니다.
+
+#### 🔹 함수 3가지 작성 문법 비교
+- **선언식**: `function add(a, b) { return a + b; }` (어디서든 호출 가능)
+- **표현식**: `const add = function(a, b) { return a + b; };` (변수에 저장)
+- **화살표 함수 (ES6)**: `const add = (a, b) => a + b;` (가장 짧고 깔끔!)
+
+#### 🔹 `this` 의 3대 법칙 (나를 실행하는 주체)
+- **일반 `function`**: `this`가 **"누가 나를 클릭/호출했니?"(호출 주체)**에 따라 동적으로 변합니다. (버튼 이벤트 안의 `function`에서 `this`는 버튼 자신)
+- **화살표 함수 `() => {}`**: `this`가 **"내가 태어난 고향(상위 스코프)"**의 `this`를 평생 기억합니다! (컴포넌트 메서드에서 화살표 함수를 쓰면 `this`가 컴포넌트를 가리켜 안전함)
+- **`.bind(this)`**: 일반 `function`의 `this`를 컴포넌트로 강제 고정할 때 사용합니다.
+
+### 4️⃣ Level 4: ES6 모듈 시스템과 `class` 기초 (`level-4-module.html`)
 - HTML에서 JS를 불러올 때 `<script type="module" src="./main.js"></script>` 로 지정해야 `import`와 `export` 모듈이 동작합니다.
 - `class`는 컴포넌트의 **붕어빵 틀(설계도)**이며, `new` 키워드로 화면에 **실제 붕어빵(인스턴스)**을 생성합니다.
 
