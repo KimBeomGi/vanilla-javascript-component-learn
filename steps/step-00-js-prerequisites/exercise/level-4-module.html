@@ -14,6 +14,14 @@
 
   <div id="app"></div>
 
+  <!-- 
+    💡 Class(붕어빵 틀) 개념 10초 요약:
+    1. class 클래스명 { ... } : 붕어빵 틀을 정의합니다.
+    2. constructor($target, name) { ... } : new 키워드로 찍어낼 때 1등으로 자동 실행되어 재료를 세팅합니다.
+    3. this.$target = $target : 내(this) 상자에 매개변수로 들어온 $target과 name을 보관합니다.
+    4. render() { ... } : 클래스 내부 전용 기능 함수로, this.$target.innerHTML 에 화면을 그립니다.
+  -->
+
   <script type="module">
     // TODO 1: $target 요소와 name을 받아 화면에 인삿말을 출력하는 Greeting 클래스를 직접 작성해 보세요.
     // ✏️ 1. class Greeting { ... } 클래스를 정의하세요.
@@ -21,7 +29,7 @@
     // ✏️ 3. render() 메서드에서 this.$target.innerHTML 에 `안녕하세요, ${this.name}님!` HTML 템플릿을 대입하세요.
 
     class Greeting {
-      // ✏️ 이곳에 constructor() 및 render() 메서드를 직접 작성해 보세요.
+      // ✏️ 이곳에 constructor($target, name) 및 render() 메서드를 직접 작성해 보세요.
 
     }
 

@@ -113,15 +113,56 @@ $button.addEventListener('click', (e) => {
 
 ---
 
-### Level 4: 모듈(`type="module"`)과 `class` 기초
+### Level 4: 모듈(`type="module"`)과 `class` 기초 (⭐️⭐️⭐️)
 
-#### 📌 주 설명
-- HTML 스크립트 태그에 `<script type="module" src="./app.js"></script>` 속성을 부여해야 파일 간 `import` / `export` 모듈 시스템이 동작합니다.
-- `class`는 컴포넌트의 붕어빵 틀(설계도)이고, `new` 키워드로 실제 화면에 부착할 붕어빵(인스턴스)을 찍어냅니다.
+#### 📌 주 설명: 붕어빵 틀(`class`)로 찍어내는 컴포넌트 세상
+자바스크립트를 막 1개월 배운 입문자에게 `class`는 가장 생소한 무서운 단어일 수 있습니다. 쉽게 비유해 봅시다!
+
+1. **`class` (붕어빵 틀)**: 붕어빵을 구워내는 설계도이자 틀입니다. (붕어빵을 어떻게 만들지 정해둠)
+2. **`new 클래스명()` (붕어빵 찍어내기)**: 붕어빵 틀에서 실제 먹을 수 있는 붕어빵(**인스턴스**)을 뚝딱 만들어냅니다.
+3. **`constructor()` (생성자 / 재료 반죽)**: `new`로 붕어빵을 찍어내는 순간 **가장 먼저 1등으로 자동으로 호출**되어 초기 재료(`$target`, `name`)를 세팅합니다.
+4. **`this` (지금 찍어내는 내 붕어빵 자신)**: `this.name = name` ➔ "지금 만든 나(`this`)의 이름에 넘어온 `name` 재료를 저장한다!"
+5. **`render()` (메서드 / 붕어빵 인쇄 기능)**: 클래스 상자 내부에 만들어둔 전용 함수(기능)입니다.
+
+#### 💡 보조 설명: ❌ 일일이 복사/붙여넣기 vs ⭕ `class`로 1줄 깔끔 마운트 비교
+
+```javascript
+// ❌ 옛날 방식: 비슷한 UI 화면을 만들 때마다 30줄씩 복사/붙여넣기 반복
+const $app1 = document.querySelector('#app1');
+$app1.innerHTML = '<div class="box"><h2>안녕하세요, 홍길동님!</h2></div>';
+
+const $app2 = document.querySelector('#app2');
+$app2.innerHTML = '<div class="box"><h2>안녕하세요, 김철수님!</h2></div>';
+
+
+// ⭕ 현대 `class` 방식: 붕어빵 틀(Class)을 딱 1번 만들어두고 1줄로 찍어내기!
+
+// 1. 붕어빵 틀(Class) 정의하기
+class Greeting {
+  constructor($target, name) {
+    this.$target = $target; // 나(this)의 화면 대상 저장
+    this.name = name;       // 나(this)의 데이터 저장
+    this.render();          // 내 렌더링 기능 실행!
+  }
+
+  render() {
+    this.$target.innerHTML = `
+      <div class="box">
+        <h2>안녕하세요, ${this.name}님!</h2>
+      </div>
+    `;
+  }
+}
+
+// 2. new 키워드로 원하는 곳에 1줄로 뚝딱 찍어내기! (Step 02 컴포넌트의 모태가 됩니다!)
+new Greeting(document.querySelector('#app1'), '홍길동');
+new Greeting(document.querySelector('#app2'), '김철수');
+```
 
 ---
 
 ## 🔑 자가 점검 체크리스트
 - [ ] `innerText`와 `innerHTML`의 차이점 및 보안 주의사항을 이해하셨나요?
 - [ ] 일반 `function`과 화살표 함수 `() => {}` 사용 시 `this` 가 어떻게 달라지는지 확인하셨나요?
+- [ ] `class`가 붕어빵 틀이고 `constructor`와 `this`가 무슨 역할을 하는지 손으로 타이핑해 보셨나요?
 - [ ] 막히면 `solution/` 폴더 파일과 비교해 보세요!
