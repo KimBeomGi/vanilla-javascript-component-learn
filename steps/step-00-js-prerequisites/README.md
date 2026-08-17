@@ -30,7 +30,29 @@
 1. **`exercise/level-1-dom.html`**: `.innerText`와 `.innerHTML` 주석 풀고 화면 글자 바꿔보기
 2. **`exercise/level-2-template.html`**: 백틱(`` ` ``) 기호로 `user` 정보 카드 조립하기
 3. **`exercise/level-3-this-functions.html`**: 함수 3형제 비교 및 `function` vs 화살표 함수 `() => {}` 클릭 시 `this` 차이 확인하기
-4. **`exercise/level-4-module.html`**: `type="module"` 환경에서 `class` 인스턴스 마운트 체험하기
+4. **`exercise/level-4-module.html`**: `UserProfile` 클래스와 `CounterClass` 클래스를 내 손으로 직접 구현해 보는 ES6 Class 집중 훈련
+
+---
+
+## ✍️ TODO 1-2-3-4 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `level-1-dom.html` TODO 가이드
+- **`TODO 1`**: `querySelector`로 `#target-title`과 `#target-content` 찾기
+- **`TODO 2`**: `innerText`로 단순 글자 변경하기 (`🎉 글자가 성공적으로 바뀌었습니다!`)
+- **`TODO 3`**: `innerHTML`로 태그가 포함된 글자 변경하기 (`<strong>HTML 태그가 적용된 굵은 글자입니다!</strong>`)
+
+### 2. `level-2-template.html` TODO 가이드
+- **`TODO 1`**: 백틱(`` ` ``) 기호를 사용하여 `${user.name}`, `${user.age}`, `${user.job}` 변수가 합쳐진 HTML 카드 템플릿 대입하기
+
+### 3. `level-3-this-functions.html` TODO 가이드
+- **`TODO 1`**: 함수 선언식, 표현식, 화살표 함수에서 `a + b` 반환값 더하기 작성하기
+- **`TODO 2`**: 일반 `function(e)` 클릭 시 `this`가 클릭된 `<button>` 태그 자신임을 콘솔과 화면에 출력하기
+- **`TODO 3`**: 화살표 함수 `(e) => {}` 클릭 시 `this`가 상위 스코프(Strict Module `undefined`)를 유지함을 콘솔과 화면에 출력하기
+
+### 4. `level-4-module.html` TODO 가이드 (⭐️⭐️⭐️ 클래스 집중 실습)
+- **`TODO 1`**: `class UserProfile { constructor($target, user) { ... } render() { ... } }` 클래스를 직접 손으로 작성하기
+- **`TODO 2`**: `class CounterClass { constructor($target) { ... } render() { ... } }` 클래스를 작성하고 `#btn-inc` 클릭 이벤트 바인딩하기
+- **`TODO 3` & `TODO 4`**: `new UserProfile(...)` 및 `new CounterClass(...)` 인스턴스 마운트하기
 
 ---
 

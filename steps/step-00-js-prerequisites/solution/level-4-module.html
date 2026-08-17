@@ -2,40 +2,71 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Step 00 Level 4 - 모듈과 Class 작성 [완성본 정답]</title>
+  <title>Step 00 Level 4 - ES6 Class 집중 마스터 [완성본 정답]</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
-    .box { border: 1px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
+    body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .card { border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; background: white; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .box { border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
+    button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
+    button:hover { background: #2563eb; }
   </style>
 </head>
 <body>
-  <h1>🐣 Level 4: ES6 Class 작성 완성본 (Solution)</h1>
-  <p>Step 02에서 다룰 Component 클래스의 원형이 되는 기초 ES6 Class 구조입니다.</p>
+  <h1>🐣 Level 4: ES6 Class 집중 실습 완성본 (Solution)</h1>
+  <p>Step 02에서 다룰 Component 추상 클래스의 완벽한 토대가 되는 클래스 예제입니다.</p>
 
-  <div id="app"></div>
+  <div id="user-profile-app"></div>
+  <div id="counter-app"></div>
 
   <script type="module">
-    // 💡 정답 해설 1: ES6 class 구문으로 생성자(constructor)와 메서드(render) 캡슐화
-    class Greeting {
-      constructor($target, name) {
+    // 💡 정답 해설 1: UserProfile 클래스 (데이터 바인딩 & 렌더링)
+    class UserProfile {
+      constructor($target, user) {
         this.$target = $target;
-        this.name = name;
-        this.render(); // 생성 시점에 렌더링 자동 실행
+        this.user = user;
+        this.render();
       }
 
       render() {
         this.$target.innerHTML = `
-          <div class="box">
-            <h2>안녕하세요, ${this.name}님!</h2>
-            <p>축하합니다! 이제 컴포넌트 클래스를 배울 모든 기초 준비가 완료되었습니다! 🎉</p>
+          <div class="card">
+            <h2>👤 프로필: ${this.user.name}</h2>
+            <p>직업: <strong>${this.user.job}</strong></p>
           </div>
         `;
       }
     }
 
-    // 💡 정답 해설 2: DOM 요소와 데이터를 넘겨 인스턴스 생성(new)
-    const $app = document.querySelector('#app');
-    new Greeting($app, '초보 개발자');
+    // 💡 정답 해설 2: CounterClass 클래스 (상태 보관 & 이벤트 기반 렌더링)
+    class CounterClass {
+      constructor($target) {
+        this.$target = $target;
+        this.count = 0;
+        this.render();
+      }
+
+      render() {
+        this.$target.innerHTML = `
+          <div class="box">
+            <h3>🔢 클래스 카운터: ${this.count}</h3>
+            <button id="btn-inc">+1 증가</button>
+          </div>
+        `;
+
+        // 이벤트 바인딩 (화살표 함수로 this 보존!)
+        this.$target.querySelector('#btn-inc').addEventListener('click', () => {
+          this.count++;
+          this.render(); // 상태 변경 후 자기 자신의 render() 재호출!
+        });
+      }
+    }
+
+    // 💡 정답 해설 3 & 4: new 키워드로 인스턴스 마운트
+    const $userApp = document.querySelector('#user-profile-app');
+    const $counterApp = document.querySelector('#counter-app');
+
+    new UserProfile($userApp, { name: '홍길동', job: '초보 개발자' });
+    new CounterClass($counterApp);
   </script>
 </body>
 </html>
