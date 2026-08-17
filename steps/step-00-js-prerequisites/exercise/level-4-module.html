@@ -6,20 +6,24 @@
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
     .card { border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; background: white; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    .box { border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
+    .box { border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; margin-bottom: 1.5rem; }
+    .badge-box { border: 2px solid #10b981; padding: 1rem; border-radius: 8px; background: #ecfdf5; margin-bottom: 1.5rem; }
     button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
     button:hover { background: #2563eb; }
   </style>
 </head>
 <body>
-  <h1>🐣 Level 4: ES6 Class 집중 실습 (2가지 미션)</h1>
-  <p>Step 02에서 컴포넌트 클래스를 만들기 전, 붕어빵 틀(Class) 구조를 손으로 2번 집중 연습합니다.</p>
+  <h1>🐣 Level 4: ES6 Class 3단계 집중 실습</h1>
+  <p>Step 02에서 컴포넌트 클래스를 만들기 전, 붕어빵 틀(Class)과 상속(extends)을 손으로 직접 3번 집중 연습합니다.</p>
 
-  <!-- 1번째 미션 마운트 구역 -->
+  <!-- 1번째 미션: 기본 클래스 -->
   <div id="user-profile-app"></div>
 
-  <!-- 2번째 미션 마운트 구역 -->
+  <!-- 2번째 미션: 상태형 클래스 -->
   <div id="counter-app"></div>
+
+  <!-- 3번째 미션: 클래스 상속 (extends) -->
+  <div id="badge-card-app"></div>
 
   <script type="module">
     /*
@@ -30,24 +34,40 @@
       4. new 클래스명($target, 데이터);
     */
 
-    // TODO 1: $target과 user 객체({ name, job })를 받아 프로필 카드를 그리는 UserProfile 클래스를 직접 작성해 보세요.
-    // ✏️ 1. class UserProfile { ... } 작성
-    // ✏️ 2. constructor($target, user) 에서 this.$target과 this.user 필드를 저장하고 this.render() 호출
-    // ✏️ 3. render() 메서드에서 this.$target.innerHTML 에 <h2>이름: ${this.user.name}</h2><p>직업: ${this.user.job}</p> 대입
-
+    // TODO 1: $target과 user 객체({ name, job })를 받아 프로필 카드를 그리는 UserProfile 클래스를 작성하세요.
     class UserProfile {
-      // ✏️ 이곳에 UserProfile 클래스를 직접 작성해 보세요.
+      // ✏️ constructor($target, user) 및 render() 구현하기
 
     }
 
 
-    // TODO 2: $target 요소를 받아 숫자 카운트(+1) 기능을 가지는 CounterClass 클래스를 직접 작성해 보세요.
-    // ✏️ 1. class CounterClass { ... } 작성
-    // ✏️ 2. constructor($target) 에서 this.$target 저장, this.count = 0 초기화 후 this.render() 호출
-    // ✏️ 3. render() 메서드에서 카운터 HTML을 그리고, #btn-inc 버튼 클릭 시 this.count++ 후 this.render() 재호출
-
+    // TODO 2: $target 요소를 받아 숫자 카운트(+1) 기능을 가지는 CounterClass 클래스를 작성하세요.
     class CounterClass {
-      // ✏️ 이곳에 CounterClass 클래스를 직접 작성해 보세요.
+      // ✏️ constructor($target) 및 render() 구현하기 (#btn-inc 클릭 시 this.count++ 후 this.render() 재호출)
+
+    }
+
+
+    // --- ⭐️ 3번째 고급 미션: 클래스 상속 (extends) 체험 ---
+    // 공통 부모 클래스 (BaseCard)
+    class BaseCard {
+      constructor($target, title) {
+        this.$target = $target;
+        this.title = title;
+        this.render();
+      }
+
+      render() {
+        this.$target.innerHTML = `<div class="card"><h3>${this.title}</h3></div>`;
+      }
+    }
+
+    // TODO 3: BaseCard를 상속(extends)받아 뱃지가 달린 카드를 그리는 BadgeCard 클래스를 완성해 보세요.
+    // ✏️ 1. class BadgeCard extends BaseCard { ... } 작성
+    // ✏️ 2. render() 메서드를 오버라이딩하여 <div class="badge-box"><h3>🎉 [뱃지] ${this.title}</h3></div> 대입하기
+
+    class BadgeCard extends BaseCard {
+      // ✏️ render() 오버라이딩 재정의하기
 
     }
 
@@ -55,12 +75,11 @@
     // --- 마운트 실행 ---
     const $userApp = document.querySelector('#user-profile-app');
     const $counterApp = document.querySelector('#counter-app');
+    const $badgeApp = document.querySelector('#badge-card-app');
 
-    // ✏️ TODO 3: new UserProfile($userApp, { name: '홍길동', job: '초보 개발자' }); 마운트
-    // ✏️ 작성하기
-
-    // ✏️ TODO 4: new CounterClass($counterApp); 마운트
-    // ✏️ 작성하기
+    // ✏️ TODO 4: new UserProfile($userApp, { name: '홍길동', job: '초보 개발자' }); 마운트
+    // ✏️ TODO 5: new CounterClass($counterApp); 마운트
+    // ✏️ TODO 6: new BadgeCard($badgeApp, '상속 완료 뱃지 카드'); 마운트
 
   </script>
 </body>

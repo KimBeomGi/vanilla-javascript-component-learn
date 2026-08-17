@@ -6,20 +6,22 @@
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
     .card { border: 1px solid #cbd5e1; padding: 1.2rem; border-radius: 10px; background: white; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    .box { border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
+    .box { border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; margin-bottom: 1.5rem; }
+    .badge-box { border: 2px solid #10b981; padding: 1rem; border-radius: 8px; background: #ecfdf5; margin-bottom: 1.5rem; }
     button { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.95rem; }
     button:hover { background: #2563eb; }
   </style>
 </head>
 <body>
-  <h1>🐣 Level 4: ES6 Class 집중 실습 완성본 (Solution)</h1>
-  <p>Step 02에서 다룰 Component 추상 클래스의 완벽한 토대가 되는 클래스 예제입니다.</p>
+  <h1>🐣 Level 4: ES6 Class 3단계 실습 완성본 (Solution)</h1>
+  <p>Step 02에서 다룰 Component 추상 클래스의 완벽한 토대가 되는 3대 클래스 실습 정답입니다.</p>
 
   <div id="user-profile-app"></div>
   <div id="counter-app"></div>
+  <div id="badge-card-app"></div>
 
   <script type="module">
-    // 💡 정답 해설 1: UserProfile 클래스 (데이터 바인딩 & 렌더링)
+    // 💡 정답 해설 1: UserProfile 기본 클래스 (데이터 바인딩)
     class UserProfile {
       constructor($target, user) {
         this.$target = $target;
@@ -37,7 +39,7 @@
       }
     }
 
-    // 💡 정답 해설 2: CounterClass 클래스 (상태 보관 & 이벤트 기반 렌더링)
+    // 💡 정답 해설 2: CounterClass 상태형 클래스 (이벤트 재렌더링)
     class CounterClass {
       constructor($target) {
         this.$target = $target;
@@ -53,20 +55,45 @@
           </div>
         `;
 
-        // 이벤트 바인딩 (화살표 함수로 this 보존!)
         this.$target.querySelector('#btn-inc').addEventListener('click', () => {
           this.count++;
-          this.render(); // 상태 변경 후 자기 자신의 render() 재호출!
+          this.render();
         });
       }
     }
 
-    // 💡 정답 해설 3 & 4: new 키워드로 인스턴스 마운트
+    // 💡 정답 해설 3: BaseCard 클래스를 상속(extends)받아 render() 오버라이딩하는 BadgeCard 클래스
+    class BaseCard {
+      constructor($target, title) {
+        this.$target = $target;
+        this.title = title;
+        this.render();
+      }
+
+      render() {
+        this.$target.innerHTML = `<div class="card"><h3>${this.title}</h3></div>`;
+      }
+    }
+
+    class BadgeCard extends BaseCard {
+      render() {
+        this.$target.innerHTML = `
+          <div class="badge-box">
+            <h3>🎉 [상속 뱃지] ${this.title}</h3>
+            <p>BaseCard 부모 클래스의 constructor를 그대로 물려받고 render()만 재정의(오버라이딩)했습니다!</p>
+          </div>
+        `;
+      }
+    }
+
+    // 💡 정답 해설 4, 5, 6: 인스턴스 생성 마운트
     const $userApp = document.querySelector('#user-profile-app');
     const $counterApp = document.querySelector('#counter-app');
+    const $badgeApp = document.querySelector('#badge-card-app');
 
     new UserProfile($userApp, { name: '홍길동', job: '초보 개발자' });
     new CounterClass($counterApp);
+    new BadgeCard($badgeApp, '상속 완료 뱃지 카드');
   </script>
 </body>
 </html>
