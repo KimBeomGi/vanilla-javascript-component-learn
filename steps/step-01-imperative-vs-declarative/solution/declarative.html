@@ -14,9 +14,14 @@
   <div id="app"></div>
 
   <script>
-    let state = { count: 0 };
+    // 💡 정답 해설 1: 상태 객체 선언
+    let state = {
+      count: 0
+    };
+
     const $app = document.querySelector('#app');
 
+    // 💡 정답 해설 2: 현재 state.count 상태 기반 선언적 렌더링
     function render() {
       $app.innerHTML = `
         <div class="container">
@@ -25,23 +30,28 @@
           <button id="btn-dec">-</button>
         </div>
       `;
+
       setEvents();
     }
 
+    // 💡 정답 해설 3: 상태 불변성 복사 병합 및 자동 재렌더링
     function setState(newState) {
       state = { ...state, ...newState };
       render();
     }
 
+    // 💡 정답 해설 4: 버튼 이벤트에서 setState 호출
     function setEvents() {
       document.querySelector('#btn-inc').addEventListener('click', () => {
         setState({ count: state.count + 1 });
       });
+
       document.querySelector('#btn-dec').addEventListener('click', () => {
         setState({ count: state.count - 1 });
       });
     }
 
+    // 최초 렌더링 실행
     render();
   </script>
 </body>

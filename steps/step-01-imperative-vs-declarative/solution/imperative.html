@@ -18,11 +18,15 @@
   </div>
 
   <script>
+    // 💡 정답 해설 1: 상태 변수 선언
     let count = 0;
+
+    // 💡 정답 해설 2: DOM 요소 선택
     const $countDisplay = document.querySelector('#count-display');
     const $btnIncrease = document.querySelector('#btn-increase');
     const $btnDecrease = document.querySelector('#btn-decrease');
 
+    // 💡 정답 해설 3: 클릭 시 직접 DOM을 수동 업데이트하는 명령형 조작
     $btnIncrease.addEventListener('click', () => {
       count++;
       $countDisplay.innerText = count;

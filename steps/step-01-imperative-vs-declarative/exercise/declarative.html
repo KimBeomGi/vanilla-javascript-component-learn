@@ -16,45 +16,37 @@
   <div id="app"></div>
 
   <script>
-    // 1. 상태 객체
+    // 1. 상태 객체 선언
     let state = {
       count: 0
     };
 
     const $app = document.querySelector('#app');
 
-    // TODO: render() 함수를 완성하세요.
+    // TODO 1: 현재 state.count 상태 기반으로 HTML을 렌더링하고 이벤트를 바인딩하세요.
     function render() {
-      // $app.innerHTML 에 템플릿 HTML 문자열을 대입하세요.
-      $app.innerHTML = `
-        <div class="container">
-          <h2>카운터: ${state.count}</h2>
-          <button id="btn-inc">+</button>
-          <button id="btn-dec">-</button>
-        </div>
-      `;
+      // ✏️ 1. $app.innerHTML 에 템플릿 HTML 문자열 대입하기
 
-      setEvents();
+      // ✏️ 2. setEvents() 함수를 불러 이벤트 바인딩 연결하기
+
     }
 
-    // TODO: setState(newState) 함수를 완성하세요.
+    // TODO 2: setState(newState) 상태 변경 함수를 완성하세요.
     function setState(newState) {
-      // ✏️ state를 업데이트(새 객체 병합)하고 render()를 재호출하도록 구현해 보세요.
-      // state = { ...state, ...newState };
-      // render();
+      // ✏️ 1. state 객체 불변성 복사 병합 (state = { ...state, ...newState })
+      // ✏️ 2. render() 재호출하여 화면 자동 갱신
+
     }
 
+    // TODO 3: 버튼 클릭 시 setState({ count: state.count + 1 }) 호출을 작성하세요.
     function setEvents() {
-      document.querySelector('#btn-inc')?.addEventListener('click', () => {
-        setState({ count: state.count + 1 });
-      });
+      // ✏️ 1. #btn-inc 클릭 시 count 1 증가 setState 호출
 
-      document.querySelector('#btn-dec')?.addEventListener('click', () => {
-        setState({ count: state.count - 1 });
-      });
+      // ✏️ 2. #btn-dec 클릭 시 count 1 감소 setState 호출
+
     }
 
-    // 초기 렌더링 실행
+    // 최초 렌더링 실행
     render();
   </script>
 </body>
