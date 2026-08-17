@@ -31,9 +31,7 @@ export default class App extends Component {
     const $itemFilter = this.$target.querySelector('[data-component="item-filter"]');
 
     // TODO 1: new ItemInput($itemInput, { addItem: addItem.bind(this) }) 마운트를 완성하세요.
-    new ItemInput($itemInput, {
-      addItem: addItem.bind(this)
-    });
+    // new ItemInput($itemInput, { addItem: addItem.bind(this) });
 
     // TODO 2: new ItemList($itemList, ...) 마운트 및 props 전달을 완성하세요.
     // ✏️ 작성하기

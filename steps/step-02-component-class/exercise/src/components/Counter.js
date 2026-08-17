@@ -3,11 +3,11 @@ import Component from '../core/Component.js';
 export default class Counter extends Component {
   setup() {
     // TODO 1: 초기 state = { count: 0 } 을 설정해 보세요.
-    this.state = { count: 0 };
+    // this.state = { count: 0 };
   }
 
   template() {
-    const { count } = this.state;
+    const { count = 0 } = this.state || {};
     // TODO 2: HTML 템플릿 반환
     return `
       <div class="counter-card">
@@ -24,8 +24,7 @@ export default class Counter extends Component {
     const $dec = this.$target.querySelector('.btn-dec');
 
     $inc?.addEventListener('click', () => {
-      // ✏️ 작성해보기
-      this.setState({ count: this.state.count + 1 });
+      // ✏️ 작성해보기: this.setState({ count: this.state.count + 1 });
     });
 
     $dec?.addEventListener('click', () => {
