@@ -57,6 +57,14 @@ export const CONFIG = {
 
 ---
 
+## 💡 3. 현업 선배들이 좋아하는 실무 코딩 표기법 (Naming Convention)
+
+1. **DOM 변수명 `$ Prefix`**: `$target`, `$input`, `$btn` 처럼 앞에 `$`를 붙이면 0.1초 만에 HTML 태그임을 인식 가능합니다.
+2. **Boolean 변수명 `is / has / should Prefix`**: `isLoading`, `hasPermission`, `shouldRender` 처럼 참/거짓 값은 의문문 접두사 사용.
+3. **매직 넘버(Magic Number) 제거**: 코드 중간에 의미를 알 수 없는 숫자 `3000` 대신 `const TOAST_DURATION = 3000;` 상수 선언 사용.
+
+---
+
 ## 🌿 3. 실무 Git 커밋 메시지 컨벤션 (Commit Convention)
 
 회사 팀원들이 한눈에 변경 사항을 알아볼 수 있도록 약속된 깃 머리말을 사용합니다.
