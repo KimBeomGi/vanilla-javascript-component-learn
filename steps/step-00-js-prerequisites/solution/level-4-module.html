@@ -2,36 +2,40 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Step 00 Level 4 - 모듈과 Class [완성본]</title>
+  <title>Step 00 Level 4 - 모듈과 Class 작성 [완성본 정답]</title>
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
-    .box { border: 1px solid #22c55e; padding: 1rem; border-radius: 8px; background: #f0fdf4; }
+    .box { border: 1px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
   </style>
 </head>
 <body>
-  <h1>✨ Level 4: type="module" & class 맛보기 [완성본]</h1>
+  <h1>🐣 Level 4: ES6 Class 작성 완성본 (Solution)</h1>
+  <p>Step 02에서 다룰 Component 클래스의 원형이 되는 기초 ES6 Class 구조입니다.</p>
 
   <div id="app"></div>
 
   <script type="module">
+    // 💡 정답 해설 1: ES6 class 구문으로 생성자(constructor)와 메서드(render) 캡슐화
     class Greeting {
       constructor($target, name) {
         this.$target = $target;
         this.name = name;
-        this.render();
+        this.render(); // 생성 시점에 렌더링 자동 실행
       }
 
       render() {
         this.$target.innerHTML = `
           <div class="box">
             <h2>안녕하세요, ${this.name}님!</h2>
-            <p>축하합니다! 이제 컴포넌트를 배울 모든 기초 준비가 완료되었습니다! 🎉</p>
+            <p>축하합니다! 이제 컴포넌트 클래스를 배울 모든 기초 준비가 완료되었습니다! 🎉</p>
           </div>
         `;
       }
     }
 
-    new Greeting(document.querySelector('#app'), '초보 개발자');
+    // 💡 정답 해설 2: DOM 요소와 데이터를 넘겨 인스턴스 생성(new)
+    const $app = document.querySelector('#app');
+    new Greeting($app, '초보 개발자');
   </script>
 </body>
 </html>

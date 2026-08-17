@@ -2,40 +2,34 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Step 00 Level 4 - 모듈과 Class [실습용]</title>
+  <title>Step 00 Level 4 - 모듈과 Class 작성 실습 [실습용]</title>
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
     .box { border: 1px solid #3b82f6; padding: 1rem; border-radius: 8px; background: #eff6ff; }
   </style>
 </head>
 <body>
-  <h1>🐣 Level 4: type="module" & class 맛보기</h1>
+  <h1>🐣 Level 4: ES6 Class 직접 만들기 실습</h1>
+  <p>Step 02에서 컴포넌트 클래스를 만들기 전, 기초 ES6 Class 구조를 직접 작성해 봅니다.</p>
 
   <div id="app"></div>
 
-  <!-- type="module" 로 내외부 JS 스크립트 연결 -->
   <script type="module">
-    // 간단한 Class 맛보기
-    class Greeting {
-      constructor($target, name) {
-        this.$target = $target;
-        this.name = name;
-        this.render();
-      }
+    // TODO 1: $target 요소와 name을 받아 화면에 인삿말을 출력하는 Greeting 클래스를 직접 작성해 보세요.
+    // ✏️ 1. class Greeting { ... } 클래스를 정의하세요.
+    // ✏️ 2. constructor($target, name) 생성자에서 this.$target, this.name 필드를 저장하고 this.render()를 호출하세요.
+    // ✏️ 3. render() 메서드에서 this.$target.innerHTML 에 `안녕하세요, ${this.name}님!` HTML 템플릿을 대입하세요.
 
-      render() {
-        this.$target.innerHTML = `
-          <div class="box">
-            <h2>안녕하세요, ${this.name}님!</h2>
-            <p>축하합니다! 이제 컴포넌트를 배울 모든 기초 준비가 완료되었습니다! 🎉</p>
-          </div>
-        `;
-      }
+    class Greeting {
+      // ✏️ 이곳에 constructor() 및 render() 메서드를 직접 작성해 보세요.
+
     }
 
-    // TODO: document.querySelector('#app') 요소에 new Greeting 인스턴스를 생성해 보세요.
-    // ✏️ 작성하기:
-    // new Greeting(...);
+    // TODO 2: document.querySelector('#app') 과 '초보 개발자' 이름을 전달하여 new Greeting 인스턴스를 마운트해 보세요.
+    const $app = document.querySelector('#app');
+
+    // ✏️ 작성하기: new Greeting($app, '초보 개발자');
+
   </script>
 </body>
 </html>
