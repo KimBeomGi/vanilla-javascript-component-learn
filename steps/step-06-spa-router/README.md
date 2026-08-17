@@ -4,6 +4,14 @@
 
 ---
 
+## 🎯 학습 목표
+
+1. 전통적인 다중 페이지(MPA) 방식과 **싱글 페이지 애플리케이션(SPA)** 라우팅의 동작 차이를 이해합니다.
+2. `hashchange` 이벤트 및 `window.location.hash`를 이용하여 클라이언트 사이드 라우팅을 구현합니다.
+3. 경로(`/`, `#/cart`, `#/product`)에 따라 적절한 페이지 컴포넌트를 부착하는 **`Router.js`**를 완성합니다.
+
+---
+
 ## 📋 1-2-3 실습 순서 (무엇부터 작성하나요?)
 
 1. 1️⃣ **`exercise/src/core/Router.js`**: `renderRoute()` 메서드 내부에서 `window.location.hash`를 받아 `this.#routes.find()`로 매칭하는 코드를 완성하세요!
@@ -12,8 +20,32 @@
 
 ---
 
-## 🎯 학습 목표
+## 💡 클라이언트 사이드 라우팅 동작 코드
 
-1. 전통적인 다중 페이지(MPA) 방식과 **싱글 페이지 애플리케이션(SPA)** 라우팅의 동작 차이를 이해합니다.
-2. `hashchange` 이벤트 및 `window.location.hash`를 이용하여 클라이언트 사이드 라우팅을 구현합니다.
-3. 경로(`/`, `#/cart`, `#/product`)에 따라 적절한 페이지 컴포넌트를 부착하는 **`Router.js`**를 완성합니다.
+```javascript
+export class Router {
+  #routes = []; #$target;
+  constructor($target) {
+    this.#$target = $target;
+    window.addEventListener('hashchange', () => this.renderRoute());
+  }
+  addRoute(path, component) {
+    this.#routes.push({ path, component });
+    return this;
+  }
+  renderRoute() {
+    const currentPath = window.location.hash.replace('#', '') || '/';
+    const route = this.#routes.find(r => r.path === currentPath);
+    if (route) {
+      this.#$target.innerHTML = '';
+      new route.component(this.#$target); // 동적 페이지 교체!
+    }
+  }
+}
+```
+
+---
+
+## 🔑 자가 점검 체크리스트
+- [ ] URL 주소의 `#` (해시) 변경 시 새로고침 없이 화면이 바뀌나요?
+- [ ] 없는 경로일 때 와일드카드(`*`) 페이지가 정상 동작하나요?

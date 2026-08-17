@@ -4,6 +4,14 @@
 
 ---
 
+## 🎯 학습 목표
+
+1. 반복되는 컴포넌트 구조를 캡슐화한 **`Component` 공통 추상 클래스**를 직접 설계합니다.
+2. 컴포넌트의 생애 주기인 **라이프사이클 (Lifecycle)** 순서를 정립합니다.
+3. `Component` 클래스를 상속받아 카운터 컴포넌트(`Counter.js`)를 완성하고 브라우저에 마운트합니다.
+
+---
+
 ## 📋 1-2-3 실습 순서 (무엇부터 작성하나요?)
 
 아래 순서대로 작성하시면 의존성 에러 없이 완벽하게 완성할 수 있습니다!
@@ -14,18 +22,53 @@
 
 ---
 
-## 🎯 학습 목표
-
-1. 반복되는 컴포넌트 구조를 캡슐화한 **`Component` 공통 추상 클래스**를 직접 설계합니다.
-2. 컴포넌트의 생애 주기인 **라이프사이클 (Lifecycle)** 순서를 정립합니다.
-3. `Component` 클래스를 상속받아 카운터 컴포넌트(`Counter.js`)를 완성하고 브라우저에 마운트합니다.
-
----
-
 ## 🔄 `Component` 라이프사이클 실행 순서
+
+생성자(`constructor`)가 불려오면 다음 5단계가 순서대로 동작합니다:
 
 1. **`setup()`**: 컴포넌트 초기 상태(`this.state`) 세팅
 2. **`template()`**: 상태 기반의 HTML 템플릿 문자열 반환
 3. **`render()`**: `this.$target.innerHTML = this.template()` 으로 DOM에 출력
 4. **`mounted()`**: 화면 출력 직후 자식 컴포넌트를 부착할 시점
 5. **`setEvent()`**: 컴포넌트 내의 버튼 클릭 등 이벤트 바인딩
+
+---
+
+## 💻 `Component` 추상 클래스 구조 가이드
+
+```javascript
+export default class Component {
+  $target; props; state;
+
+  constructor($target, props = {}) {
+    this.$target = $target;
+    this.props = props;
+    this.setup();
+    this.render();
+  }
+
+  setup() {}
+  mounted() {}
+  template() { return ''; }
+
+  render() {
+    this.$target.innerHTML = this.template();
+    this.mounted();
+    this.setEvent();
+  }
+
+  setEvent() {}
+
+  setState(newState) {
+    this.state = { ...this.state, ...newState }; // 불변성 조립
+    this.render();                               // 자동 재렌더링
+  }
+}
+```
+
+---
+
+## 🔑 자가 점검 체크리스트
+- [ ] `constructor` 내부에서 `this.setup()` 과 `this.render()`가 불려오나요?
+- [ ] `Counter.js` 가 `extends Component` 로 상속받고 있나요?
+- [ ] 막히면 `solution/` 폴더의 완성본 파일과 비교해 보세요!
