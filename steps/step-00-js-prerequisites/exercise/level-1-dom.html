@@ -30,9 +30,15 @@
     $btn.addEventListener('click', () => {
       // TODO 1: $title.innerText 를 "🎉 글자가 성공적으로 바뀌었습니다!" 로 바꿔보세요.
       // ✏️ 여기에 작성: $title.innerText = "...";
+      $title.innerText = "글자 변경!"
 
       // TODO 2: $content.innerHTML 을 "<strong>HTML 태그가 적용된 굵은 글자</strong>" 로 바꿔보세요.
       // ✏️ 여기에 작성: $content.innerHTML = "...";
+      $content.innerHTML = `
+        <strong>
+          REACT는 신이다!
+        <strong>
+      `;
     });
   </script>
 </body>

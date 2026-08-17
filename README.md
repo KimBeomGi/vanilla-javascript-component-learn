@@ -36,6 +36,7 @@
 | 문서명 | 설명 |
 | :--- | :--- |
 | 📖 **[TEXTBOOK.md](TEXTBOOK.md)** | 개념 비유, 라이프사이클 흐름도, 1분 퀴즈 수록 교과서 |
+| 🎨 **[TAILWIND_GUIDE.md](TAILWIND_GUIDE.md)** | CDN 1줄로 컴포넌트 내 Tailwind CSS 유틸리티 클래스 활용 가이드 |
 | 🏢 **[WORKFLOW_GUIDE.md](WORKFLOW_GUIDE.md)** | 실무 표준 폴더 구조, Git 커밋 컨벤션(`feat:`, `fix:`) & Config |
 | 🛡️ **[SECURITY_GUIDE.md](SECURITY_GUIDE.md)** | `innerHTML` XSS 보안 공격 방어 & `escapeHTML` 이스케이프 |
 | ♿ **[A11Y_GUIDE.md](A11Y_GUIDE.md)** | 웹 접근성(WAI-ARIA 스크린리더) & `unmount` 메모리 누수 방지 |

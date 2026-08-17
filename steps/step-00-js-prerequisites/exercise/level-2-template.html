@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <title>Step 00 Level 2 - 백틱과 템플릿 리터럴 [실습용]</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; max-width: 500px; margin: 0 auto; }
-    .card { border: 1px solid #cbd5e1; padding: 1rem; border-radius: 8px; background: #f8fafc; }
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid #cbd5e1;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f8fafc;
+    }
   </style>
 </head>
+
 <body>
   <h1>🐣 Level 2: 백틱(``)과 ${변수} 실습</h1>
   <p>자바스크립트 변수를 HTML 문자열 사이에 넣어 조립합니다.</p>
@@ -36,6 +49,15 @@
     // ✏️ 작성해보기:
     // const template = `...`;
     // $container.innerHTML = template;
+    const template = `
+      <div class="card">
+        <h2>이름 : 홍길동</h2>
+        <p>나이 20세</p>
+        <p>직업: 초보 개발자</p>
+      </div>
+    `
+    $container.innerHTML = template;
   </script>
 </body>
+
 </html>

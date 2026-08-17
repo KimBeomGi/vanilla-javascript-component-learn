@@ -46,6 +46,7 @@ Live Server 켜는 방법이 궁금하시다면 **[SERVER_GUIDE.md](SERVER_GUIDE
 
 ## 📚 전체 학습 및 실무 응용 지침서 목록
 
+- 🎨 **[Tailwind CSS 사용 가이드](TAILWIND_GUIDE.md)**: CDN 1줄로 컴포넌트 내 Tailwind 유틸리티 클래스 활용법
 - 🏢 **[실무 디렉토리 & Git 커밋 컨벤션 가이드](WORKFLOW_GUIDE.md)**: 회사 프로젝트 폴더 구조, 깃 커밋 태그(`feat:`, `fix:`) 및 API 설정
 - 🛡️ **[보안 & XSS 방어 가이드](SECURITY_GUIDE.md)**: `innerHTML` 해킹(XSS) 방지 및 `escapeHTML` 이스케이프
 - ♿ **[웹 접근성 & unmount 클린업 가이드](A11Y_GUIDE.md)**: WAI-ARIA 스크린리더 및 메모리 누수 방지
