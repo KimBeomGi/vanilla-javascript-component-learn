@@ -14,14 +14,14 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/components/MyCounter.js`**: `constructor()` 내부에서 `this.attachShadow({ mode: 'open' })` 및 맨 아래 `customElements.define('my-counter', MyCounter)` 작성하기
-2. 2️⃣ **`exercise/index.html`**: 브라우저에서 커스텀 태그인 `<my-counter count="10"></my-counter>` 가 깔끔하게 출력되는지 확인하기
+1. **`exercise/src/components/MyCounter.js`**: `constructor()` 내부에서 `this.attachShadow({ mode: 'open' })` 및 맨 아래 `customElements.define('my-counter', MyCounter)` 작성하기
+2. **`exercise/index.html`**: 브라우저에서 커스텀 태그인 `<my-counter count="10"></my-counter>` 가 깔끔하게 출력되는지 확인하기
 
 ---
 
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ Web Components 주요 사양 & `this` 스코프 규칙
+### Web Components 주요 사양 & `this` 스코프 규칙
 
 #### 📌 주 설명
 - `connectedCallback()`: 컴포넌트 태그가 DOM에 붙는 순간 브라우저가 자동 호출하는 라이프사이클 메서드

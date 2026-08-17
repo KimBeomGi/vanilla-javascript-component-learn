@@ -14,9 +14,9 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Component.js`**: 공통 붕어빵 틀인 `Component` 추상 클래스의 `constructor`, `render()`, `setState()` 뼈대 완성하기
-2. 2️⃣ **`exercise/src/components/Counter.js`**: `Component`를 상속받아 `setup()`, `template()`, `setEvent()` 작성하기
-3. 3️⃣ **`exercise/index.html`**: 라이브 서버를 켜고 카운터 버튼이 정상 동작하는지 확인하기
+1. **`exercise/src/core/Component.js`**: 공통 붕어빵 틀인 `Component` 추상 클래스의 `constructor`, `render()`, `setState()` 뼈대 완성하기
+2. **`exercise/src/components/Counter.js`**: `Component`를 상속받아 `setup()`, `template()`, `setEvent()` 작성하기
+3. **`exercise/index.html`**: 라이브 서버를 켜고 카운터 버튼이 정상 동작하는지 확인하기
 
 ---
 

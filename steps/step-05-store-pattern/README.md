@@ -14,9 +14,9 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/observer.js`**: ES6 `Proxy` 트랩의 `get` (구독: `observers.add`)과 `set` (통지: `observers.forEach`) 작성하기
-2. 2️⃣ **`exercise/src/core/Store.js`**: 중앙 상태 변경을 담당하는 `commit()`과 `dispatch()` 작성하기
-3. 3️⃣ **`exercise/src/App.js`**: 중앙 스토어를 구독하는 컴포넌트 동작 확인하기
+1. **`exercise/src/core/observer.js`**: ES6 `Proxy` 트랩의 `get` (구독: `observers.add`)과 `set` (통지: `observers.forEach`) 작성하기
+2. **`exercise/src/core/Store.js`**: 중앙 상태 변경을 담당하는 `commit()`과 `dispatch()` 작성하기
+3. **`exercise/src/App.js`**: 중앙 스토어를 구독하는 컴포넌트 동작 확인하기
 
 ---
 

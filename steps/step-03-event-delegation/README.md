@@ -14,15 +14,15 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Component.js`**: `addEvent(eventType, selector, callback)` 메서드 내부에서 `event.target.closest(selector)` 조건문 완성하기
-2. 2️⃣ **`exercise/src/components/TodoList.js`**: `setEvent()` 안에서 `this.addEvent()`를 불러서 삭제/체크 이벤트 연결하기
-3. 3️⃣ **`exercise/index.html`**: 라이브 서버를 구동하고 할 일 추가/삭제 시 부드럽게 작동하는지 확인하기
+1. **`exercise/src/core/Component.js`**: `addEvent(eventType, selector, callback)` 메서드 내부에서 `event.target.closest(selector)` 조건문 완성하기
+2. **`exercise/src/components/TodoList.js`**: `setEvent()` 안에서 `this.addEvent()`를 불러서 삭제/체크 이벤트 연결하기
+3. **`exercise/index.html`**: 라이브 서버를 구동하고 할 일 추가/삭제 시 부드럽게 작동하는지 확인하기
 
 ---
 
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ 이벤트 위임이 필요한 이유와 경비원 비유
+### 이벤트 위임이 필요한 이유와 경비원 비유
 
 #### 📌 주 설명
 - 리스트 아이템이 1,000개일 때 개별 `<li>`마다 `addEventListener`를 걸면 브라우저 메모리가 과부하됩니다.

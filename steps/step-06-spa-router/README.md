@@ -14,9 +14,9 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Router.js`**: `renderRoute()` 내부에서 `window.location.hash` 주소를 매칭하는 코드 작성하기
-2. 2️⃣ **`exercise/src/App.js`**: `mounted()` 안에서 `new Router()` 인스턴스를 만들고 `.addRoute()`로 페이지 등록하기
-3. 3️⃣ **`exercise/index.html`**: 상단 메뉴를 눌러 새로고침 없이 페이지가 착착 바뀌는지 확인하기
+1. **`exercise/src/core/Router.js`**: `renderRoute()` 내부에서 `window.location.hash` 주소를 매칭하는 코드 작성하기
+2. **`exercise/src/App.js`**: `mounted()` 안에서 `new Router()` 인스턴스를 만들고 `.addRoute()`로 페이지 등록하기
+3. **`exercise/index.html`**: 상단 메뉴를 눌러 새로고침 없이 페이지가 착착 바뀌는지 확인하기
 
 ---
 

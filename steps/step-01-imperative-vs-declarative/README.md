@@ -14,14 +14,14 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/imperative.html`** 열기: 버튼 누를 때마다 `document.querySelector`로 일일이 글자 바꾸는 옛날 방식 작성해보기
-2. 2️⃣ **`exercise/declarative.html`** 열기: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 함수 작성해보기
+1. **`exercise/imperative.html`** 열기: 버튼 누를 때마다 `document.querySelector`로 일일이 글자 바꾸는 옛날 방식 작성해보기
+2. **`exercise/declarative.html`** 열기: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 함수 작성해보기
 
 ---
 
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ 명령형(Imperative) 방식: "이거 찾아서 요거 고쳐라!"
+### 명령형(Imperative) 방식: "이거 찾아서 요거 고쳐라!"
 
 #### 📌 주 설명
 - `document.querySelector('#count-display').innerText = count;`

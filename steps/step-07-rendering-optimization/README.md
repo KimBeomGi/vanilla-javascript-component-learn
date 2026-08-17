@@ -14,15 +14,15 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Component.js`**: `setState()` 안에서 `#renderScheduled` 플래그와 `requestAnimationFrame()` 배치 코드 작성하기
-2. 2️⃣ **`exercise/src/core/diff.js`**: 실제 DOM과 가상 DOM을 비교해 변경점만 최소 갱신하는 `updateElement()` 함수 완성하기
-3. 3️⃣ **`exercise/index.html`**: 100회 연속 업데이트 버튼을 눌렀을 때 화면이 1번만 그려지는지 콘솔에서 확인하기
+1. **`exercise/src/core/Component.js`**: `setState()` 안에서 `#renderScheduled` 플래그와 `requestAnimationFrame()` 배치 코드 작성하기
+2. **`exercise/src/core/diff.js`**: 실제 DOM과 가상 DOM을 비교해 변경점만 최소 갱신하는 `updateElement()` 함수 완성하기
+3. **`exercise/index.html`**: 100회 연속 업데이트 버튼을 눌렀을 때 화면이 1번만 그려지는지 콘솔에서 확인하기
 
 ---
 
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ 비동기 배치 렌더링 (Microtask Batching)
+### 비동기 배치 렌더링 (Microtask Batching)
 
 #### 📌 주 설명
 - `setState()`가 반복문 안에서 100번 불려도, `#renderScheduled` 예약 플래그를 활용해 `requestAnimationFrame()`으로 1프레임(초당 60프레임) 모아 딱 1번만 `render()`를 수행합니다.

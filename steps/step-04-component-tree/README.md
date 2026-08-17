@@ -14,10 +14,10 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/components/ItemInput.js`**: `setEvent()`에서 부모가 준 `addItem` 콜백 호출하기
-2. 2️⃣ **`exercise/src/components/ItemList.js`**: `setEvent()`에서 `toggleItem`, `deleteItem` 콜백 호출하기
-3. 3️⃣ **`exercise/src/components/ItemFilter.js`**: `setEvent()`에서 `filterItem` 콜백 호출하기
-4. 4️⃣ **`exercise/src/App.js`**: `mounted()` 안에서 `new ItemInput()`, `new ItemList()`, `new ItemFilter()` 자식 부착하기
+1. **`exercise/src/components/ItemInput.js`**: `setEvent()`에서 부모가 준 `addItem` 콜백 호출하기
+2. **`exercise/src/components/ItemList.js`**: `setEvent()`에서 `toggleItem`, `deleteItem` 콜백 호출하기
+3. **`exercise/src/components/ItemFilter.js`**: `setEvent()`에서 `filterItem` 콜백 호출하기
+4. **`exercise/src/App.js`**: `mounted()` 안에서 `new ItemInput()`, `new ItemList()`, `new ItemFilter()` 자식 부착하기
 
 ---
 

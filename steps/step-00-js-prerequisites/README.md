@@ -15,16 +15,16 @@
 
 ## 📋 1-2-3-4 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/level-1-dom.html`**: `.innerText`와 `.innerHTML` 주석 풀고 화면 글자 바꿔보기
-2. 2️⃣ **`exercise/level-2-template.html`**: 백틱(`` ` ``) 기호로 `user` 정보 카드 조립하기
-3. 3️⃣ **`exercise/level-3-this-functions.html`**: 함수 3형제 비교 및 `function` vs 화살표 함수 `() => {}` 클릭 시 `this` 차이 확인하기
-4. 4️⃣ **`exercise/level-4-module.html`**: `type="module"` 환경에서 `class` 인스턴스 마운트 체험하기
+1. **`exercise/level-1-dom.html`**: `.innerText`와 `.innerHTML` 주석 풀고 화면 글자 바꿔보기
+2. **`exercise/level-2-template.html`**: 백틱(`` ` ``) 기호로 `user` 정보 카드 조립하기
+3. **`exercise/level-3-this-functions.html`**: 함수 3형제 비교 및 `function` vs 화살표 함수 `() => {}` 클릭 시 `this` 차이 확인하기
+4. **`exercise/level-4-module.html`**: `type="module"` 환경에서 `class` 인스턴스 마운트 체험하기
 
 ---
 
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ Level 1: DOM 탐색과 `.innerText` vs `.innerHTML`
+### Level 1: DOM 탐색과 `.innerText` vs `.innerHTML`
 
 #### 📌 주 설명
 - `document.querySelector('#app')`: HTML에서 `id="app"`인 요소를 찾아 자바스크립트 변수에 대입합니다.

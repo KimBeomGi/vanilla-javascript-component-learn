@@ -18,13 +18,13 @@
 
 ## ☁️ 2. 추천 무료 배포 서비스 3가지
 
-### 1️⃣ GitHub Pages (가장 추천 👍)
+### 1. GitHub Pages (가장 추천 👍)
 1. GitHub 저장소(`vanilla-javascript-component-learn`) 상단 **[Settings]** 탭 클릭
 2. 왼쪽 메뉴 **[Pages]** 클릭
 3. **Build and deployment ➔ Branch**: `master` (또는 `main`) 선택 후 **[Save]**
 4. 1분 후 `https://사용자명.github.io/레포명` 인터넷 주소가 자동 생성됩니다!
 
-### 2️⃣ Netlify / Vercel (드래그 앤 드롭 배포)
+### 2. Netlify / Vercel (드래그 앤 드롭 배포)
 1. [Netlify](https://www.netlify.com/) 또는 [Vercel](https://vercel.com/) 가입
 2. GitHub 계정과 연동 후 저장소 선택 ➔ **[Deploy]** 클릭!
 3. 몇 초 만에 무료 HTTPS 도메인이 발급됩니다.
