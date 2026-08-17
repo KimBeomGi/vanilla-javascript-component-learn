@@ -30,6 +30,16 @@
 
 ---
 
+## ✍️ TODO 1-2 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `core/Component.js` TODO 가이드
+- **`TODO 1`**: `setState(newState)` 안에서 `#renderScheduled` 예약 플래그를 검사하여 이미 예약되었으면 중복 렌더링을 막고, `requestAnimationFrame(() => { this.render(); this.#renderScheduled = false; })` 로 1프레임 모아 렌더링하기
+
+### 2. `core/diff.js` TODO 가이드
+- **`TODO 2`**: `updateElement(parent, newNode, oldNode, index)` 안에서 텍스트 노드 비교(`nodeValue`), 태그 이름 비교(`nodeName`), 속성 비교(`updateAttributes`)를 수행하여 변경점만 핀포인트 업데이트하기
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 비동기 배치 렌더링 (Microtask Batching)

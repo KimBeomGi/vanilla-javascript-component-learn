@@ -30,6 +30,21 @@
 
 ---
 
+## ✍️ TODO 1-2-3-4 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `core/Component.js` TODO 가이드
+- **`TODO 1`**: `constructor($target, props)` 안에서 `this.setup()` 을 먼저 불러 초기 상태를 준비합니다.
+- **`TODO 2`**: `constructor` 맨 아래에서 `this.render()` 를 불러 첫 화면을 그립니다.
+- **`TODO 3`**: `render()` 메서드 내부 첫 줄에 `this.$target.innerHTML = this.template();` 을 대입합니다.
+- **`TODO 4`**: `setState(newState)` 안에서 `this.state = { ...this.state, ...newState };` 합성 후 `this.render();` 를 호출합니다.
+
+### 2. `components/Counter.js` TODO 가이드
+- **`TODO 1`**: `setup()` 안에서 `this.state = { count: 0 };` 초기 상태 객체를 세팅합니다.
+- **`TODO 2`**: `template()` 안에서 현재 `count` 숫자가 담긴 HTML 백틱 문자열을 `return` 합니다.
+- **`TODO 3`**: `setEvent()` 안에서 화살표 함수 `() => { this.setState({ count: this.state.count + 1 }); }` 로 이벤트를 바인딩합니다.
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 🔄 `Component` 6단계 라이프사이클 실행 순서

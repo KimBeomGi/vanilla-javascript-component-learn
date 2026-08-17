@@ -22,10 +22,24 @@
 
 ---
 
-## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
+## 📋 1-2-3단계 실습 순서 (Level 1 ~ Level 2 연습)
 
-1. **`exercise/imperative.html`** 열기: 버튼 누를 때마다 `document.querySelector`로 일일이 글자 바꾸는 옛날 방식 작성해보기
-2. **`exercise/declarative.html`** 열기: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 함수 작성해보기
+1. **`exercise/declarative.html` (Level 1: 카운터)**: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 기본 구조 완성하기
+2. **`exercise/level-2-modal.html` (Level 2: 모달 토글)**: `state.isOpen` 조건에 따라 화면 조각을 그리고 `setState({ isOpen: !state.isOpen })` 호출하기
+3. **`exercise/imperative.html`**: 옛날 방식 명령형 코드와 비교하여 선언적 방식의 압도적 편리함 체감하기
+
+---
+
+## ✍️ TODO 1-2-3 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `declarative.html` TODO 가이드
+- **`TODO 1`**: `render()` 안에서 `state.count` 변수값을 삼항 연산자나 백틱 `${state.count}` 으로 템플릿에 합치기
+- **`TODO 2`**: 버튼 클릭 이벤트 안에서 직접 count 숫자를 올리지 않고 `setState({ count: state.count + 1 })` 호출하기
+- **`TODO 3`**: `setState(newState)` 안에서 전개 연산자로 `state = { ...state, ...newState }` 복사 후 `render()` 부르기
+
+### 2. `level-2-modal.html` TODO 가이드
+- **`TODO 1`**: `${state.isOpen ? '<div class="modal">...</div>' : ''}` 조건부 삼항 연산자로 템플릿 작성하기
+- **`TODO 2`**: 토글 버튼 클릭 시 `setState({ isOpen: !state.isOpen })` 호출하여 상태 반전시키기
 
 ---
 
@@ -94,4 +108,4 @@ function setState(newState) {
 ## 🔑 자가 점검 체크리스트
 - [ ] 명령형과 선언적의 차이를 붕어빵 비유로 설명할 수 있나요?
 - [ ] `setState` 안에서 `render()`를 부르는 이유를 이해하셨나요?
-- [ ] 막히면 `solution/declarative.html` 정답 코드를 열어 비교해 보세요!
+- [ ] 막히면 `solution/` 폴더 정답 코드를 열어 줄별 주석을 비교해 보세요!

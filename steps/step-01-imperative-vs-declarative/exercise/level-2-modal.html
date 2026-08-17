@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 01 Level 2: 모달 토글 (선언적 렌더링 연습)</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; }
+    .card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #cbd5e1; max-width: 400px; }
+    .modal { background: #eff6ff; border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+    .btn { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Level 2: 모달 토글 창 (선언적 방식 연습)</h1>
+  <p>TODO 주석을 따라 state(isOpen) 변경 시 render()가 불려오도록 작성해 보세요!</p>
+
+  <div id="app"></div>
+
+  <script>
+    // 1. 상태(State) 선언: 모달이 열려있는지 여부 (true/false)
+    let state = {
+      isOpen: false
+    };
+
+    // 2. DOM 위치 기억
+    const $app = document.querySelector('#app');
+
+    // 3. 렌더링 함수 (UI = f(State))
+    function render() {
+      // TODO 1: state.isOpen 상태에 따라 버튼 글자("모달 열기" / "모달 닫기")와 모달 상자를 선언적으로 조립하세요.
+      $app.innerHTML = `
+        <div class="card">
+          <h2>모달 토글 예제</h2>
+          <button id="btn-toggle" class="btn">
+            ${state.isOpen ? '모달 닫기 ❌' : '모달 열기 🚀'}
+          </button>
+
+          ${state.isOpen ? `
+            <div class="modal">
+              <h3>🎉 모달 팝업 상자</h3>
+              <p>현재 state.isOpen 값이 true 입니다!</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      // TODO 2: #btn-toggle 버튼에 클릭 이벤트를 걸고, 클릭 시 setState({ isOpen: !state.isOpen }) 을 호출하게 작성해 보세요.
+      document.querySelector('#btn-toggle').addEventListener('click', () => {
+        // ✏️ 작성하기
+      });
+    }
+
+    // 4. 상태 변경 전용 함수
+    function setState(newState) {
+      // TODO 3: state 불변성 합성 및 render() 자동 호출 코드를 작성해 보세요.
+      // state = { ...state, ...newState };
+      // render();
+    }
+
+    // 최초 실행
+    render();
+  </script>
+</body>
+</html>

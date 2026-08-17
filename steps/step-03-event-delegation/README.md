@@ -25,8 +25,22 @@
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
 1. **`exercise/src/core/Component.js`**: `addEvent(eventType, selector, callback)` 메서드 내부에서 `event.target.closest(selector)` 조건문 완성하기
-2. **`exercise/src/components/TodoList.js`**: `setEvent()` 안에서 `this.addEvent()`를 불러서 삭제/체크 이벤트 연결하기
-3. **`exercise/index.html`**: 라이브 서버를 구동하고 할 일 추가/삭제 시 부드럽게 작동하는지 확인하기
+2. **`exercise/src/components/TodoList.js`**: `setEvent()` 안에서 `this.addEvent()`를 불러서 폼 추가, 완료 토글, 삭제 이벤트 3가지 연결하기
+3. **`exercise/index.html`**: 라이브 서버를 구동하고 할 일 추가/토글/삭제 시 부드럽게 작동하는지 확인하기
+
+---
+
+## ✍️ TODO 1-2-3 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `core/Component.js` TODO 가이드
+- **`TODO 1`**: `addEvent(eventType, selector, callback)` 안에서 `this.$target.addEventListener(eventType, (event) => { ... })` 바인딩하기
+- **`TODO 2`**: `if (!event.target.closest(selector)) return false;` 로 클릭된 요소 주변 조상 중 `selector`가 있는지 검사하여 없으면 차단하기
+- **`TODO 3`**: 매칭이 성공하면 `callback(event);` 를 호출하여 해당 이벤트 수행하기
+
+### 2. `components/TodoList.js` TODO 가이드
+- **`TODO 1 (추가)`**: `this.addEvent('submit', '.todo-form', (e) => { ... })` 안에서 `e.preventDefault()` 후 `.todo-input` 값을 가져와 `this.setState()` 로 새 할 일 객체 추가하기
+- **`TODO 2 (토글)`**: `this.addEvent('click', '.btn-toggle', (e) => { ... })` 안에서 `e.target.closest('li').dataset.id` 로 클릭된 id를 읽고, `map()`을 돌려 `completed: !item.completed` 로 완료 여부를 반전시킨 후 `this.setState()` 부르기
+- **`TODO 3 (삭제)`**: `this.addEvent('click', '.btn-delete', (e) => { ... })` 안에서 `e.target.closest('li').dataset.id` 로 클릭된 id를 읽고, `filter()`를 돌려 해당 항목을 제외한 새 배열로 `this.setState()` 부르기
 
 ---
 

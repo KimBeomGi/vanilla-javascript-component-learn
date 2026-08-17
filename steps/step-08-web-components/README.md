@@ -28,6 +28,14 @@
 
 ---
 
+## ✍️ TODO 1-2 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `components/MyCounter.js` TODO 가이드
+- **`TODO 1`**: `constructor()` 안에서 `super();` 호출 후 `this.#shadow = this.attachShadow({ mode: 'open' });` 로 Shadow DOM 캡슐화 격리막 만들기
+- **`TODO 2`**: 파일 맨 아래에서 `customElements.define('my-counter', MyCounter);` 를 호출하여 브라우저에 태그 등록하기
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### Web Components 주요 사양 & `this` 스코프 규칙

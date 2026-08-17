@@ -37,6 +37,17 @@
 
 ---
 
+## ✍️ TODO 1-2-3 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `store/index.js` TODO 가이드
+- **`TODO 1`**: `cart` 장바구니 추가(`ADD_TO_CART`), 수량 조절(`CHANGE_QUANTITY`), 삭제(`REMOVE_FROM_CART`) 뮤테이션 작성을 완료하세요.
+
+### 2. `pages/Pages.js` TODO 가이드
+- **`TODO 2`**: `ProductListPage` 에서 카테고리 필터링 탭 클릭 시 `store.commit('SET_CATEGORY', category)` 를 호출하세요.
+- **`TODO 3`**: `CartPage` 에서 장바구니 비우기 및 수량 조절 버튼 클릭 이벤트를 위임 연결하세요.
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 🏗️ 캡스톤 프로젝트 전체 모듈 아키텍처

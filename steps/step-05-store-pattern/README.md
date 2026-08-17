@@ -30,6 +30,17 @@
 
 ---
 
+## ✍️ TODO 1-2-3 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `core/observer.js` TODO 가이드
+- **`TODO 1 (get 트랩)`**: Proxy `get(target, name)` 안에서 `if (currentObserver) observers.add(currentObserver);` 로 현재 렌더링 중인 감시자를 명단에 자동 추가하고 `target[name]` 반환하기
+- **`TODO 2 (set 트랩)`**: Proxy `set(target, name, value)` 안에서 값이 변경되면 `observers.forEach(fn => fn());` 을 호출하여 구독 중인 모든 컴포넌트를 자동 재렌더링시키기
+
+### 2. `core/Store.js` TODO 가이드
+- **`TODO 3 (commit)`**: `commit(actionName, payload)` 안에서 `mutations[actionName](this.state, payload)` 을 실행하여 동기적 상태 갱신하기
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 🛒 은행 통장 알림 비유로 이해하는 옵저버 원리

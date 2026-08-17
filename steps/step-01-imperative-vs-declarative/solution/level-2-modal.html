@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Step 01 Level 2: 모달 토글 완성본 정답 (Solution)</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8fafc; }
+    .card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #cbd5e1; max-width: 400px; }
+    .modal { background: #eff6ff; border: 2px solid #3b82f6; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+    .btn { background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Level 2: 모달 토글 완성본 정답 (Solution)</h1>
+  <div id="app"></div>
+
+  <script>
+    // 💡 정답 해설 1: 상태(State) 선언
+    let state = {
+      isOpen: false
+    };
+
+    const $app = document.querySelector('#app');
+
+    // 💡 정답 해설 2: 선언적 렌더링 함수
+    function render() {
+      // 현재 state.isOpen 상태 데이터 모양 그대로 HTML을 조립!
+      $app.innerHTML = `
+        <div class="card">
+          <h2>모달 토글 예제</h2>
+          <button id="btn-toggle" class="btn">
+            ${state.isOpen ? '모달 닫기 ❌' : '모달 열기 🚀'}
+          </button>
+
+          ${state.isOpen ? `
+            <div class="modal">
+              <h3>🎉 모달 팝업 상자</h3>
+              <p>현재 state.isOpen 값이 true 입니다!</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      // 버튼 클릭 시 setState를 호출하여 상태 반전(!state.isOpen)
+      document.querySelector('#btn-toggle').addEventListener('click', () => {
+        setState({ isOpen: !state.isOpen });
+      });
+    }
+
+    // 💡 정답 해설 3: 상태 업데이트 및 자동 재렌더링
+    function setState(newState) {
+      state = { ...state, ...newState }; // 데이터 합성
+      render();                          // 화면 자동 갱신!
+    }
+
+    // 최초 렌더링 실행
+    render();
+  </script>
+</body>
+</html>

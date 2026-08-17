@@ -30,6 +30,16 @@
 
 ---
 
+## ✍️ TODO 1-2 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `core/Router.js` TODO 가이드
+- **`TODO 1`**: `renderRoute()` 메서드 내부에서 `const currentPath = window.location.hash.replace('#', '') || '/';` 주소를 읽고, `this.#routes.find(r => r.path === currentPath)` 로 매칭되는 경로를 찾은 뒤 `new route.component(this.#$target);` 마운트하기
+
+### 2. `App.js` TODO 가이드
+- **`TODO 2`**: `mounted()` 안에서 `const router = new Router(this.$target.querySelector('#router-view'));` 후 `.addRoute('/', HomePage).addRoute('/cart', CartPage)` 형태로 등록하기
+
+---
+
 ## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 🧭 클라이언트 사이드 라우팅 동작 원리

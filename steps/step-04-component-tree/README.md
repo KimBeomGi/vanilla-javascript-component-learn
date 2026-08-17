@@ -22,12 +22,29 @@
 
 ---
 
-## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
+## 📋 1-2-3-4 실습 순서 (무엇부터 하나요?)
 
 1. **`exercise/src/components/ItemInput.js`**: `setEvent()`에서 부모가 준 `addItem` 콜백 호출하기
 2. **`exercise/src/components/ItemList.js`**: `setEvent()`에서 `toggleItem`, `deleteItem` 콜백 호출하기
 3. **`exercise/src/components/ItemFilter.js`**: `setEvent()`에서 `filterItem` 콜백 호출하기
 4. **`exercise/src/App.js`**: `mounted()` 안에서 `new ItemInput()`, `new ItemList()`, `new ItemFilter()` 자식 부착하기
+
+---
+
+## ✍️ TODO 1-2-3-4 실습 가이드 (어떻게 작성해야 하나요?)
+
+### 1. `components/ItemInput.js` TODO 가이드
+- **`TODO 1`**: `setEvent()` 안에서 `this.addEvent('keyup', '.todo-input', (e) => { ... })` 제출 시 부모가 넘겨준 `this.props.addItem(text)` 호출하기
+
+### 2. `components/ItemList.js` TODO 가이드
+- **`TODO 2`**: `.btn-toggle` 클릭 시 `this.props.toggleItem(id)` 호출하기
+- **`TODO 3`**: `.btn-delete` 클릭 시 `this.props.deleteItem(id)` 호출하기
+
+### 3. `components/ItemFilter.js` TODO 가이드
+- **`TODO 4`**: 필터 버튼 클릭 시 `this.props.filterItem(filterType)` 호출하기
+
+### 4. `App.js` TODO 가이드
+- **`TODO 5`**: `mounted()` 메서드 내부에서 자식 컴포넌트에 콜백 전달 시 `.bind(this)` 를 명시해 `new ItemInput($input, { addItem: this.addItem.bind(this) })` 부착하기
 
 ---
 
