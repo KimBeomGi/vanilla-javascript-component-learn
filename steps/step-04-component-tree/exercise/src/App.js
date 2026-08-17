@@ -30,14 +30,13 @@ export default class App extends Component {
     const $itemList = this.$target.querySelector('[data-component="item-list"]');
     const $itemFilter = this.$target.querySelector('[data-component="item-filter"]');
 
-    // TODO 1: new ItemInput($itemInput, { addItem: addItem.bind(this) }) 마운트를 완성하세요.
-    // new ItemInput($itemInput, { addItem: addItem.bind(this) });
+    // TODO 5: new ItemInput($itemInput, { addItem: addItem.bind(this) }) 자식 마운트를 완성하세요.
+    // ✏️ 1. ItemInput 컴포넌트를 마운트하고 addItem 콜백을 .bind(this)로 넘기세요.
 
-    // TODO 2: new ItemList($itemList, ...) 마운트 및 props 전달을 완성하세요.
-    // ✏️ 작성하기
+    // ✏️ 2. ItemList 컴포넌트를 마운트하고 items: filteredItems 와 toggleItem, deleteItem 콜백을 넘기세요.
 
-    // TODO 3: new ItemFilter($itemFilter, ...) 마운트를 완성하세요.
-    // ✏️ 작성하기
+    // ✏️ 3. ItemFilter 컴포넌트를 마운트하고 isFilter: this.state.isFilter 와 filterItem 콜백을 넘기세요.
+
   }
 
   get filteredItems() {

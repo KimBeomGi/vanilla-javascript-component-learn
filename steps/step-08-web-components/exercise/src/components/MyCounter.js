@@ -4,8 +4,9 @@ export class MyCounter extends HTMLElement {
 
   constructor() {
     super();
-    // TODO 1: Shadow DOM을 open 모드로 생성하세요. (this.attachShadow({ mode: 'open' }))
-    // this.#shadow = this.attachShadow({ mode: 'open' });
+    // TODO 1: super() 호출 후 Shadow DOM을 open 모드로 생성하세요.
+    // ✏️ 작성하기: this.#shadow = this.attachShadow({ mode: 'open' });
+
   }
 
   static get observedAttributes() {
@@ -25,11 +26,17 @@ export class MyCounter extends HTMLElement {
   }
 
   render() {
+    if (!this.#shadow) return;
+
     this.#shadow.innerHTML = `
-      <div>
-        <h3>🌐 Web Components (Custom Element) [실습용]</h3>
-        <p>Count: ${this.#count}</p>
-        <button id="inc">+1</button>
+      <style>
+        .counter-box { border: 1px solid #8b5cf6; padding: 1.2rem; border-radius: 8px; background: #faf5ff; }
+        button { background: #8b5cf6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+      </style>
+      <div class="counter-box">
+        <h3>🌐 Web Components (Custom Element)</h3>
+        <p>Count: <strong>${this.#count}</strong></p>
+        <button id="inc">+1 증가</button>
       </div>
     `;
 
@@ -39,5 +46,5 @@ export class MyCounter extends HTMLElement {
   }
 }
 
-// TODO 2: customElements.define으로 등록해 보세요.
-// customElements.define('my-counter', MyCounter);
+// TODO 2: customElements.define('my-counter', MyCounter) 태그를 등록하세요.
+// ✏️ 작성하기

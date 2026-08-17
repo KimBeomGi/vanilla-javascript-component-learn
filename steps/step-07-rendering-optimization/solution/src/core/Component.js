@@ -1,7 +1,9 @@
 import { updateElement } from './diff.js';
 
 export default class Component {
-  $target; props; state;
+  $target;
+  props;
+  state;
   #renderScheduled = false;
 
   constructor($target, props = {}) {
@@ -12,7 +14,9 @@ export default class Component {
     this.render();
   }
 
-  setup() {} mounted() {} template() { return ''; }
+  setup() {}
+  mounted() {}
+  template() { return ''; }
 
   render() {
     const parser = new DOMParser();
@@ -29,6 +33,7 @@ export default class Component {
   }
 
   setEvent() {}
+
   addEvent(eventType, selector, callback) {
     this.$target.addEventListener(eventType, (e) => {
       if (!e.target.closest(selector)) return false;
@@ -38,10 +43,11 @@ export default class Component {
 
   setState(newState) {
     this.state = { ...this.state, ...newState };
+
+    // 💡 정답 해설 1: 비동기 배치 렌더링 (1프레임 모아서 1회만 렌더링)
     if (!this.#renderScheduled) {
       this.#renderScheduled = true;
       requestAnimationFrame(() => {
-        console.log('🚀 Batching 렌더링 실행!');
         this.render();
         this.#renderScheduled = false;
       });

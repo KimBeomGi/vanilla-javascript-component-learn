@@ -9,14 +9,15 @@ export default class ItemInput extends Component {
       </form>
     `;
   }
+
   setEvent() {
     const { addItem } = this.props;
-    // TODO: addEvent를 사용하여 .item-input-form submit 시 addItem(text) 콜백을 호출하세요.
-    // this.addEvent('submit', '.item-input-form', (e) => {
-    //   e.preventDefault();
-    //   const $input = this.$target.querySelector('.item-input');
-    //   const text = $input.value.trim();
-    //   if (text) addItem(text);
-    // });
+    // TODO 1: addEvent를 사용하여 .item-input-form submit 시 e.preventDefault() 후 addItem(text) 콜백을 호출하세요.
+    this.addEvent('submit', '.item-input-form', (e) => {
+      e.preventDefault();
+      // ✏️ 1. .item-input 요소에서 입력된 텍스트를 읽어오세요.
+      // ✏️ 2. 텍스트가 존재하면 addItem(text) 콜백을 호출하세요.
+
+    });
   }
 }

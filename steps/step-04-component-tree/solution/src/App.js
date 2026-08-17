@@ -16,7 +16,7 @@ export default class App extends Component {
 
   template() {
     return `
-      <h1>🎉 Step 04 완성본 정답 (Solution)</h1>
+      <h1>🌴 Step 04 - 컴포넌트 분화 [완성본 정답]</h1>
       <div data-component="item-input"></div>
       <div data-component="item-list"></div>
       <div data-component="item-filter"></div>
@@ -30,14 +30,15 @@ export default class App extends Component {
     const $itemList = this.$target.querySelector('[data-component="item-list"]');
     const $itemFilter = this.$target.querySelector('[data-component="item-filter"]');
 
+    // 💡 정답 해설 5: 자식 컴포넌트 마운트 및 .bind(this) 스코프 고정 콜백 전달
     new ItemInput($itemInput, {
       addItem: addItem.bind(this)
     });
 
     new ItemList($itemList, {
       items: filteredItems,
-      deleteItem: deleteItem.bind(this),
-      toggleItem: toggleItem.bind(this)
+      toggleItem: toggleItem.bind(this),
+      deleteItem: deleteItem.bind(this)
     });
 
     new ItemFilter($itemFilter, {

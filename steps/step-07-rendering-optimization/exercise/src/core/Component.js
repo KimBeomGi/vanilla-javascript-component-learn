@@ -1,7 +1,9 @@
 import { updateElement } from './diff.js';
 
 export default class Component {
-  $target; props; state;
+  $target;
+  props;
+  state;
   #renderScheduled = false;
 
   constructor($target, props = {}) {
@@ -12,7 +14,9 @@ export default class Component {
     this.render();
   }
 
-  setup() {} mounted() {} template() { return ''; }
+  setup() {}
+  mounted() {}
+  template() { return ''; }
 
   render() {
     const parser = new DOMParser();
@@ -29,6 +33,7 @@ export default class Component {
   }
 
   setEvent() {}
+
   addEvent(eventType, selector, callback) {
     this.$target.addEventListener(eventType, (e) => {
       if (!e.target.closest(selector)) return false;
@@ -39,13 +44,9 @@ export default class Component {
   setState(newState) {
     this.state = { ...this.state, ...newState };
 
-    // TODO: #renderScheduled 플래그와 requestAnimationFrame을 이용해 렌더링을 1회만 예약 처리하세요.
-    // if (!this.#renderScheduled) {
-    //   this.#renderScheduled = true;
-    //   requestAnimationFrame(() => {
-    //     this.render();
-    //     this.#renderScheduled = false;
-    //   });
-    // }
+    // TODO 1: #renderScheduled 플래그와 requestAnimationFrame을 이용해 렌더링을 1회만 예약 처리하세요.
+    // ✏️ 1. !this.#renderScheduled 인 경우에만 렌더링 예약을 시작하세요.
+    // ✏️ 2. requestAnimationFrame(() => { this.render(); this.#renderScheduled = false; }) 로 1프레임 배치 렌더링을 수행하세요.
+
   }
 }

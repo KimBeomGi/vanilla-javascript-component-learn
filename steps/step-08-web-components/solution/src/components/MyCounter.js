@@ -4,6 +4,7 @@ export class MyCounter extends HTMLElement {
 
   constructor() {
     super();
+    // 💡 정답 해설 1: Shadow DOM 생성 (외부 CSS 격리막)
     this.#shadow = this.attachShadow({ mode: 'open' });
   }
 
@@ -24,27 +25,25 @@ export class MyCounter extends HTMLElement {
   }
 
   render() {
+    if (!this.#shadow) return;
+
     this.#shadow.innerHTML = `
       <style>
-        :host { display: block; padding: 1rem; border: 2px solid #8b5cf6; border-radius: 8px; background: #faf5ff; }
-        h3 { margin-top: 0; color: #6d28d9; }
-        button { padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid #7c3aed; background: #8b5cf6; color: white; cursor: pointer; }
+        .counter-box { border: 1px solid #8b5cf6; padding: 1.2rem; border-radius: 8px; background: #faf5ff; }
+        button { background: #8b5cf6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
       </style>
-      <div>
-        <h3>🎉 Web Components 완성본 (Solution)</h3>
-        <p>현재 Count: <strong>${this.#count}</strong></p>
+      <div class="counter-box">
+        <h3>🌐 Web Components (Custom Element) [완성본 정답]</h3>
+        <p>Count: <strong>${this.#count}</strong></p>
         <button id="inc">+1 증가</button>
-        <button id="dec">-1 감소</button>
       </div>
     `;
 
-    this.#shadow.querySelector('#inc').addEventListener('click', () => {
+    this.#shadow.querySelector('#inc')?.addEventListener('click', () => {
       this.setAttribute('count', this.#count + 1);
-    });
-    this.#shadow.querySelector('#dec').addEventListener('click', () => {
-      this.setAttribute('count', this.#count - 1);
     });
   }
 }
 
+// 💡 정답 해설 2: 브라우저에 <my-counter> 커스텀 태그 등록
 customElements.define('my-counter', MyCounter);
