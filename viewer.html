@@ -238,6 +238,23 @@
       color: var(--text-muted);
     }
 
+    /* Action Banner Box Theme Styles */
+    [data-theme="dark"] .action-banner-box {
+      background: linear-gradient(135deg, #1e293b 0%, #064e3b 100%) !important;
+      border-color: #334155 !important;
+    }
+    [data-theme="dark"] .action-banner-box h3 {
+      color: #60a5fa !important;
+    }
+    [data-theme="dark"] .action-banner-box p {
+      color: #cbd5e1 !important;
+    }
+    [data-theme="dark"] #banner-level-select {
+      background: #0f172a !important;
+      color: #f8fafc !important;
+      border-color: #334155 !important;
+    }
+
     .btn-top {
       position: fixed;
       bottom: 2rem;
@@ -269,12 +286,6 @@
     <div class="nav-left">
       <a href="./index.html" class="btn-back">← 메인 대시보드</a>
       <span class="doc-title-badge" id="doc-name">문서 로딩 중...</span>
-      <div id="step-quick-actions" style="display:none; gap:0.4rem; align-items:center; margin-left:0.5rem;">
-        <select id="header-level-select" style="display:none; padding:0.3rem 0.5rem; border-radius:6px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-weight:600; font-size:0.82rem; cursor:pointer;">
-        </select>
-        <a id="btn-header-ex" class="btn-header-action" style="background:#2563eb; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">🏋️ 실습 열기 (새 탭)</a>
-        <a id="btn-header-sol" class="btn-header-action" style="background:#22c55e; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">✨ 완성본 열기 (새 탭)</a>
-      </div>
     </div>
     <button class="theme-toggle" id="btn-theme">🌙 다크 모드</button>
   </header>
@@ -324,54 +335,11 @@
     const $docName = document.querySelector('#doc-name');
     const $content = document.querySelector('#content');
     const $tocList = document.querySelector('#toc-list');
-    const $quickActions = document.querySelector('#step-quick-actions');
-    const $levelSelect = document.querySelector('#header-level-select');
-    const $btnHeaderEx = document.querySelector('#btn-header-ex');
-    const $btnHeaderSol = document.querySelector('#btn-header-sol');
 
     $docName.innerText = `📄 ${targetFile}`;
     let currentStepDir = '';
-
-    // 🎯 챕터 가이드(README.md) 열었을 시 상단 header에 레벨 선택 드롭다운 및 실습/완성본 새 탭 버튼 노출
     if (targetFile.startsWith('steps/step-')) {
       currentStepDir = targetFile.substring(0, targetFile.lastIndexOf('/'));
-      
-      if (currentStepDir.includes('step-00')) {
-        $levelSelect.innerHTML = `
-          <option value="level-1-dom.html">Level 1: DOM 탐색</option>
-          <option value="level-2-template.html">Level 2: 백틱 템플릿</option>
-          <option value="level-3-this-functions.html">Level 3: 함수 & this</option>
-          <option value="level-4-module.html">Level 4: 모듈 & class</option>
-        `;
-        $levelSelect.style.display = 'inline-block';
-      } else if (currentStepDir.includes('step-01')) {
-        $levelSelect.innerHTML = `
-          <option value="declarative.html">Level 1: 카운터 (선언적)</option>
-          <option value="level-2-modal.html">Level 2: 모달 토글</option>
-          <option value="imperative.html">Level 0: 옛날 명령형 비교</option>
-        `;
-        $levelSelect.style.display = 'inline-block';
-      }
-
-      function updateHeaderActionLinks(file) {
-        let exFile = file || 'index.html';
-        let solFile = file || 'index.html';
-
-        if (!file) {
-          if (currentStepDir.includes('step-00')) { exFile = 'level-1-dom.html'; solFile = 'level-1-dom.html'; }
-          else if (currentStepDir.includes('step-01')) { exFile = 'declarative.html'; solFile = 'declarative.html'; }
-        }
-
-        $btnHeaderEx.href = `./${currentStepDir}/exercise/${exFile}`;
-        $btnHeaderSol.href = `./${currentStepDir}/solution/${solFile}`;
-      }
-
-      $levelSelect.addEventListener('change', (e) => {
-        updateHeaderActionLinks(e.target.value);
-      });
-
-      updateHeaderActionLinks($levelSelect.value || null);
-      $quickActions.style.display = 'flex';
     }
 
     async function loadMarkdown() {
@@ -381,14 +349,80 @@
         const markdown = await response.text();
 
         // Convert Markdown to HTML using marked.js
-        $content.innerHTML = marked.parse(markdown);
+        let parsedHtml = marked.parse(markdown);
 
-        // 🔗 본문 내 상대경로 실습 링크(exercise/..., solution/...) 자동 보정 및 새 탭 처리
+        // 🎯 챕터 가이드(README.md) 열었을 시 본문 맨 위에 전용 🚀 실습/완성본 이동 배너 박스 삽입
         if (currentStepDir) {
+          let selectHtml = '';
+          if (currentStepDir.includes('step-00')) {
+            selectHtml = `
+              <select id="banner-level-select" style="padding:0.45rem 0.75rem; border-radius:8px; border:1px solid #cbd5e1; background:white; font-weight:700; font-size:0.85rem; color:#1e293b; cursor:pointer;">
+                <option value="level-1-dom.html">Level 1: DOM 탐색 & 글자 바꾸기</option>
+                <option value="level-2-template.html">Level 2: 백틱(``) 템플릿 리터럴</option>
+                <option value="level-3-this-functions.html">Level 3: 함수 3형제 & this 바인딩</option>
+                <option value="level-4-module.html">Level 4: type="module" & class 맛보기</option>
+              </select>
+            `;
+          } else if (currentStepDir.includes('step-01')) {
+            selectHtml = `
+              <select id="banner-level-select" style="padding:0.45rem 0.75rem; border-radius:8px; border:1px solid #cbd5e1; background:white; font-weight:700; font-size:0.85rem; color:#1e293b; cursor:pointer;">
+                <option value="declarative.html">Level 1: 카운터 (선언적 렌더링)</option>
+                <option value="level-2-modal.html">Level 2: 모달 토글 (상태 기반 UI)</option>
+                <option value="imperative.html">Level 0: 옛날 명령형 비교 체험</option>
+              </select>
+            `;
+          }
+
+          const bannerHtml = `
+            <div class="action-banner-box" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <div>
+                  <h3 style="margin:0 0 0.25rem 0; font-size:1.1rem; color:#1e40af; font-weight:800; border:none; padding:0;">🚀 이 챕터 실습 & 완성본 코드로 바로가기</h3>
+                  <p style="margin:0; font-size:0.85rem; color:#475569;">원하는 레벨 예제를 선택하고 버튼을 클릭하면 새 탭에서 실행됩니다.</p>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+                  ${selectHtml}
+                  <a id="btn-banner-ex" href="#" target="_blank" rel="noopener noreferrer" style="background:#2563eb; color:white; padding:0.5rem 1rem; border-radius:8px; font-weight:700; text-decoration:none; font-size:0.88rem; box-shadow:0 2px 4px rgba(37,99,235,0.2); transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">🏋️ 실습 (Exercise) 새 탭 열기</a>
+                  <a id="btn-banner-sol" href="#" target="_blank" rel="noopener noreferrer" style="background:#22c55e; color:white; padding:0.5rem 1rem; border-radius:8px; font-weight:700; text-decoration:none; font-size:0.88rem; box-shadow:0 2px 4px rgba(34,197,94,0.2); transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">✨ 완성본 (Solution) 새 탭 열기</a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          parsedHtml = bannerHtml + parsedHtml;
+        }
+
+        $content.innerHTML = parsedHtml;
+
+        // 🎯 배너 박스 내 레벨 선택 및 버튼 주소 연동 스크립트
+        if (currentStepDir) {
+          const $bannerSelect = document.querySelector('#banner-level-select');
+          const $btnBannerEx = document.querySelector('#btn-banner-ex');
+          const $btnBannerSol = document.querySelector('#btn-banner-sol');
+
+          function updateBannerLinks(file) {
+            let exFile = file || 'index.html';
+            let solFile = file || 'index.html';
+            if (!file) {
+              if (currentStepDir.includes('step-00')) { exFile = 'level-1-dom.html'; solFile = 'level-1-dom.html'; }
+              else if (currentStepDir.includes('step-01')) { exFile = 'declarative.html'; solFile = 'declarative.html'; }
+            }
+            $btnBannerEx.href = `./${currentStepDir}/exercise/${exFile}`;
+            $btnBannerSol.href = `./${currentStepDir}/solution/${solFile}`;
+          }
+
+          if ($bannerSelect) {
+            $bannerSelect.addEventListener('change', (e) => updateBannerLinks(e.target.value));
+            updateBannerLinks($bannerSelect.value);
+          } else {
+            updateBannerLinks(null);
+          }
+
+          // 🔗 본문 내 상대경로 실습 링크(exercise/..., solution/...) 자동 보정 및 새 탭 처리
           $content.querySelectorAll('a').forEach(a => {
+            if (a.id === 'btn-banner-ex' || a.id === 'btn-banner-sol') return;
             const rawHref = a.getAttribute('href');
             if (rawHref && !rawHref.startsWith('http') && !rawHref.startsWith('#')) {
-              // exercise/level-2-template.html -> ./steps/step-00-js-prerequisites/exercise/level-2-template.html
               const cleanHref = rawHref.replace(/^\.\//, '');
               a.href = `./${currentStepDir}/${cleanHref}`;
               a.target = '_blank';
