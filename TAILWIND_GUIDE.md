@@ -27,19 +27,32 @@
 
 ---
 
-## 🏢 2. 실무 운영용: Standalone CLI (정적 CSS 생성)
+## 🏢 2. 쌩 Django, Spring Boot, 쌩 바닐라에서 쓰는법 (Node.js 0%!)
 
-실무 상용 서비스에서는 브라우저 부담을 줄이기 위해 Tailwind CLI 명령어로 번들링된 정적 `.css` 파일을 불러오는 방식을 사용합니다.
+Node.js가 전혀 설치되어 있지 않은 **쌩 Django, Spring Boot, pure HTML** 환경에서도 Tailwind를 정적 파일로 빌드하는 2가지 전용 방법이 있습니다.
 
+### A. Tailwind Standalone CLI 실행 파일 다운로드 (추천! 👍)
+Tailwind 공식 팀은 Node.js가 없는 개발자를 위해 **단독 실행 파일(Executable Binary)**을 제공합니다.
+
+1. [Tailwind Standalone CLI 최신 Releases](https://github.com/tailwindcss/tailwindcss/releases) 에서 내 OS용 파일 다운로드 (예: `tailwindcss-windows-x64.exe`)
+2. 프로젝트 폴더에 넣고 터미널/CMD에서 실행:
 ```bash
-# Node.js 없이 실행 가능한 Tailwind Standalone CLI 명령 예시
-npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch
+# Node.js 0%! exe 실행 파일 1개로 정적 CSS 자동 빌드
+./tailwindcss-windows-x64.exe -i ./assets/css/input.css -o ./assets/css/output.css --watch
 ```
-
+3. HTML / Django 템플릿 / Spring Boot HTML 상단에서 불러오기:
 ```html
-<!-- 운영 환경에서는 빌드된 output.css 사용 -->
 <link rel="stylesheet" href="./assets/css/output.css">
 ```
+
+### B. Django 전용 라이브러리 사용 (`pytailwindcss`)
+```bash
+pip install pytailwindcss
+pytailwindcss -i input.css -o output.css --watch
+```
+
+### C. Spring Boot (Gradle 빌드에 자동화)
+Gradle `build.gradle` 스크립트에 Standalone CLI 실행 타스크를 등록해두면 `gradle build` 시 정적 `.css`가 자동으로 함께 생성됩니다.
 
 ---
 
