@@ -331,7 +331,8 @@
 
     // Document Fetch & Render Logic
     const params = new URLSearchParams(window.location.search);
-    const targetFile = params.get('file') || 'TEXTBOOK.md';
+    const rawTargetFile = params.get('file') || 'TEXTBOOK.md';
+    const targetFile = rawTargetFile.split('#')[0];
     const $docName = document.querySelector('#doc-name');
     const $content = document.querySelector('#content');
     const $tocList = document.querySelector('#toc-list');
