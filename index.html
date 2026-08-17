@@ -161,6 +161,16 @@
     }
     .step-badge.beginner { background: #fef3c7; color: #d97706; }
     .step-badge.final { background: #f3e8ff; color: #7c3aed; }
+    .time-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.4rem;
+    }
     .card h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
     .card p { color: #475569; font-size: 0.95rem; margin-bottom: 1.25rem; }
     .btn-group { display: flex; gap: 0.5rem; }
@@ -228,11 +238,19 @@
     <div class="progress-section">
       <div class="progress-header">
         <span class="progress-title">🎯 나의 커리큘럼 달성률</span>
-        <span id="progress-text">0% (0 / 10 단계 완료)</span>
+        <div style="display:flex; gap:0.8rem; align-items:center;">
+          <span id="progress-text">0% (0 / 10 단계 완료)</span>
+          <button id="btn-reset-progress" style="background:#ef4444; color:white; border:none; padding:0.25rem 0.6rem; border-radius:6px; font-size:0.78rem; cursor:pointer; font-weight:600; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">🔄 진도율 초기화</button>
+        </div>
       </div>
       <div class="progress-bar-bg">
         <div id="progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
       </div>
+    </div>
+
+    <!-- 🔍 실시간 단계 검색 필터 -->
+    <div style="margin-bottom: 1.5rem;">
+      <input type="text" id="search-input" placeholder="🔍 학습하고 싶은 키워드를 검색해 보세요 (예: 이벤트, 라우터, Proxy, 스토어, 렌더링, Web Components)..." style="width: 100%; padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#cbd5e1'">
     </div>
 
     <div class="grid">
@@ -240,6 +258,7 @@
       <div class="card">
         <div>
           <span class="step-badge beginner">STEP 00 (디딤돌)</span>
+          <span class="time-badge">⏱️ 15분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="0"> 학습 완료
           </label>
@@ -257,6 +276,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 01</span>
+          <span class="time-badge">⏱️ 20분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="1"> 학습 완료
           </label>
@@ -274,6 +294,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 02</span>
+          <span class="time-badge">⏱️ 30분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="2"> 학습 완료
           </label>
@@ -291,6 +312,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 03</span>
+          <span class="time-badge">⏱️ 30분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="3"> 학습 완료
           </label>
@@ -308,6 +330,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 04</span>
+          <span class="time-badge">⏱️ 35분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="4"> 학습 완료
           </label>
@@ -325,6 +348,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 05</span>
+          <span class="time-badge">⏱️ 45분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="5"> 학습 완료
           </label>
@@ -342,6 +366,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 06</span>
+          <span class="time-badge">⏱️ 40분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="6"> 학습 완료
           </label>
@@ -359,6 +384,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 07</span>
+          <span class="time-badge">⏱️ 45분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="7"> 학습 완료
           </label>
@@ -376,6 +402,7 @@
       <div class="card">
         <div>
           <span class="step-badge">STEP 08</span>
+          <span class="time-badge">⏱️ 35분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="8"> 학습 완료
           </label>
@@ -393,6 +420,7 @@
       <div class="card final-card">
         <div>
           <span class="step-badge final">STEP 09 (최종 캡스톤)</span>
+          <span class="time-badge">⏱️ 60분</span>
           <label class="step-checkbox-label">
             <input type="checkbox" class="step-check" data-step="9"> 학습 완료
           </label>
@@ -405,6 +433,7 @@
           <a class="btn btn-solution" href="./steps/step-09-final-project/solution/index.html">✨ 완성본 (Solution)</a>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -444,6 +473,28 @@
 
     checkboxes.forEach(cb => {
       cb.addEventListener('change', updateProgressUI);
+    });
+
+    // 🔍 실시간 키워드 검색 필터 스크립트
+    const $searchInput = document.querySelector('#search-input');
+    const $cards = document.querySelectorAll('.grid .card');
+
+    $searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      $cards.forEach($card => {
+        const text = $card.innerText.toLowerCase();
+        $card.style.display = text.includes(query) ? 'flex' : 'none';
+      });
+    });
+
+    // 🔄 진도율 초기화 스크립트
+    const $btnReset = document.querySelector('#btn-reset-progress');
+    $btnReset.addEventListener('click', () => {
+      if (confirm('진도율을 0%로 초기화하시겠습니까?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        checkboxes.forEach(cb => cb.checked = false);
+        updateProgressUI();
+      }
     });
 
     loadProgress();

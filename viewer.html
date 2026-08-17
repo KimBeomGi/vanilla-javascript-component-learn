@@ -235,7 +235,27 @@
       text-align: center;
       padding: 4rem 0;
       font-size: 1.2rem;
-      color: var(--text-muted);
+    .btn-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: transform 0.2s, opacity 0.2s;
+      z-index: 99;
+    }
+    .btn-top:hover {
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -263,6 +283,9 @@
       </ul>
     </aside>
   </div>
+
+  <!-- Floating Top Scroll Button -->
+  <button id="btn-top" class="btn-top" title="맨 위로 가기">🔝</button>
 
   <script>
     // Theme Toggle Logic
@@ -342,10 +365,18 @@
         a.href = `#${id}`;
         a.innerText = heading.innerText.replace(/^[#\s]+/, '');
 
-        li.appendChild(a);
-        $tocList.appendChild(li);
-      });
-    }
+    // Top Scroll Button Logic
+    const $btnTop = document.querySelector('#btn-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        $btnTop.style.display = 'flex';
+      } else {
+        $btnTop.style.display = 'none';
+      }
+    });
+    $btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     loadMarkdown();
   </script>
