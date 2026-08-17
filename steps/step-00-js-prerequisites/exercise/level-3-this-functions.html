@@ -16,7 +16,7 @@
 
   <div class="box">
     <h3>1. 함수 선언식 vs 표현식 vs 화살표 함수</h3>
-    <p>아래 3가지 방법으로 작성한 함수가 어떻게 실행되는지 콘솔(F12)에서 확인해 봅시다.</p>
+    <p>아래 3가지 방법으로 작성한 함수가 어떻게 실행되는지 확인해 봅시다.</p>
     <div id="output-func"></div>
   </div>
 
@@ -47,26 +47,16 @@
       화살표: ${addArrow(1, 2)}
     `;
 
-    // --- this 의 3대 법칙 실습 ---
+    // --- this 의 차이점 실습 ---
     const $btnFn = document.querySelector('#btn-fn');
     const $btnArrow = document.querySelector('#btn-arrow');
     const $outputThis = document.querySelector('#output-this');
 
-    // TODO: 일반 function() 클릭 시 this가 누군지 콘솔과 화면에 출력해보세요.
-    // ✏️ 작성하기:
-    $btnFn.addEventListener('click', function(e) {
-      // 일반 function 내부의 this는 나를 호출한 버튼 태그 자신입니다!
-      console.log('일반 function의 this:', this);
-      $outputThis.innerText = `일반 function의 this = [${this.tagName}#${this.id}]`;
-    });
+    // TODO 1: 일반 function() 버튼 클릭 시 this가 버튼 태그 자신임을 확인하고 화면에 출력하세요.
+    // ✏️ 작성하기: $btnFn.addEventListener('click', function(e) { ... });
 
-    // TODO: 화살표 함수 () => {} 클릭 시 this가 누군지 콘솔과 화면에 출력해보세요.
-    // ✏️ 작성하기:
-    $btnArrow.addEventListener('click', (e) => {
-      // 화살표 함수의 this는 나를 호출한 버튼이 아니라, 태어난 상위 스코프(Window 또는 Module)를 가리킵니다!
-      console.log('화살표 함수의 this:', this);
-      $outputThis.innerText = `화살표 함수의 this = [${this}] (태어난 상위 스코프 보존!)`;
-    });
+    // TODO 2: 화살표 함수 () => {} 버튼 클릭 시 this가 바깥 상위 스코프(Window/Module)를 가리킴을 확인하고 화면에 출력하세요.
+    // ✏️ 작성하기: $btnArrow.addEventListener('click', (e) => { ... });
   </script>
 </body>
 </html>
