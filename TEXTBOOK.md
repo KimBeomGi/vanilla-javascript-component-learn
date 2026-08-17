@@ -63,7 +63,7 @@ Live Server 켜는 방법이 궁금하시다면 **[SERVER_GUIDE.md](SERVER_GUIDE
 
 ---
 
-## 📌 [마당 00] 왕초보를 위한 3단계 사다리
+## 📌 [Chapter 00] 왕초보를 위한 3단계 사다리
 
 ### Level 1: `innerText` vs `innerHTML`
 - `.innerText = '안녕'` ➔ 글자 그대로 "안녕" 출력
@@ -100,7 +100,7 @@ const html = `<h2>안녕하세요, ${name}님!</h2>`;
 
 ---
 
-## 📌 [마당 01] 명령형 vs 선언적 렌더링 (Why Component?)
+## 📌 [Chapter 01] 명령형 vs 선언적 렌더링 (Why Component?)
 
 ### 💡 붕어빵 틀과 붕어빵 이야기 (비유로 이해하기)
 - **명령형(Imperative) 방식**: 붕어빵에 팥을 더 넣고 싶을 때, 다 구워진 붕어빵 옆구리를 칼로 찢어서 팥을 일일이 밀어 넣는 방식입니다. (`document.querySelector`로 일일이 글자 바꾸기)
@@ -108,7 +108,7 @@ const html = `<h2>안녕하세요, ${name}님!</h2>`;
 
 ---
 
-## 📌 [마당 02] `Component` 클래스 라이프사이클 완전 정복
+## 📌 [Chapter 02] `Component` 클래스 라이프사이클 완전 정복
 
 ### 🔄 컴포넌트 생애 주기 (Lifecycle Flow)
 
@@ -145,7 +145,7 @@ class Component {
 
 ---
 
-## 📌 [마당 03] 이벤트 위임 (Event Delegation) 패턴
+## 📌 [Chapter 03] 이벤트 위임 (Event Delegation) 패턴
 
 ### 💡 버블링(Bubbling)을 이용한 한 번의 이벤트 연결
 - 리스트 아이템이 1,000개일 때 개별 요소에 `addEventListener`를 걸면 메모리가 낭비되고 렌더링 시마다 이벤트를 다시 걸어야 합니다.
@@ -162,7 +162,7 @@ addEvent(eventType, selector, callback) {
 
 ---
 
-## 📌 [마당 04] 컴포넌트 분화 & Props 단방향 데이터 흐름
+## 📌 [Chapter 04] 컴포넌트 분화 & Props 단방향 데이터 흐름
 
 ### 🌲 단일 책임 원칙 (SRP)과 데이터 흐름
 - 하나의 거대한 파일에 모든 코드를 넣지 않고 `App.js` ➔ `ItemInput.js`, `ItemList.js`, `ItemFilter.js` 로 모듈을 분화합니다.
@@ -171,7 +171,7 @@ addEvent(eventType, selector, callback) {
 
 ---
 
-## 📌 [마당 05] 옵저버 패턴 & ES6 Proxy 기반 중앙 상태 관리 (Store)
+## 📌 [Chapter 05] 옵저버 패턴 & ES6 Proxy 기반 중앙 상태 관리 (Store)
 
 ### 🛒 Props Drilling 해결과 중앙 스토어
 - 부모-자식 관계가 5단계 깊어지면 props 전달이 매우 고통스럽습니다.
@@ -191,7 +191,7 @@ export const observable = obj => {
 
 ---
 
-## 📌 [마당 06] SPA (Single Page Application) 클라이언트 사이드 라우터
+## 📌 [Chapter 06] SPA (Single Page Application) 클라이언트 사이드 라우터
 
 ### 🧭 새로고침 없는 URL 라우팅 (`Router.js`)
 - 브라우저가 깜빡이는 F5 새로고침 없이 URL 해시(`window.location.hash`) 변경을 감지합니다.
@@ -199,7 +199,7 @@ export const observable = obj => {
 
 ---
 
-## 📌 [마당 07] 렌더링 최적화 & Virtual DOM Diffing
+## 📌 [Chapter 07] 렌더링 최적화 & Virtual DOM Diffing
 
 ### ⚡ `requestAnimationFrame` 배치 & 최소 DOM 갱신 (`diff.js`)
 - **Microtask Batching**: `setState()`가 100번 연속 연달아 불려도 `#renderScheduled` 플래그를 사용해 `requestAnimationFrame`으로 1프레임 모아 딱 1번만 렌더링합니다.
@@ -207,7 +207,7 @@ export const observable = obj => {
 
 ---
 
-## 📌 [마당 08] Web Components 함수 작성 규칙 및 `this` 스코프 완벽 해설
+## 📌 [Chapter 08] Web Components 함수 작성 규칙 및 `this` 스코프 완벽 해설
 
 웹 컴포넌트(`class MyComponent extends HTMLElement`) 클래스 내부에서 함수를 다룰 때의 핵심 규칙입니다:
 
@@ -227,5 +227,5 @@ export const observable = obj => {
 
 ---
 
-## 🏆 [마당 09] 최종 완성 프로젝트 지침
-모든 마당을 이수한 후 `steps/step-09-final-project/` 로 이동하여 장바구니, 수량 조절, 카테고리 필터링, 라우팅이 통합된 **바닐라 JS 커머스 SPA 프로젝트**를 도전해 보세요!
+## 🏆 [Chapter 09] 최종 완성 프로젝트 지침
+모든 챕터를 이수한 후 `steps/step-09-final-project/` 로 이동하여 장바구니, 수량 조절, 카테고리 필터링, 라우팅이 통합된 **바닐라 JS 커머스 SPA 프로젝트**를 도전해 보세요!
