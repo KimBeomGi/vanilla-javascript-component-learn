@@ -1,6 +1,18 @@
 # Step 00: [왕초보 디딤돌] `querySelector`만 알아도 시작하는 자바스크립트 4단계 사다리
 
-> **"자바스크립트 기초 문법부터 실무에서 매일 쓰는 핵심 문법까지 보조 설명과 비교 코드 예시로 완벽히 정복합니다!"**
+> **"자바스크립트 기초 문법부터 실무 핵심 문법까지, 다음 단계로 나아가기 위한 기초 체력을 기릅니다!"**
+
+---
+
+## 🔗 [누적 연결] 왜 이 디딤돌 단계가 필요한가요?
+
+- **현재 위치**: 자바스크립트 기초를 막 배우기 시작한 단계입니다.
+- **다음 Step 01과의 연결고리**: 다음 **Step 01**에서는 화면에 글자를 하나 바꿀 때 마다 일일이 조작하지 않고 `state`라는 상자에 데이터를 모아 두는 **선언적 렌더링**을 배우게 됩니다.
+- **Step 00에서 미리 다지는 무기**:
+  1. HTML 태그를 선택하는 `document.querySelector`
+  2. 태그 조립을 쉽게 해주는 백틱(`` ` ``) 템플릿 리터럴
+  3. 이벤트 핸들러에서 `this` 스코프를 안전하게 지켜주는 **화살표 함수 `() => {}`**
+  4. 컴포넌트 붕어빵 틀의 기반이 되는 ES6 **`class` 및 모듈(`type="module"`)**
 
 ---
 
@@ -55,10 +67,10 @@ document.querySelector('#user-name').innerText = userInput;
 
 ---
 
-### 2️⃣ Level 2: 백틱(`` ` ``)과 템플릿 리터럴
+### Level 2: 백틱(`` ` ``)과 템플릿 리터럴
 
 #### 📌 주 설명
-- 키보드 숫자 1 왼쪽의 물결(`~`) 자리에 있는 백틱(`` ` ``) 기호를 사용하면 줄바꿈과 자바스크립트 변수 `${변수}` 대입이 매우 편리해집니다.
+- 백틱(`` ` ``) 기호를 사용하면 줄바꿈과 자바스크립트 변수 `${변수}` 대입이 매우 편리해집니다.
 
 #### 💡 보조 설명: ❌ 따옴표 `+` 연산자 vs ⭕ 백틱 비교 예시
 ```javascript
@@ -79,22 +91,10 @@ const htmlModern = `
 
 ---
 
-### 3️⃣ Level 3: 함수 3형제 & `this` 정체 완전 타파 (⭐️⭐️⭐️)
+### Level 3: 함수 3형제 & `this` 정체 완전 타파 (⭐️⭐️⭐️)
 
 #### 📌 주 설명
 자바스크립트에는 함수를 만드는 3가지 방법이 있으며, `this` 키워드는 **"나를 실행하는 주체/배경"**을 의미합니다.
-
-#### 💡 보조 설명: 함수 3가지 작성 방식 코드 비교
-```javascript
-// 1. 함수 선언식 (Function Declaration) - 코드 어디서든 호출 가능(호이스팅)
-function add1(a, b) { return a + b; }
-
-// 2. 함수 표현식 (Function Expression) - 변수에 함수를 값으로 저장
-const add2 = function(a, b) { return a + b; };
-
-// 3. 화살표 함수 (Arrow Function) - ES6 백틱 조립과 가장 궁합이 좋고 짧은 문법!
-const add3 = (a, b) => a + b;
-```
 
 #### 💡 보조 설명: `this` 바인딩 3대 법칙 및 이벤트 비교 예시
 ```javascript
@@ -113,27 +113,11 @@ $button.addEventListener('click', (e) => {
 
 ---
 
-### 4️⃣ Level 4: 모듈(`type="module"`)과 `class` 기초
+### Level 4: 모듈(`type="module"`)과 `class` 기초
 
 #### 📌 주 설명
 - HTML 스크립트 태그에 `<script type="module" src="./app.js"></script>` 속성을 부여해야 파일 간 `import` / `export` 모듈 시스템이 동작합니다.
 - `class`는 컴포넌트의 붕어빵 틀(설계도)이고, `new` 키워드로 실제 화면에 부착할 붕어빵(인스턴스)을 찍어냅니다.
-
-#### 💡 보조 설명: 클래스 인스턴스 생성 예시
-```javascript
-class Counter {
-  constructor($target) {
-    this.$target = $target; // 부착 위치 기억
-    this.render();
-  }
-  render() {
-    this.$target.innerHTML = `<h3>카운터 컴포넌트 마운트 완료!</h3>`;
-  }
-}
-
-// new 키워드로 붕어빵 찍어내기!
-new Counter(document.querySelector('#app'));
-```
 
 ---
 

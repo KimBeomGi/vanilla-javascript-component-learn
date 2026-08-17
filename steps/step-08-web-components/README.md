@@ -4,6 +4,15 @@
 
 ---
 
+## 🔗 [누적 연결] 이전 Step 02~07과의 비교 및 사양 탐구
+
+- **Step 02~07까지 한 것**: 우리가 직접 자바스크립트 `Component` 클래스, `addEvent`, `Store`, `Router`, `diff` 프레임워크 엔진을 내손으로 만들었습니다.
+- **Step 08에서의 비교 탐구**: 
+  - 우리가 만든 프레임워크 대신, **브라우저(W3C)가 자체 내장 제공하는 표준 사양(`Custom Elements`, `Shadow DOM`)**을 살펴봅니다.
+  - `class MyCounter extends HTMLElement` 와 `this.attachShadow({ mode: 'open' })` 이 어떻게 외부 CSS 스타일과 100% 격리 막을 형성하는지 비교 체득합니다!
+
+---
+
 ## 🎯 학습 목표 (무엇을 배우나요?)
 
 1. 브라우저가 기본 내장한 표준 기술인 **Custom Elements**와 **Shadow DOM**을 배웁니다.
