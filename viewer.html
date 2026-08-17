@@ -269,6 +269,10 @@
     <div class="nav-left">
       <a href="./index.html" class="btn-back">← 메인 대시보드</a>
       <span class="doc-title-badge" id="doc-name">문서 로딩 중...</span>
+      <div id="step-quick-actions" style="display:none; gap:0.5rem; align-items:center; margin-left:0.5rem;">
+        <a id="btn-header-ex" class="btn-header-action" style="background:#2563eb; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">🏋️ 실습 열기 (새 탭)</a>
+        <a id="btn-header-sol" class="btn-header-action" style="background:#22c55e; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">✨ 완성본 열기 (새 탭)</a>
+      </div>
     </div>
     <button class="theme-toggle" id="btn-theme">🌙 다크 모드</button>
   </header>
@@ -318,8 +322,30 @@
     const $docName = document.querySelector('#doc-name');
     const $content = document.querySelector('#content');
     const $tocList = document.querySelector('#toc-list');
+    const $quickActions = document.querySelector('#step-quick-actions');
+    const $btnHeaderEx = document.querySelector('#btn-header-ex');
+    const $btnHeaderSol = document.querySelector('#btn-header-sol');
 
     $docName.innerText = `📄 ${targetFile}`;
+
+    // 🎯 챕터 가이드(README.md) 가이드 열었을 시 상단 header에 실습 & 완성본 새 탭 버튼 노출
+    if (targetFile.startsWith('steps/step-')) {
+      const stepDir = targetFile.substring(0, targetFile.lastIndexOf('/'));
+      let exFile = 'exercise/index.html';
+      let solFile = 'solution/index.html';
+
+      if (stepDir.includes('step-00')) {
+        exFile = 'exercise/level-1-dom.html';
+        solFile = 'solution/level-1-dom.html';
+      } else if (stepDir.includes('step-01')) {
+        exFile = 'exercise/declarative.html';
+        solFile = 'solution/declarative.html';
+      }
+
+      $btnHeaderEx.href = `./${stepDir}/${exFile}`;
+      $btnHeaderSol.href = `./${stepDir}/${solFile}`;
+      $quickActions.style.display = 'flex';
+    }
 
     async function loadMarkdown() {
       try {

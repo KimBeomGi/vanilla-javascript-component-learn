@@ -283,11 +283,21 @@
           </label>
           <h3>필수 ES6+ 자바스크립트 문법</h3>
           <p>모듈 시스템(import/export), Class 상속, 구조분해, Spread 연산자, map과 템플릿 리터럴 연습</p>
+
+          <div style="margin-top: 0.6rem; background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 8px;">
+            <div style="font-weight: 700; color: #475569; margin-bottom: 0.3rem; font-size: 0.82rem;">🎯 레벨 예제 선택:</div>
+            <select id="step00-level-select" style="width: 100%; padding: 0.35rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.82rem; background: white;" onchange="updateStep00Links(this.value)">
+              <option value="level-1-dom.html">Level 1: querySelector & 글자 바꾸기</option>
+              <option value="level-2-template.html">Level 2: 백틱(``) 템플릿 리터럴</option>
+              <option value="level-3-this-functions.html">Level 3: 함수 3형제 & this 바인딩</option>
+              <option value="level-4-module.html">Level 4: type="module" & class 맛보기</option>
+            </select>
+          </div>
         </div>
-        <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-00-js-prerequisites/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-00-js-prerequisites/exercise/level-1-dom.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-00-js-prerequisites/solution/level-1-dom.html">✨ 완성본 (Solution)</a>
+        <div class="btn-group" style="margin-top: 1rem;">
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-00-js-prerequisites/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a id="step00-ex-link" class="btn btn-exercise" href="./steps/step-00-js-prerequisites/exercise/level-1-dom.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a id="step00-sol-link" class="btn btn-solution" href="./steps/step-00-js-prerequisites/solution/level-1-dom.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -301,11 +311,20 @@
           </label>
           <h3>명령형 vs 선언적 렌더링</h3>
           <p>DOM 직접 조작과 선언적 상태 기반 렌더링의 코드 차이를 직접 작성해 봅니다.</p>
+
+          <div style="margin-top: 0.6rem; background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 8px;">
+            <div style="font-weight: 700; color: #475569; margin-bottom: 0.3rem; font-size: 0.82rem;">🎯 레벨 예제 선택:</div>
+            <select id="step01-level-select" style="width: 100%; padding: 0.35rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.82rem; background: white;" onchange="updateStep01Links(this.value)">
+              <option value="declarative.html">Level 1: 카운터 (선언적 렌더링)</option>
+              <option value="level-2-modal.html">Level 2: 모달 토글 (상태 기반 UI)</option>
+              <option value="imperative.html">Level 0: 옛날 명령형 비교 체험</option>
+            </select>
+          </div>
         </div>
-        <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-01-imperative-vs-declarative/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-01-imperative-vs-declarative/exercise/declarative.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-01-imperative-vs-declarative/solution/declarative.html">✨ 완성본 (Solution)</a>
+        <div class="btn-group" style="margin-top: 1rem;">
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-01-imperative-vs-declarative/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a id="step01-ex-link" class="btn btn-exercise" href="./steps/step-01-imperative-vs-declarative/exercise/declarative.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a id="step01-sol-link" class="btn btn-solution" href="./steps/step-01-imperative-vs-declarative/solution/declarative.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -321,9 +340,9 @@
           <p>setup, template, render, setState 라이프사이클을 캡슐화한 기본 클래스를 설계합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-02-component-class/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-02-component-class/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-02-component-class/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-02-component-class/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-02-component-class/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-02-component-class/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -339,9 +358,9 @@
           <p>버블링을 이용해 부모 요소에 이벤트를 1회 바인딩하는 addEvent 헬퍼를 작성합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-03-event-delegation/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-03-event-delegation/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-03-event-delegation/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-03-event-delegation/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-03-event-delegation/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-03-event-delegation/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -357,9 +376,9 @@
           <p>App, ItemInput, ItemList, ItemFilter로 모듈화하고 단방향 데이터 흐름을 구현합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-04-component-tree/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-04-component-tree/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-04-component-tree/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-04-component-tree/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-04-component-tree/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-04-component-tree/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -375,9 +394,9 @@
           <p>Proxy 기반의 observe/observable 옵저버 패턴을 작성하고 중앙 Store를 연동합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-05-store-pattern/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-05-store-pattern/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-05-store-pattern/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-05-store-pattern/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-05-store-pattern/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-05-store-pattern/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -393,9 +412,9 @@
           <p>History API / Hash 기반 라우터를 구현해 동적으로 페이지 컴포넌트를 교체합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-06-spa-router/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-06-spa-router/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-06-spa-router/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-06-spa-router/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-06-spa-router/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-06-spa-router/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -411,9 +430,9 @@
           <p>requestAnimationFrame 비동기 Batching 처리와 DOM Diffing 최소 업데이트를 적용합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-07-rendering-optimization/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-07-rendering-optimization/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-07-rendering-optimization/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-07-rendering-optimization/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-07-rendering-optimization/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-07-rendering-optimization/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -429,9 +448,9 @@
           <p>브라우저 표준 Custom Elements, Shadow DOM 과 직접 만든 클래스의 장단점을 비교합니다.</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-08-web-components/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-08-web-components/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-08-web-components/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-08-web-components/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-08-web-components/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-08-web-components/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
 
@@ -447,9 +466,9 @@
           <p>Component, 이벤트 위임, Store, SPA Router를 모두 총동원하여 완성하는 커머스 웹앱 프로젝트</p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-guide" href="./viewer.html?file=steps/step-09-final-project/README.md">📖 가이드</a>
-          <a class="btn btn-exercise" href="./steps/step-09-final-project/exercise/index.html">🏋️ 실습 (Exercise)</a>
-          <a class="btn btn-solution" href="./steps/step-09-final-project/solution/index.html">✨ 완성본 (Solution)</a>
+          <a class="btn btn-guide" href="./viewer.html?file=steps/step-09-final-project/README.md" target="_blank" rel="noopener noreferrer">📖 가이드</a>
+          <a class="btn btn-exercise" href="./steps/step-09-final-project/exercise/index.html" target="_blank" rel="noopener noreferrer">🏋️ 실습 (새 탭)</a>
+          <a class="btn btn-solution" href="./steps/step-09-final-project/solution/index.html" target="_blank" rel="noopener noreferrer">✨ 완성본 (새 탭)</a>
         </div>
       </div>
     </div>
@@ -514,6 +533,17 @@
         updateProgressUI();
       }
     });
+
+    // 🎯 Step 00 & Step 01 레벨 선택 시 링크 동적 변경 스크립트
+    window.updateStep00Links = function(file) {
+      document.querySelector('#step00-ex-link').href = `./steps/step-00-js-prerequisites/exercise/${file}`;
+      document.querySelector('#step00-sol-link').href = `./steps/step-00-js-prerequisites/solution/${file}`;
+    };
+
+    window.updateStep01Links = function(file) {
+      document.querySelector('#step01-ex-link').href = `./steps/step-01-imperative-vs-declarative/exercise/${file}`;
+      document.querySelector('#step01-sol-link').href = `./steps/step-01-imperative-vs-declarative/solution/${file}`;
+    };
 
     loadProgress();
   </script>
