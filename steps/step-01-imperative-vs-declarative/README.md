@@ -24,15 +24,15 @@
 
 ## 📋 1-2-3단계 실습 순서 (Level 1 ~ Level 2 연습)
 
-1. **`exercise/declarative.html` (Level 1: 카운터)**: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 기본 구조 완성하기
+1. **`exercise/level-1-declarative.html` (Level 1: 카운터)**: `state` 데이터만 수정하고 `render()`를 부르는 `setState()` 기본 구조 완성하기
 2. **`exercise/level-2-modal.html` (Level 2: 모달 토글)**: `state.isOpen` 조건에 따라 화면 조각을 그리고 `setState({ isOpen: !state.isOpen })` 호출하기
-3. **`exercise/imperative.html`**: 옛날 방식 명령형 코드와 비교하여 선언적 방식의 압도적 편리함 체감하기
+3. **`exercise/level-0-imperative.html`**: 옛날 방식 명령형 코드와 비교하여 선언적 방식의 압도적 편리함 체감하기
 
 ---
 
 ## ✍️ TODO 1-2-3 실습 가이드 (어떻게 작성해야 하나요?)
 
-### 1. `declarative.html` TODO 가이드
+### 1. `level-1-declarative.html` TODO 가이드
 - **`TODO 1`**: `render()` 안에서 `state.count` 변수값을 삼항 연산자나 백틱 `${state.count}` 으로 템플릿에 합치기
 - **`TODO 2`**: 버튼 클릭 이벤트 안에서 직접 count 숫자를 올리지 않고 `setState({ count: state.count + 1 })` 호출하기
 - **`TODO 3`**: `setState(newState)` 안에서 전개 연산자로 `state = { ...state, ...newState }` 복사 후 `render()` 부르기

@@ -367,9 +367,9 @@
           } else if (currentStepDir.includes('step-01')) {
             selectHtml = `
               <select id="banner-level-select" style="padding:0.45rem 0.75rem; border-radius:8px; border:1px solid #cbd5e1; background:white; font-weight:700; font-size:0.85rem; color:#1e293b; cursor:pointer;">
-                <option value="declarative.html">Level 1: 카운터 (선언적 렌더링)</option>
+                <option value="level-1-declarative.html">Level 1: 카운터 (선언적 렌더링)</option>
                 <option value="level-2-modal.html">Level 2: 모달 토글 (상태 기반 UI)</option>
-                <option value="imperative.html">Level 0: 옛날 명령형 비교 체험</option>
+                <option value="level-0-imperative.html">Level 0: 옛날 명령형 비교 체험</option>
               </select>
             `;
           }
@@ -406,7 +406,7 @@
             let solFile = file || 'index.html';
             if (!file) {
               if (currentStepDir.includes('step-00')) { exFile = 'level-1-dom.html'; solFile = 'level-1-dom.html'; }
-              else if (currentStepDir.includes('step-01')) { exFile = 'declarative.html'; solFile = 'declarative.html'; }
+              else if (currentStepDir.includes('step-01')) { exFile = 'level-1-declarative.html'; solFile = 'level-1-declarative.html'; }
             }
             $btnBannerEx.href = `./${currentStepDir}/exercise/${exFile}`;
             $btnBannerSol.href = `./${currentStepDir}/solution/${solFile}`;
