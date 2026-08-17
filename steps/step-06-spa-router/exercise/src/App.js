@@ -12,8 +12,9 @@ export default class App extends Component {
   }
   mounted() {
     const $view = this.$target.querySelector('#router-view');
-    const router = new Router($view);
-    router.addRoute('/', HomePage).addRoute('/about', AboutPage).addRoute('*', NotFoundPage);
-    router.renderRoute();
+    // TODO: Router 인스턴스를 생성하고 .addRoute() 및 .renderRoute()를 부르세요.
+    // const router = new Router($view);
+    // router.addRoute('/', HomePage).addRoute('/about', AboutPage).addRoute('*', NotFoundPage);
+    // router.renderRoute();
   }
 }

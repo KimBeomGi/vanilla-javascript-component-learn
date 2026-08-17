@@ -19,7 +19,8 @@ export default class ItemList extends Component {
   }
   setEvent() {
     const { toggleItem, deleteItem } = this.props;
-    this.addEvent('click', '.btn-toggle', e => toggleItem?.(Number(e.target.closest('li').dataset.id)));
-    this.addEvent('click', '.btn-delete', e => deleteItem?.(Number(e.target.closest('li').dataset.id)));
+    // TODO: addEvent를 사용하여 .btn-toggle 및 .btn-delete 클릭 시 콜백을 호출하세요.
+    // this.addEvent('click', '.btn-toggle', e => toggleItem?.(Number(e.target.closest('li').dataset.id)));
+    // this.addEvent('click', '.btn-delete', e => deleteItem?.(Number(e.target.closest('li').dataset.id)));
   }
 }

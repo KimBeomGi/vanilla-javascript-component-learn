@@ -26,8 +26,8 @@ export default class Component {
   addEvent(eventType, selector, callback) {
     this.$target.addEventListener(eventType, (event) => {
       // ✏️ event.target이 selector 요소를 포함/매칭(closest)하는지 확인하고 callback(event)를 호출하도록 작성해 보세요.
-      if (!event.target.closest(selector)) return false;
-      callback(event);
+      // if (!event.target.closest(selector)) return false;
+      // callback(event);
     });
   }
 

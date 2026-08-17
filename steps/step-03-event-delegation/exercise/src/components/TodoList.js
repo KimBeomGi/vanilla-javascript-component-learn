@@ -34,6 +34,7 @@ export default class TodoList extends Component {
     this.addEvent('submit', '.todo-form', (e) => {
       e.preventDefault();
       // ✏️ 작성하기
+      
     });
 
     // TODO 2: addEvent를 사용하여 .btn-delete 클릭 삭제 이벤트를 위임 처리하세요.

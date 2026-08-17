@@ -40,4 +40,4 @@ export class MyCounter extends HTMLElement {
 }
 
 // TODO 2: customElements.define으로 등록해 보세요.
-customElements.define('my-counter', MyCounter);
+// customElements.define('my-counter', MyCounter);

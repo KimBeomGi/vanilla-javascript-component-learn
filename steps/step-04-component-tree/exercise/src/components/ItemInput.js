@@ -11,11 +11,12 @@ export default class ItemInput extends Component {
   }
   setEvent() {
     const { addItem } = this.props;
-    this.addEvent('submit', '.item-input-form', (e) => {
-      e.preventDefault();
-      const $input = this.$target.querySelector('.item-input');
-      const text = $input.value.trim();
-      if (text) addItem(text);
-    });
+    // TODO: addEvent를 사용하여 .item-input-form submit 시 addItem(text) 콜백을 호출하세요.
+    // this.addEvent('submit', '.item-input-form', (e) => {
+    //   e.preventDefault();
+    //   const $input = this.$target.querySelector('.item-input');
+    //   const text = $input.value.trim();
+    //   if (text) addItem(text);
+    // });
   }
 }

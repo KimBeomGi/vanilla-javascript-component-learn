@@ -13,6 +13,7 @@ export default class ItemFilter extends Component {
   }
   setEvent() {
     const { filterItem } = this.props;
-    this.addEvent('click', '.btn-filter', e => filterItem?.(Number(e.target.dataset.isFilter)));
+    // TODO: addEvent를 사용하여 .btn-filter 클릭 시 filterItem 콜백을 호출하세요.
+    // this.addEvent('click', '.btn-filter', e => filterItem?.(Number(e.target.dataset.isFilter)));
   }
 }
