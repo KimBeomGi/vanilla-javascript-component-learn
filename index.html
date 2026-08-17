@@ -188,6 +188,25 @@
     .btn-exercise:hover { background: #2563eb; }
     .btn-solution { background: #22c55e; color: white; }
     .btn-solution:hover { background: #16a34a; }
+    .search-wrapper {
+      max-width: 580px;
+      margin: 0 auto 1.8rem auto;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.4rem;
+      border-radius: 50px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.95rem;
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
+      background: white;
+    }
+    .search-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.18);
+    }
   </style>
 </head>
 <body>
@@ -249,8 +268,8 @@
     </div>
 
     <!-- 🔍 실시간 단계 검색 필터 -->
-    <div style="margin-bottom: 1.5rem;">
-      <input type="text" id="search-input" placeholder="🔍 학습하고 싶은 키워드를 검색해 보세요 (예: 이벤트, 라우터, Proxy, 스토어, 렌더링, Web Components)..." style="width: 100%; padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#cbd5e1'">
+    <div class="search-wrapper">
+      <input type="text" id="search-input" class="search-input" placeholder="🔍 학습하고 싶은 키워드를 검색해 보세요 (예: 이벤트, 라우터, Proxy, 스토어)...">
     </div>
 
     <div class="grid">
