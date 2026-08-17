@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📖 Vanilla JS Component Doc Viewer</title>
+
+  <!-- Marked.js & Highlight.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #1e293b;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --code-bg: #0f172a;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Top Nav Header */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-back {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-back:hover { opacity: 0.9; }
+
+    .doc-title-badge {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Layout Main */
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+    }
+
+    /* Article Content */
+    article.markdown-body {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      min-width: 0;
+    }
+
+    article.markdown-body h1 {
+      font-size: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    article.markdown-body h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+    }
+
+    article.markdown-body h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    article.markdown-body pre {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 1.2rem;
+      overflow-x: auto;
+    }
+
+    article.markdown-body code {
+      font-family: 'Fira Code', Consolas, Monaco, monospace;
+      font-size: 0.92rem;
+    }
+
+    article.markdown-body p code, article.markdown-body li code {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    article.markdown-body blockquote {
+      border-left: 4px solid var(--primary);
+      margin: 1.5rem 0;
+      padding: 0.8rem 1.2rem;
+      background: rgba(37, 99, 235, 0.05);
+      border-radius: 0 8px 8px 0;
+    }
+
+    article.markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    article.markdown-body th, article.markdown-body td {
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    article.markdown-body th {
+      background: rgba(37, 99, 235, 0.08);
+      font-weight: 700;
+    }
+
+    /* TOC Sidebar */
+    .toc-sidebar {
+      position: sticky;
+      top: 5rem;
+      height: fit-content;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .toc-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-list a:hover {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .toc-list li.depth-3 {
+      padding-left: 1rem;
+    }
+
+    .loading-spinner {
+      text-align: center;
+      padding: 4rem 0;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="./index.html" class="btn-back">← 메인 대시보드</a>
+      <span class="doc-title-badge" id="doc-name">문서 로딩 중...</span>
+    </div>
+    <button class="theme-toggle" id="btn-theme">🌙 다크 모드</button>
+  </header>
+
+  <!-- Main Document Layout -->
+  <div class="layout">
+    <article class="markdown-body" id="content">
+      <div class="loading-spinner">⏳ 문서를 조화롭게 변환하는 중입니다...</div>
+    </article>
+
+    <aside class="toc-sidebar">
+      <div class="toc-title">📋 문서 목차 (TOC)</div>
+      <ul class="toc-list" id="toc-list">
+        <li>목차 생성 중...</li>
+      </ul>
+    </aside>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const $btnTheme = document.querySelector('#btn-theme');
+    let isDark = localStorage.getItem('doc_viewer_theme') === 'dark';
+
+    function applyTheme() {
+      if (isDark) {
+        document.body.setAttribute('data-theme', 'dark');
+        $btnTheme.innerText = '☀️ 라이트 모드';
+      } else {
+        document.body.removeAttribute('data-theme');
+        $btnTheme.innerText = '🌙 다크 모드';
+      }
+      localStorage.setItem('doc_viewer_theme', isDark ? 'dark' : 'light');
+    }
+
+    $btnTheme.addEventListener('click', () => {
+      isDark = !isDark;
+      applyTheme();
+    });
+    applyTheme();
+
+    // Document Fetch & Render Logic
+    const params = new URLSearchParams(window.location.search);
+    const targetFile = params.get('file') || 'TEXTBOOK.md';
+    const $docName = document.querySelector('#doc-name');
+    const $content = document.querySelector('#content');
+    const $tocList = document.querySelector('#toc-list');
+
+    $docName.innerText = `📄 ${targetFile}`;
+
+    async function loadMarkdown() {
+      try {
+        const response = await fetch(`./${targetFile}`);
+        if (!response.ok) throw new Error(`파일을 찾을 수 없습니다: ${targetFile}`);
+        const markdown = await response.text();
+
+        // Convert Markdown to HTML using marked.js
+        $content.innerHTML = marked.parse(markdown);
+
+        // Highlight Code Blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightElement(block);
+        });
+
+        // Build Table of Contents
+        buildTOC();
+      } catch (err) {
+        $content.innerHTML = `
+          <div style="color: #dc2626; padding: 2rem; background: rgba(220, 38, 38, 0.1); border-radius: 8px;">
+            <h2>⚠️ 문서 로딩 실패</h2>
+            <p>${err.message}</p>
+            <a href="./index.html" style="color: var(--primary);">← 메인 대시보드로 돌아가기</a>
+          </div>
+        `;
+      }
+    }
+
+    function buildTOC() {
+      const headings = $content.querySelectorAll('h2, h3');
+      $tocList.innerHTML = '';
+
+      if (headings.length === 0) {
+        $tocList.innerHTML = '<li>목차가 없습니다.</li>';
+        return;
+      }
+
+      headings.forEach((heading, idx) => {
+        const id = `heading-${idx}`;
+        heading.id = id;
+
+        const li = document.createElement('li');
+        if (heading.tagName === 'H3') li.classList.add('depth-3');
+
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.innerText = heading.innerText.replace(/^[#\s]+/, '');
+
+        li.appendChild(a);
+        $tocList.appendChild(li);
+      });
+    }
+
+    loadMarkdown();
+  </script>
+</body>
+</html>
