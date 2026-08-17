@@ -4,54 +4,15 @@
 
 ---
 
-## 💡 Web Components 주요 개념 및 함수 작성 규칙
+## 📋 1-2-3 실습 순서 (무엇부터 작성하나요?)
 
-### 1️⃣ 라이프사이클 메서드 (클래스 메서드 문법)
-- `connectedCallback()`: 컴포넌트가 DOM에 부착될 때 브라우저가 자동 호출
-- `disconnectedCallback()`: 컴포넌트가 DOM에서 제거될 때 호출 (클린업 작업)
-- `attributeChangedCallback(name, oldVal, newVal)`: 관찰 중인 속성(`observedAttributes`)이 변경될 때 호출
-
-### 2️⃣ 이벤트 핸들러 및 `this` 바인딩 (화살표 함수 필드 문법)
-Web Component 내부에서 이벤트 핸들러를 정의할 때는 **화살표 함수 클래스 필드**(`handleClick = (e) => { ... }`)를 사용하는 것이 정석입니다.
-
-```javascript
-class MyCounter extends HTMLElement {
-  count = 0;
-
-  // ⭕ 화살표 함수로 정의하여 'this'가 항상 <my-counter> 태그를 가리키도록 고정!
-  handleClick = () => {
-    this.count++;
-    this.render();
-  };
-
-  connectedCallback() {
-    this.attachShadow({ mode: 'open' });
-    this.render();
-  }
-
-  render() {
-    this.shadowRoot.innerHTML = `
-      <style>button { padding: 8px 16px; font-weight: bold; }</style>
-      <button class="btn-inc">카운트: ${this.count}</button>
-    `;
-
-    // 이벤트 리스너 바인딩
-    this.shadowRoot.querySelector('.btn-inc').addEventListener('click', this.handleClick);
-  }
-}
-
-// 브라우저 커스텀 태그 등록
-customElements.define('my-counter', MyCounter);
-```
+1. 1️⃣ **`exercise/src/components/MyCounter.js`**: `constructor()` 내부에서 `this.attachShadow({ mode: 'open' })` 및 맨 하단 `customElements.define('my-counter', MyCounter)`를 완성하세요!
+2. 2️⃣ **`exercise/index.html`**: 브라우저에서 HTML 태그인 `<my-counter count="10"></my-counter>`가 캡슐화되어 커스텀 태그로 정상 출력되는지 확인하세요!
 
 ---
 
-## 🎯 학습 미션
-- `exercise/` 디렉토리의 `MyCounter.js`에서 `customElements.define` 등록 및 Shadow DOM 마운트 구조를 완성해 보세요.
-- 막히면 `solution/` 완성본 코드를 확인하세요!
+## 🎯 학습 목표
 
----
-
-## 📂 디렉토리 구조
-- `exercise/`: 직접 코딩해 보는 **실습용 가이드 파일 (Starter)**
-- `solution/`: "짜잔~" 하고 완벽히 작동하는 **완성본 정답 코드 (Solution)**
+1. 브라우저 표준 기술인 **Custom Elements**와 **Shadow DOM**의 스타일 캡슐화 원리를 체득합니다.
+2. `connectedCallback`, `attributeChangedCallback` 브라우저 표준 라이프사이클을 이해합니다.
+3. Web Components 내부에서 화살표 함수 필드로 이벤트 핸들러의 `this` 스코프를 안전하게 보존합니다.

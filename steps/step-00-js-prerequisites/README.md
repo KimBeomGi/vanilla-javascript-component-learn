@@ -4,21 +4,21 @@
 
 ---
 
+## 📋 1-2-3 실습 순서 (무엇부터 작성하나요?)
+
+초보자분들은 아래 순서대로 파일에 들어가서 `// TODO:` 빈칸을 채워나가시면 됩니다!
+
+1. 1️⃣ **`exercise/level-1-dom.html`**: `.innerText`와 `.innerHTML`로 화면 글자 바꾸기부터 시작!
+2. 2️⃣ **`exercise/level-2-template.html`**: 백틱(`` ` ``) 기호로 `user` 정보가 담긴 HTML 카드 조립!
+3. 3️⃣ **`exercise/level-3-module.html`**: `type="module"` 환경에서 `class` 인스턴스 마운트 체험!
+
+---
+
 ## 🎯 학습 목표
 
 1. `document.querySelector`를 사용하여 DOM 요소를 탐색하고, `.innerText`와 `.innerHTML`의 결정적 차이를 이해합니다.
 2. 백틱(`` ` ``) 기호와 `${변수}` 템플릿 리터럴을 활용하여 자바스크립트로 동적 HTML 조각을 조립합니다.
 3. ES6 모듈 시스템(`import`/`export`)과 `class`의 기본 개념을 체득하여 컴포넌트 아키텍처에 들어갈 준비를 마칩니다.
-
----
-
-## 🐣 3단계 실습 안내
-
-| 레벨 | 실습 파일 경로 | 학습 미션 |
-| :---: | :--- | :--- |
-| **Level 1** | `exercise/level-1-dom.html` | `.innerText`와 `.innerHTML`로 화면 글자 및 HTML 변경하기 |
-| **Level 2** | `exercise/level-2-template.html` | 백틱(`` ` ``)을 사용해 `user` 객체 정보를 HTML 카드로 완성하기 |
-| **Level 3** | `exercise/level-3-module.html` | `type="module"` 스크립트 환경에서 `new Greeting()` 클래스 인스턴스 생성하기 |
 
 ---
 
@@ -37,12 +37,3 @@ const html = `<h2>이름: ${user.name} (${user.age}세)</h2>`;
 
 ### 3계명: ES6 모듈 시스템 (`import`와 `export`)
 - HTML에서 JS를 불러올 때 `<script type="module" src="./main.js"></script>` 속성을 부여해야 파일 간 `import/export`가 작동합니다.
-
----
-
-## 📂 실습 과제 수행 방법
-
-1. `exercise/level-1-dom.html` 파일을 VS Code에서 엽니다.
-2. `<script>` 태그 내부의 `// TODO 1:`, `// TODO 2:` 가이드 주석을 확인합니다.
-3. `// ✏️ 작성해보기` 아래 빈칸에 코드를 입력하고 저정한 뒤, `Live Server`로 브라우저 결과를 확인합니다.
-4. 막히거나 확인하고 싶을 땐 `solution/level-1-dom.html` 정답 코드를 참고하세요!
