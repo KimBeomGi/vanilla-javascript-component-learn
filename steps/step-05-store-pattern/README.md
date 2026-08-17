@@ -14,17 +14,19 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/observer.js`** 열기: ES6 `Proxy` 트랩의 `get` (구독: `observers.add`)과 `set` (통지: `observers.forEach`) 작성하기
-2. 2️⃣ **`exercise/src/core/Store.js`** 열기: 중앙 상태 변경을 담당하는 `commit()`과 `dispatch()` 작성하기
-3. 3️⃣ **`exercise/src/App.js`** 열기: 중앙 스토어를 구독하는 컴포넌트 동작 확인하기
+1. 1️⃣ **`exercise/src/core/observer.js`**: ES6 `Proxy` 트랩의 `get` (구독: `observers.add`)과 `set` (통지: `observers.forEach`) 작성하기
+2. 2️⃣ **`exercise/src/core/Store.js`**: 중앙 상태 변경을 담당하는 `commit()`과 `dispatch()` 작성하기
+3. 3️⃣ **`exercise/src/App.js`**: 중앙 스토어를 구독하는 컴포넌트 동작 확인하기
 
 ---
 
-## 💡 은행 통장 알림 비유로 이해하는 옵저버 원리
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
+
+### 🛒 은행 통장 알림 비유로 이해하는 옵저버 원리
 
 - 은행 계좌(`Store state`)에 돈이 입출금(`set`)되면, 계좌에 등록된 스마트폰(`observe` 구독 컴포넌트)으로 **"입금되었습니다!"** 하고 문자(알림)가 날아가 화면이 자동으로 재렌더링되는 원리입니다!
 
-### 💻 `observer.js` 한 줄 한 줄 풀이
+#### 💡 보조 설명: `observer.js` 코드 한 줄 한 줄 풀이
 ```javascript
 let currentObserver = null; // 현재 어떤 컴포넌트가 감시 중인지 기록할 변수
 

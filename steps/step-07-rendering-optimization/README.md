@@ -14,18 +14,28 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Component.js`** 열기: `setState()` 안에서 `#renderScheduled` 플래그와 `requestAnimationFrame()` 배치 코드 작성하기
-2. 2️⃣ **`exercise/src/core/diff.js`** 열기: 실제 DOM과 가상 DOM을 비교해 변경점만 최소 갱신하는 `updateElement()` 함수 완성하기
-3. 3️⃣ **`exercise/index.html`** 열기: 100회 연속 업데이트 버튼을 눌렀을 때 화면이 1번만 그려지는지 콘솔에서 확인하기
+1. 1️⃣ **`exercise/src/core/Component.js`**: `setState()` 안에서 `#renderScheduled` 플래그와 `requestAnimationFrame()` 배치 코드 작성하기
+2. 2️⃣ **`exercise/src/core/diff.js`**: 실제 DOM과 가상 DOM을 비교해 변경점만 최소 갱신하는 `updateElement()` 함수 완성하기
+3. 3️⃣ **`exercise/index.html`**: 100회 연속 업데이트 버튼을 눌렀을 때 화면이 1번만 그려지는지 콘솔에서 확인하기
 
 ---
 
-## 💡 2대 최적화 핵심 기법 풀이
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
 ### 1️⃣ 비동기 배치 렌더링 (Microtask Batching)
+
+#### 📌 주 설명
 - `setState()`가 반복문 안에서 100번 불려도, `#renderScheduled` 예약 플래그를 활용해 `requestAnimationFrame()`으로 1프레임(초당 60프레임) 모아 딱 1번만 `render()`를 수행합니다.
 
+#### 💡 보조 설명: ❌ 매번 render() vs ⭕ 1프레임 배치 render() 코드 비교
 ```javascript
+// ❌ 매번 렌더링 (100번 연달아 setState 부르면 100번 DOM을 싹 엎어버려서 버벅임 발생!)
+setState(newState) {
+  this.state = { ...this.state, ...newState };
+  this.render(); // 💥 100번 불려 화면이 하얗게 멈춤!
+}
+
+// ⭕ 비동기 배치 렌더링 (100번 불려도 예약 플래그로 1프레임에 딱 1번만 모아 그림!)
 setState(newState) {
   this.state = { ...this.state, ...newState };
   if (!this.#renderScheduled) {
@@ -38,7 +48,11 @@ setState(newState) {
 }
 ```
 
+---
+
 ### 2️⃣ DOM Diffing 최소 갱신 (`diff.js`)
+
+#### 📌 주 설명
 - 전체 DOM을 지우고 새로 그리지 않고, 바뀐 텍스트 노드나 `class` 속성만 비교해서 핀포인트로 그 부분만 쏙 교체합니다.
 
 ---

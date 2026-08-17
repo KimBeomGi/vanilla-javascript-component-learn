@@ -14,23 +14,20 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/components/MyCounter.js`** 열기: `constructor()` 내부에서 `this.attachShadow({ mode: 'open' })` 및 맨 아래 `customElements.define('my-counter', MyCounter)` 작성하기
-2. 2️⃣ **`exercise/index.html`** 열기: 브라우저에서 커스텀 태그인 `<my-counter count="10"></my-counter>` 가 깔끔하게 출력되는지 확인하기
+1. 1️⃣ **`exercise/src/components/MyCounter.js`**: `constructor()` 내부에서 `this.attachShadow({ mode: 'open' })` 및 맨 아래 `customElements.define('my-counter', MyCounter)` 작성하기
+2. 2️⃣ **`exercise/index.html`**: 브라우저에서 커스텀 태그인 `<my-counter count="10"></my-counter>` 가 깔끔하게 출력되는지 확인하기
 
 ---
 
-## 💡 Web Components 주요 사양 & `this` 스코프 규칙
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ 표준 라이프사이클 함수 (클래스 메서드 문법)
-- `connectedCallback()`: 컴포넌트 태그가 DOM에 붙는 순간 브라우저가 자동 호출
-- `attributeChangedCallback(name, oldVal, newVal)`: 속성이 바뀌면 자동 호출
+### 1️⃣ Web Components 주요 사양 & `this` 스코프 규칙
 
-### 2️⃣ 이벤트 핸들러와 `this` (화살표 함수 필드 문법)
-- 클래스 내부에서 `handleClick = (e) => { ... }` 처럼 화살표 함수 필드로 작성해야 `this`가 항상 커스텀 태그 본체를 가리킵니다.
+#### 📌 주 설명
+- `connectedCallback()`: 컴포넌트 태그가 DOM에 붙는 순간 브라우저가 자동 호출하는 라이프사이클 메서드
+- `attributeChangedCallback(name, oldVal, newVal)`: 속성이 바뀌면 자동 호출되는 라이프사이클 메서드
 
-### 3️⃣ Shadow DOM 캡슐화
-- `this.attachShadow({ mode: 'open' })`을 사용하면 CSS 스타일이 외부와 완전히 격리되어 부모 사이트 CSS와 충돌하지 않습니다!
-
+#### 💡 보조 설명: Web Components 클래스 표준 예시
 ```javascript
 class MyCounter extends HTMLElement {
   #count = 0; #shadow;

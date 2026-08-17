@@ -24,7 +24,9 @@
 
 ---
 
-## 🏗️ 캡스톤 프로젝트 전체 모듈 아키텍처
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
+
+### 🏗️ 캡스톤 프로젝트 전체 모듈 아키텍처
 
 ```text
 src/
@@ -40,6 +42,14 @@ src/
 ├── pages/
 │   └── Pages.js          # ProductListPage, CartPage 페이지 컴포넌트
 └── App.js                # 최상위 쉘 앱
+```
+
+#### 💡 보조 설명: LocalStorage 장바구니 동기화 코드 패턴
+```javascript
+// 스토어 상태 변경 시 LocalStorage에 자동 저장
+observe(() => {
+  localStorage.setItem('shopping_cart', JSON.stringify(store.state.cart));
+});
 ```
 
 ---

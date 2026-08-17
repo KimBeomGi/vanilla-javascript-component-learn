@@ -14,14 +14,21 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/core/Router.js`** 열기: `renderRoute()` 내부에서 `window.location.hash` 주소를 매칭하는 코드 작성하기
-2. 2️⃣ **`exercise/src/App.js`** 열기: `mounted()` 안에서 `new Router()` 인스턴스를 만들고 `.addRoute()`로 페이지 등록하기
-3. 3️⃣ **`exercise/index.html`** 열기: 상단 메뉴를 눌러 새로고침 없이 페이지가 착착 바뀌는지 확인하기
+1. 1️⃣ **`exercise/src/core/Router.js`**: `renderRoute()` 내부에서 `window.location.hash` 주소를 매칭하는 코드 작성하기
+2. 2️⃣ **`exercise/src/App.js`**: `mounted()` 안에서 `new Router()` 인스턴스를 만들고 `.addRoute()`로 페이지 등록하기
+3. 3️⃣ **`exercise/index.html`**: 상단 메뉴를 눌러 새로고침 없이 페이지가 착착 바뀌는지 확인하기
 
 ---
 
-## 💡 `Router.js` 라우팅 동작 한 줄 한 줄 풀이
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
+### 🧭 클라이언트 사이드 라우팅 동작 원리
+
+#### 📌 주 설명
+- 브라우저는 기본적으로 `<a href="/cart.html">` 링크를 누르면 웹서버에 새 HTML 파일을 요청하여 브라우저가 하얗게 깜빡이는 F5 새로고침을 일으킵니다.
+- SPA 라우터는 `#` (해시) 변경을 감지하여 자바스크립트가 기존 화면을 지우고 `new CartPage($app)` 컴포넌트만 1초 만에 갈아끼웁니다.
+
+#### 💡 보조 설명: `Router.js` 라우팅 코드 한 줄 한 줄 풀이
 ```javascript
 export class Router {
   #routes = []; #$target;

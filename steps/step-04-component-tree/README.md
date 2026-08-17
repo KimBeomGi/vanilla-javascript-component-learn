@@ -14,14 +14,16 @@
 
 ## 📋 1-2-3 실습 순서 (무엇부터 하나요?)
 
-1. 1️⃣ **`exercise/src/components/ItemInput.js`** 열기: `setEvent()`에서 부모가 준 `addItem` 콜백 호출하기
-2. 2️⃣ **`exercise/src/components/ItemList.js`** 열기: `setEvent()`에서 `toggleItem`, `deleteItem` 콜백 호출하기
-3. 3️⃣ **`exercise/src/components/ItemFilter.js`** 열기: `setEvent()`에서 `filterItem` 콜백 호출하기
-4. 4️⃣ **`exercise/src/App.js`** 열기: `mounted()` 안에서 `new ItemInput()`, `new ItemList()`, `new ItemFilter()` 자식 부착하기
+1. 1️⃣ **`exercise/src/components/ItemInput.js`**: `setEvent()`에서 부모가 준 `addItem` 콜백 호출하기
+2. 2️⃣ **`exercise/src/components/ItemList.js`**: `setEvent()`에서 `toggleItem`, `deleteItem` 콜백 호출하기
+3. 3️⃣ **`exercise/src/components/ItemFilter.js`**: `setEvent()`에서 `filterItem` 콜백 호출하기
+4. 4️⃣ **`exercise/src/App.js`**: `mounted()` 안에서 `new ItemInput()`, `new ItemList()`, `new ItemFilter()` 자식 부착하기
 
 ---
 
-## 🌲 컴포넌트 데이터 흐름 규칙
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
+
+### 🌲 컴포넌트 데이터 흐름 규칙
 
 ```text
        ┌───────────┐
@@ -35,13 +37,16 @@ ItemInput ItemList ItemFilter  (자식 컴포넌트들)
 - **Props Down (부모 ➔ 자식)**: 부모(`App.js`)가 자식(`ItemList.js`) 생성자에 데이터 보따리 `props` 전달
 - **Events Up (자식 ➔ 부모)**: 자식(`ItemInput.js`)에서 입력이 들어오면 부모가 넘겨준 `addItem()` 콜백을 불러 부모의 `state` 갱신 요청
 
-### 💻 `App.js` 마운트 코드 한 줄 풀이
+#### 💡 보조 설명: ❌ `.bind(this)` 누락 vs ⭕ 올바른 콜백 전달 비교
 ```javascript
+// ❌ 잘못된 예시 (.bind(this)를 안 적어 전달하면 자식에서 실행될 때 this가 엉뚱한 곳을 가리킴!)
 mounted() {
-  const $itemInput = this.$target.querySelector('[data-component="item-input"]');
-  new ItemInput($itemInput, {
-    addItem: this.addItem.bind(this) // 부모의 this가 깨지지 않게 .bind(this) 필수!
-  });
+  new ItemInput($input, { addItem: this.addItem }); // 💥 자식에서 호출 시 this.state 읽다가 에러 발생!
+}
+
+// ⭕ 올바른 예시 (.bind(this)를 명시해 부모의 this 스코프를 꽁꽁 묶어서 넘겨줌!)
+mounted() {
+  new ItemInput($input, { addItem: this.addItem.bind(this) }); // 핑퐁! 안전하게 부모 메서드 호출 성공!
 }
 ```
 

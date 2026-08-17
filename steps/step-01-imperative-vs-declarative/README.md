@@ -6,9 +6,9 @@
 
 ## 🎯 학습 목표 (무엇을 배우나요?)
 
-1. 옛날 방식(DOM 직접 조작)인 **명령형** 코드가 왜 나중에 코드가 커지면 스파게티처럼 꼬이는지 직접 경험합니다.
-2. 현대 프런트엔드(React, Vue)의 핵심 원리인 **선언적 상태 기반 렌더링 (`UI = f(State)`)** 방식을 배웁니다.
-3. `state` 데이터가 바뀌면 화면이 저절로 짠! 하고 다시 그려지는 `setState()` 파이프라인을 작성합니다.
+1. 기존 jQuery / 순수 DOM 조작 방식인 **명령형(Imperative)** 프로그래밍의 한계와 스파게티 코드를 체험합니다.
+2. React/Vue 등 현대 프런트엔드의 핵심 원리인 **선언적(Declarative) 상태 기반 렌더링 (`UI = f(State)`)** 패러다임을 습득합니다.
+3. `state` 데이터가 변경될 때 화면이 저절로 갱신되는 `setState()` 함수를 직접 구현합니다.
 
 ---
 
@@ -19,40 +19,69 @@
 
 ---
 
-## 💡 왕초보 눈높이 개념 해설
+## 💡 주요 개념 및 보조 설명 (Supplementary Explanations)
 
-### 1️⃣ 명령형(Imperative) 방식: "이거 찾아서 요거 바꿔라!"
-- `document.querySelector('#count').innerText = count;`
-- 버튼 누를 때마다 일일이 DOM을 찾아서 글자를 고치는 방식입니다.
-- **문제점**: 화면에 카운터 숫자가 10군데에 써있으면, 버튼 누를 때마다 10군데 DOM을 찾아다니며 고쳐야 합니다. 개발자가 깜빡하고 1곳을 누락하면 버그가 생깁니다!
+### 1️⃣ 명령형(Imperative) 방식: "이거 찾아서 요거 고쳐라!"
 
-### 2️⃣ 선언적(Declarative) 방식: "데이터(State)만 정해줄 테니 화면은 틀이 알아서 그려라!"
-- **핵심 공식**: `UI = f(State)` (화면 UI는 오직 상태 State에 의해 결정되는 결과물이다!)
-- 데이터인 `state = { count: 0 }` 만 고치고, `render()`를 호출하면 끝납니다!
+#### 📌 주 설명
+- `document.querySelector('#count-display').innerText = count;`
+- 화면에 표시된 숫자를 고치기 위해 자바스크립트가 직접 HTML DOM 태그를 찾아다니며 일일이 수정하라고 "명령"하는 방식입니다.
 
-### 💻 선언적 파이프라인 한 줄 한 줄 풀이
+#### 💡 보조 설명: ❌ 명령형의 한계와 스파게티 코드 예시
 ```javascript
-let state = { count: 0 }; // 1. 화면의 기준이 되는 중앙 데이터 상자
+// ❌ 명령형 방식: 화면의 카운터 숫자가 3군데(상단, 중단, 하단)에 써있다면?
+let count = 0;
+
+document.querySelector('#btn-increase').addEventListener('click', () => {
+  count++;
+  // 카운터 숫자가 바뀔 때마다 3군데 DOM을 일일이 찾아가서 수정해야 함!
+  document.querySelector('#header-count').innerText = count;
+  document.querySelector('#main-count').innerText = count;
+  document.querySelector('#footer-count').innerText = count;
+  // 💥 만약 1군데라도 수정을 빠뜨리면 화면 데이터가 서로 달라지는 버그가 생김!
+});
+```
+
+---
+
+### 2️⃣ 선언적(Declarative) 방식: "데이터(State)가 이러하니 화면은 알아서 그려라!"
+
+#### 📌 주 설명
+- **핵심 공식**: `UI = f(State)` (화면 UI는 오직 상태 State 데이터에 의해 결정되는 결과물이다!)
+- 개발자는 데이터인 `state = { count: 0 }` 만 변경하고, 화면을 싹 그려주는 `render()` 함수를 부르면 끝납니다.
+
+#### 💡 보조 설명: ⭕ 선언적 파이프라인 우수성 코드 예시
+```javascript
+// ⭕ 선언적 방식: 데이터만 고치고 render()를 부르면 3군데든 100군데든 자동 일괄 갱신!
+let state = { count: 0 };
 
 function render() {
-  // 2. 현재 state 데이터 모양대로 HTML을 싹 새로 대입!
+  // 현재 state 데이터 모양을 그대로 선언(정의)!
   $app.innerHTML = `
-    <div>
-      <h2>카운트: ${state.count}</h2>
-      <button id="btn-inc">+</button>
-    </div>
+    <header>카운트: ${state.count}</header>
+    <main>카운트: ${state.count}</main>
+    <footer>카운트: ${state.count}</footer>
   `;
 }
 
 function setState(newState) {
-  state = { ...state, ...newState }; // 3. 데이터 상자를 안전하게 갱신!
-  render();                          // 4. 데이터가 바뀌었으니 화면을 다시 그리기!
+  state = { ...state, ...newState }; // 1. 데이터 업데이트 (불변성 합치기)
+  render();                          // 2. 화면 자동 재렌더링!
 }
 ```
 
 ---
 
+## ❓ 초보자가 자주 헷갈리는 Q&A
+
+**Q. '선언적 렌더링'과 '함수 선언식'은 같은 단어인가요?**  
+- **아닙니다! 완전히 다른 개념입니다.**
+- **선언적 렌더링**: "화면을 상태(State) 데이터 중심으로 그리자!"라는 **생각의 틀(패러다임)**입니다.
+- **함수 선언식**: `function add() {}` 처럼 자바스크립트에서 함수를 타이핑할 때 쓰는 **문법 규칙(Syntax)**입니다.
+
+---
+
 ## 🔑 자가 점검 체크리스트
-- [ ] 명령형과 선언적의 차이를 붕어빵 비유로 이해하셨나요?
-- [ ] `setState` 안에서 `render()`를 호출해야 화면이 바뀌는 것을 확인하셨나요?
-- [ ] 막히면 `solution/declarative.html` 정답을 비교해 보세요!
+- [ ] 명령형과 선언적의 차이를 붕어빵 비유로 설명할 수 있나요?
+- [ ] `setState` 안에서 `render()`를 부르는 이유를 이해하셨나요?
+- [ ] 막히면 `solution/declarative.html` 정답 코드를 열어 비교해 보세요!
