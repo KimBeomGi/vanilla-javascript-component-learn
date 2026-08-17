@@ -269,7 +269,9 @@
     <div class="nav-left">
       <a href="./index.html" class="btn-back">← 메인 대시보드</a>
       <span class="doc-title-badge" id="doc-name">문서 로딩 중...</span>
-      <div id="step-quick-actions" style="display:none; gap:0.5rem; align-items:center; margin-left:0.5rem;">
+      <div id="step-quick-actions" style="display:none; gap:0.4rem; align-items:center; margin-left:0.5rem;">
+        <select id="header-level-select" style="display:none; padding:0.3rem 0.5rem; border-radius:6px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-weight:600; font-size:0.82rem; cursor:pointer;">
+        </select>
         <a id="btn-header-ex" class="btn-header-action" style="background:#2563eb; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">🏋️ 실습 열기 (새 탭)</a>
         <a id="btn-header-sol" class="btn-header-action" style="background:#22c55e; color:white; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.82rem; transition:opacity 0.2s;" target="_blank" rel="noopener noreferrer" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">✨ 완성본 열기 (새 탭)</a>
       </div>
@@ -323,27 +325,52 @@
     const $content = document.querySelector('#content');
     const $tocList = document.querySelector('#toc-list');
     const $quickActions = document.querySelector('#step-quick-actions');
+    const $levelSelect = document.querySelector('#header-level-select');
     const $btnHeaderEx = document.querySelector('#btn-header-ex');
     const $btnHeaderSol = document.querySelector('#btn-header-sol');
 
     $docName.innerText = `📄 ${targetFile}`;
+    let currentStepDir = '';
 
-    // 🎯 챕터 가이드(README.md) 가이드 열었을 시 상단 header에 실습 & 완성본 새 탭 버튼 노출
+    // 🎯 챕터 가이드(README.md) 열었을 시 상단 header에 레벨 선택 드롭다운 및 실습/완성본 새 탭 버튼 노출
     if (targetFile.startsWith('steps/step-')) {
-      const stepDir = targetFile.substring(0, targetFile.lastIndexOf('/'));
-      let exFile = 'exercise/index.html';
-      let solFile = 'solution/index.html';
-
-      if (stepDir.includes('step-00')) {
-        exFile = 'exercise/level-1-dom.html';
-        solFile = 'solution/level-1-dom.html';
-      } else if (stepDir.includes('step-01')) {
-        exFile = 'exercise/declarative.html';
-        solFile = 'solution/declarative.html';
+      currentStepDir = targetFile.substring(0, targetFile.lastIndexOf('/'));
+      
+      if (currentStepDir.includes('step-00')) {
+        $levelSelect.innerHTML = `
+          <option value="level-1-dom.html">Level 1: DOM 탐색</option>
+          <option value="level-2-template.html">Level 2: 백틱 템플릿</option>
+          <option value="level-3-this-functions.html">Level 3: 함수 & this</option>
+          <option value="level-4-module.html">Level 4: 모듈 & class</option>
+        `;
+        $levelSelect.style.display = 'inline-block';
+      } else if (currentStepDir.includes('step-01')) {
+        $levelSelect.innerHTML = `
+          <option value="declarative.html">Level 1: 카운터 (선언적)</option>
+          <option value="level-2-modal.html">Level 2: 모달 토글</option>
+          <option value="imperative.html">Level 0: 옛날 명령형 비교</option>
+        `;
+        $levelSelect.style.display = 'inline-block';
       }
 
-      $btnHeaderEx.href = `./${stepDir}/${exFile}`;
-      $btnHeaderSol.href = `./${stepDir}/${solFile}`;
+      function updateHeaderActionLinks(file) {
+        let exFile = file || 'index.html';
+        let solFile = file || 'index.html';
+
+        if (!file) {
+          if (currentStepDir.includes('step-00')) { exFile = 'level-1-dom.html'; solFile = 'level-1-dom.html'; }
+          else if (currentStepDir.includes('step-01')) { exFile = 'declarative.html'; solFile = 'declarative.html'; }
+        }
+
+        $btnHeaderEx.href = `./${currentStepDir}/exercise/${exFile}`;
+        $btnHeaderSol.href = `./${currentStepDir}/solution/${solFile}`;
+      }
+
+      $levelSelect.addEventListener('change', (e) => {
+        updateHeaderActionLinks(e.target.value);
+      });
+
+      updateHeaderActionLinks($levelSelect.value || null);
       $quickActions.style.display = 'flex';
     }
 
@@ -355,6 +382,20 @@
 
         // Convert Markdown to HTML using marked.js
         $content.innerHTML = marked.parse(markdown);
+
+        // 🔗 본문 내 상대경로 실습 링크(exercise/..., solution/...) 자동 보정 및 새 탭 처리
+        if (currentStepDir) {
+          $content.querySelectorAll('a').forEach(a => {
+            const rawHref = a.getAttribute('href');
+            if (rawHref && !rawHref.startsWith('http') && !rawHref.startsWith('#')) {
+              // exercise/level-2-template.html -> ./steps/step-00-js-prerequisites/exercise/level-2-template.html
+              const cleanHref = rawHref.replace(/^\.\//, '');
+              a.href = `./${currentStepDir}/${cleanHref}`;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+            }
+          });
+        }
 
         // Highlight Code Blocks
         document.querySelectorAll('pre code').forEach((block) => {
