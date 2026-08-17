@@ -69,7 +69,8 @@
 - `document.querySelector('#target')`: 화면의 HTML 요소 주소를 찾아 변수에 담습니다.
 - `.innerText`: 단순 텍스트를 대입합니다. (`$title.innerText = '안녕';`)
 - `.innerHTML`: HTML 태그가 해석되는 문맥을 대입합니다. (`$content.innerHTML = '<b>안녕</b>';`)
-  - ⚠️ **보안 주의**: 사용자 입력을 그대로 `.innerHTML`에 넣으면 악성 스크립트가 실행되는 **XSS 공격** 위험이 있으므로, 안전한 텍스트는 항상 `.innerText`를 쓰는 것이 실무 원칙입니다!
+  - 💡 **컴포넌트 렌더링 규칙**: 컴포넌트는 `<button>`, `<div>` 같은 HTML 태그를 그려내야 하므로 **`this.$target.innerHTML = this.template()`을 필수로 사용**합니다!
+  - ⚠️ **보안 주의 (XSS 방어)**: 다만 사용자가 입력한 순수 텍스트(`${userInput}`)를 템플릿에 합칠 때는 XSS 해킹 방지를 위해 `escapeHTML()` 치환을 거쳐 안전하게 넣어주는 것이 실무 원칙입니다.
 
 ### Level 2: 백틱(`` ` ``)과 템플릿 리터럴 (`level-2-template.html`)
 - 키보드 숫자 1 왼쪽의 물결 기호(`~`)에 있는 백틱(`` ` ``)을 사용하면, 자바스크립트 변수와 HTML을 자유롭게 조립할 수 있습니다.

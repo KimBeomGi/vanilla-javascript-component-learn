@@ -31,15 +31,26 @@
 - `.innerText`: 태그를 무시하고 오직 글자(텍스트) 그대로 출력합니다.
 - `.innerHTML`: 문자열 안의 `<button>`, `<b>` 같은 HTML 태그를 해석해서 실제 태그 형태로 그려줍니다.
 
-#### 💡 보조 설명: ❌ 잘못된 코드 vs ⭕ 올바른 코드 예시
-```javascript
-const userInput = "<script>alert('해킹당함!');</script>"; // 사용자가 입력한 악성 텍스트
+#### 💡 Q. "컴포넌트를 만들 땐 `innerHTML`을 써야 하는 것 아닌가요?"
+- **네, 100% 맞습니다!** 컴포넌트는 `<button>`, `<div>` 같은 HTML 구조 태그를 그려내야 하므로 **`this.$target.innerHTML = this.template()`을 필수로 사용**합니다.
+- 다만, 사용자가 입력한 순수 텍스트(이름, 댓글 등)를 템플릿 안`${userInput}`에 직접 합칠 때는 XSS 해킹 방지를 위해 `escapeHTML()` 이스케이프 함수를 거치거나 주의해야 합니다.
 
-// ❌ 잘못된 예시 (XSS 해킹 위험! 사용자 입력을 그대로 innerHTML에 넣는 경우)
+#### 💡 보조 설명: ❌ XSS 해킹 위험 예시 vs ⭕ 이스케이프 및 올바른 사용 예시
+```javascript
+// 사용자가 입력한 악성 스크립트 텍스트
+const userInput = "<script>alert('해킹당함!');</script>";
+
+// ❌ 위험한 예시 (사용자 입력을 검증 없이 그대로 innerHTML 템플릿에 합칠 때)
 $app.innerHTML = `<div>${userInput}</div>`; // 해킹 스크립트가 실행될 위험이 있음!
 
-// ⭕ 올바른 예시 (일반 사용자 텍스트는 안전하게 innerText로 대입!)
-$app.innerText = userInput; // 단순히 글자로 출력되어 안전함!
+// ⭕ 올바른 예시 1: 컴포넌트는 innerHTML로 태그를 그리되, 사용자 텍스트는 escapeHTML() 치환!
+function escapeHTML(str) {
+  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+$app.innerHTML = `<div>${escapeHTML(userInput)}</div>`; // 안전하게 태그로 해석되지 않고 출력!
+
+// ⭕ 올바른 예시 2: 단순 텍스트 전용 요소의 글자만 바꿀 때는 innerText 사용!
+document.querySelector('#user-name').innerText = userInput;
 ```
 
 ---
