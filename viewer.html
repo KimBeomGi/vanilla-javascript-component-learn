@@ -235,6 +235,9 @@
       text-align: center;
       padding: 4rem 0;
       font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
     .btn-top {
       position: fixed;
       bottom: 2rem;
@@ -364,6 +367,11 @@
         const a = document.createElement('a');
         a.href = `#${id}`;
         a.innerText = heading.innerText.replace(/^[#\s]+/, '');
+
+        li.appendChild(a);
+        $tocList.appendChild(li);
+      });
+    }
 
     // Top Scroll Button Logic
     const $btnTop = document.querySelector('#btn-top');
